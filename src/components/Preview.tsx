@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { Build, Project } from "../types";
 import { buildLabel } from "../api";
 import { Icon } from "./Icon";
@@ -17,13 +17,15 @@ function RailButton({
   action,
   label,
   children,
-  extra,
+  expanded,
+  disabled,
   onClick,
 }: {
   action: string;
   label: string;
   children: React.ReactNode;
-  extra?: string;
+  expanded?: boolean;
+  disabled?: boolean;
   onClick: () => void;
 }) {
   return (
@@ -33,7 +35,8 @@ function RailButton({
       data-action={action}
       title={label}
       aria-label={label}
-      aria-expanded={extra === "menu" ? "true" : undefined}
+      aria-expanded={expanded ? "true" : undefined}
+      disabled={disabled}
       onClick={onClick}
     >
       {children}
@@ -59,10 +62,28 @@ export function Preview({
   onSetAgainst: (build: Build | null) => void;
 }) {
   const [menu, setMenu] = useState<Menu>(null);
+  const [modelQuery, setModelQuery] = useState("");
+  const [copied, setCopied] = useState(false);
+  const modelSearch = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     document.body.classList.add("viewing");
     return () => document.body.classList.remove("viewing");
+  }, []);
+
+  useEffect(() => {
+    if (menu === "models") modelSearch.current?.focus();
+  }, [menu]);
+
+  useEffect(() => {
+    const shortcut = (event: KeyboardEvent) => {
+      if (event.key.toLowerCase() === "k" && (event.metaKey || event.ctrlKey) && !event.altKey) {
+        event.preventDefault();
+        setMenu("models");
+      }
+    };
+    window.addEventListener("keydown", shortcut);
+    return () => window.removeEventListener("keydown", shortcut);
   }, []);
 
   useEffect(() => {
@@ -101,7 +122,10 @@ export function Preview({
     project.builds.find((build) => build.model === model && build.skill === skill) ?? null;
 
   const pickModel = (model: string) => {
-    const target = findBuild(model, current?.skill ?? skills[0] ?? "No skill");
+    const firstSkill = project.builds.find((build) => build.model === model)?.skill;
+    const target =
+      findBuild(model, current?.skill ?? "No skill") ??
+      (firstSkill ? findBuild(model, firstSkill) : null);
     if (target) onSelect(target);
     setMenu(null);
   };
@@ -136,7 +160,8 @@ export function Preview({
             action="compare"
             label="Compare builds"
             onClick={() => setMenu(menu === "compare" ? null : "compare")}
-            extra="menu"
+            expanded={menu === "compare"}
+            disabled={project.builds.length < 2}
           >
             <span className="versus">VS</span>
           </RailButton>
@@ -147,7 +172,7 @@ export function Preview({
                 action="models"
                 label={`Switch model (current: ${current.model})`}
                 onClick={() => setMenu(menu === "models" ? null : "models")}
-                extra="menu"
+                expanded={menu === "models"}
               >
                 <ModelMark model={current.model} />
               </RailButton>
@@ -155,7 +180,7 @@ export function Preview({
                 action="skills"
                 label={`Switch skill (current: ${current.skill})`}
                 onClick={() => setMenu(menu === "skills" ? null : "skills")}
-                extra="menu"
+                expanded={menu === "skills"}
               >
                 <Icon name={current.skill === "No skill" ? "off" : "palette"} />
               </RailButton>
@@ -180,7 +205,7 @@ export function Preview({
             action="files"
             label="Build files"
             onClick={() => setMenu(menu === "files" ? null : "files")}
-            extra="menu"
+            expanded={menu === "files"}
           >
             <Icon name="panel" />
           </RailButton>
@@ -193,33 +218,66 @@ export function Preview({
           hidden={!menu}
         >
           {menu === "models" ? (
-            <div className="option-list">
-              {models.map((model) => {
-                const target = findBuild(model, current?.skill ?? "No skill");
-                const selected = model === current?.model;
-                return (
-                  <button
-                    className="option"
-                    type="button"
-                    key={model}
-                    disabled={!target}
-                    aria-current={selected ? "true" : undefined}
-                    onClick={() => pickModel(model)}
-                  >
-                    <ModelMark model={model} />
-                    <span>
-                      {model}
-                      {target ? null : <small>No {current?.skill} build</small>}
-                    </span>
-                    {selected ? (
-                      <span className="option-end">
-                        <Icon name="check" />
-                      </span>
-                    ) : null}
-                  </button>
-                );
-              })}
-            </div>
+            <>
+              <label className="search model-search">
+                <Icon name="search" />
+                <input
+                  ref={modelSearch}
+                  type="search"
+                  aria-label="Search models"
+                  placeholder="Search models"
+                  value={modelQuery}
+                  onChange={(event) => setModelQuery(event.target.value)}
+                  onKeyDown={(event) => {
+                    if (event.key !== "Enter") return;
+                    event.preventDefault();
+                    const filtered = models.filter((model) =>
+                      model.toLowerCase().includes(modelQuery.trim().toLowerCase()),
+                    );
+                    if (filtered[0]) pickModel(filtered[0]);
+                  }}
+                />
+                <kbd aria-hidden="true">{/Mac|iPhone/.test(navigator.platform) ? "⌘" : "Ctrl"} + K</kbd>
+              </label>
+              <div className="option-list">
+                {models
+                  .filter((model) => model.toLowerCase().includes(modelQuery.trim().toLowerCase()))
+                  .map((model, index) => {
+                    const firstSkill = project.builds.find((build) => build.model === model)?.skill;
+                    const target =
+                      findBuild(model, current?.skill ?? "No skill") ??
+                      (firstSkill ? findBuild(model, firstSkill) : null);
+                    const selected = model === current?.model;
+                    return (
+                      <button
+                        className="option"
+                        type="button"
+                        key={model}
+                        disabled={!target}
+                        aria-current={selected ? "true" : undefined}
+                        onClick={() => pickModel(model)}
+                      >
+                        <ModelMark model={model} />
+                        <span>{model}</span>
+                        {index === 0 ? (
+                          <kbd className="option-end" aria-hidden="true">
+                            Enter
+                          </kbd>
+                        ) : selected ? (
+                          <span className="option-end">
+                            <Icon name="check" />
+                          </span>
+                        ) : null}
+                      </button>
+                    );
+                  })}
+                {!models.some((model) =>
+                  model.toLowerCase().includes(modelQuery.trim().toLowerCase()),
+                ) ? (
+                  <p className="no-options">No models match that search.</p>
+                ) : null}
+              </div>
+            </>
           ) : null}
 
           {menu === "skills" ? (
@@ -305,17 +363,33 @@ export function Preview({
             <div className="file-details">
               <h2>{project.name}</h2>
               {project.brief ? <p>{project.brief}</p> : null}
-              <span>Build entry</span>
+              <span className="file-caption">{current ? "Build entry" : "Project manifest"}</span>
               <code>{current?.entry ?? `projects/${project.id}/project.json`}</code>
-              {current ? (
-                <p>
-                  <a href={`/${current.entry}`} target="_blank" rel="noreferrer">
-                    Open build in a new tab
+              <div className="file-actions">
+                <button
+                  type="button"
+                  className="soft-button"
+                  onClick={() => {
+                    const value = current?.entry ?? `projects/${project.id}/project.json`;
+                    navigator.clipboard?.writeText(value);
+                    setCopied(true);
+                    window.setTimeout(() => setCopied(false), 1500);
+                  }}
+                >
+                  <Icon name="copy" /> Copy path
+                </button>
+                {current ? (
+                  <a className="soft-button" href={current.entry} target="_blank" rel="noopener">
+                    <Icon name="external" /> Open build
                   </a>
-                </p>
-              ) : null}
+                ) : null}
+              </div>
+              <p className="sr-only" role="status">
+                {copied ? "Copied" : ""}
+              </p>
             </div>
           ) : null}
+
         </section>
       </aside>
 

@@ -73,7 +73,16 @@ async function state() {
     if (result.status === "fulfilled") projects.push(result.value);
     else failed.push(ids[index]);
   });
-  return { projects, failed, revision: Date.now() };
+  const promptPath =
+    projects.find((project) => project.experiment?.basePrompt)?.experiment.basePrompt ||
+    "prompts/frontend-base.md";
+  let prompt = "";
+  try {
+    prompt = await fs.readFile(path.join(root, promptPath), "utf8");
+  } catch {
+    /* no shared prompt */
+  }
+  return { projects, failed, promptPath, prompt, revision: Date.now() };
 }
 
 const app = express();

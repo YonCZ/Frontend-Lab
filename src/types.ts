@@ -38,5 +38,7 @@ export type Project = {
 export type State = {
   projects: Project[];
   failed: string[];
+  promptPath: string;
+  prompt: string;
   revision: number;
 };

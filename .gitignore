@@ -8,3 +8,4 @@ node_modules/
 projects/*/runs/
 dist/
 *.local
+screenshots/

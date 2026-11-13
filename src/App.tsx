@@ -115,5 +115,13 @@ export default function App() {
     );
   }
 
-  return <Gallery projects={state.projects} failed={state.failed} onOpen={openProject} />;
+  return (
+    <Gallery
+      projects={state.projects}
+      failed={state.failed}
+      promptPath={state.promptPath}
+      prompt={state.prompt}
+      onOpen={openProject}
+    />
+  );
 }
