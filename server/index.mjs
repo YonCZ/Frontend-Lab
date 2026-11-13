@@ -10,6 +10,7 @@ const projectsDir = path.join(root, "projects");
 const distDir = path.join(root, "dist");
 const port = Number(process.env.PORT || 4173);
 const serveDist = process.argv.includes("--serve-dist");
+const dev = process.env.NODE_ENV === "development" && !serveDist;
 
 const slug = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const segment = /^[a-zA-Z0-9_][a-zA-Z0-9_.-]*$/;
@@ -137,14 +138,18 @@ if (serveDist) {
   app.get(/.*/, (_request, response) => {
     response.sendFile(path.join(distDir, "index.html"));
   });
+} else if (dev) {
+  const { createServer } = await import("vite");
+  const vite = await createServer({
+    server: { middlewareMode: true },
+    appType: "spa",
+  });
+  app.use(vite.middlewares);
 }
 
 chokidar.watch(projectsDir, { ignoreInitial: true }).on("all", broadcast);
 
 app.listen(port, "127.0.0.1", () => {
-  console.log(
-    serveDist
-      ? `Frontend Lab on http://localhost:${port}`
-      : `Frontend Lab API on http://localhost:${port}`,
-  );
+  const mode = serveDist ? "production" : dev ? "development (HMR)" : "api";
+  console.log(`Frontend Lab ${mode} on http://localhost:${port}`);
 });

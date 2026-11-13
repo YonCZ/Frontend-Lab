@@ -9,9 +9,9 @@ npm install
 npm run dev
 ```
 
-Open <http://localhost:5173/>. Vite serves the UI and proxies `/api` and `/projects` to a small Express server on `:4173`.
+Open <http://localhost:5173/>. One Node process runs Express and mounts Vite in middleware mode, so there is a single port: API, build folders, HMR and the app all live there.
 
-For daily use in one process:
+A production build is available when you want a frozen bundle:
 
 ```sh
 npm start          # builds the UI, then serves everything on http://localhost:4173
@@ -35,11 +35,14 @@ prompts/frontend-base.md
 scripts/                optional queue helpers (prepare-job.py, queue-driver.py)
 ```
 
-- `GET /api/state` — catalog, manifests, queued/running job status.
-- `GET /api/events` — SSE stream; the server watches `projects/**` with chokidar and pushes a fresh state whenever a manifest or build file changes.
+- `GET /api/state` — catalog, manifests, queued/running job status, shared prompt.
+- `GET /api/events` — SSE stream; the server watches `projects/**` with chokidar (including `runs/status.json`) and pushes a fresh state whenever files change.
 - `/projects/*` — the builds themselves, with `no-store` on JSON.
 
-The UI applies pushed state without a reload, so new builds appear as soon as they are added to a manifest, and the open preview reloads when files change.
+Two kinds of live update:
+
+- **Content** (builds, manifests, job status) is pushed over SSE in every mode, dev or production. Agents only have to write files; cards and the open preview update without a reload.
+- **App code** (`src/`, CSS) is hot-swapped by Vite in `npm run dev`. A production bundle is fixed until it is rebuilt, same as any React or Next app.
 
 ## Add a project
 
