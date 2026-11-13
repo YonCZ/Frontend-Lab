@@ -33,7 +33,7 @@ manifest = project / 'project.json'
 runs = project / 'runs'
 status_path = runs / 'status.json'
 threads_path = runs / 'threads.json'
-server = 'http://localhost:4173'
+server = 'http://localhost:5173'
 
 data = json.loads(manifest.read_text())
 experiment = data.get('experiment')

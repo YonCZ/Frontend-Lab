@@ -70,7 +70,12 @@ Create `projects/<slug>/`, add the slug to `projects/catalog.json`, and describe
 
 ## Optional: the build queue
 
-`scripts/` contains the harness used to run many builds across models and skills. Verification uses Playwright:
+`scripts/` contains the harness used to run many builds across models and skills, plus a font kit and a screenshot helper.
+
+- `fonts/` — 16 OFL families (latin, 400/700) with ready `font.css` files; agents copy what they need into `assets/fonts/`.
+- `scripts/shot.py` — one-command screenshots (`--url`, `--out`, `--full`, `--selector`), 1000px wide, JPEG by default.
+
+Verification uses Playwright:
 
 ```sh
 python3 -m pip install playwright
@@ -82,6 +87,8 @@ Prepare a prompt for two variants of one preset:
 ```sh
 python3 scripts/prepare-job.py frontend-design --variants 2
 ```
+
+The generated prompt also points at the local font kit, `scripts/shot.py`, and the preview server on `http://localhost:5173`.
 
 Placeholders in `prompts/frontend-base.md`: `{{project_brief}}`, `{{variants}}`, `{{variant_plural}}`, `{{variant_dirs}}`, `{{assets_instruction}}`.
 

@@ -45,7 +45,9 @@ def catalog_default():
 project_id = flags['--project'] or catalog_default()
 project = root / 'projects' / project_id
 data = json.loads((project / 'project.json').read_text())
-experiment = data['experiment']
+experiment = data.get('experiment')
+if not experiment:
+    raise SystemExit(f"project '{project_id}' has no experiment block; the queue scripts need one")
 model_id = flags['--model'] or experiment.get('model')
 if not model_id:
     raise SystemExit('project.json has no experiment.model; pass --model')
@@ -108,12 +110,17 @@ prompt += base_prompt
 for skill in preset['skills']:
     prompt += f"\nRead and apply {experiment['skills'][skill]}.\n"
 
-urls = [f'http://localhost:4173/projects/{project_id}/builds/{folder_slug}/'
+prompt += (f'\nFonts: a local kit is in {root}/fonts (see fonts/README.md). Copy the families you use '
+           'into assets/fonts and reference them locally; you may download another family if you need one.\n')
+prompt += (f'\nScreenshots: Playwright is already installed. Use python3 {root}/scripts/shot.py '
+           '--url <page-url> --out <file.jpg> [--full] [--selector "CSS"]. Do not npm install a browser.\n')
+
+urls = [f'http://localhost:5173/projects/{project_id}/builds/{folder_slug}/'
         f'{preset_id}/{v}/index.html' for v in variants]
 if len(urls) == 1:
-    prompt += f'\nThe gallery preview server is at http://localhost:4173. Your page is at {urls[0]}\n'
+    prompt += f'\nThe gallery preview server is at http://localhost:5173. Your page is at {urls[0]}\n'
 else:
-    prompt += (f'\nThe gallery preview server is at http://localhost:4173. Your pages are at '
+    prompt += (f'\nThe gallery preview server is at http://localhost:5173. Your pages are at '
                + ' and '.join(urls) + '\n')
 
 (project / 'runs').mkdir(exist_ok=True)
