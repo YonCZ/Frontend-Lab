@@ -6,3 +6,5 @@ node_modules/
 .taste-skill/
 .web-verify/
 projects/*/runs/
+dist/
+*.local

@@ -1,35 +1,49 @@
 # Frontend Lab
 
-A local gallery for comparing frontend builds made by different models and skills from the same brief. Each build is a plain static folder, so anything you can open in a browser works here — no framework or build step required for the gallery itself.
-
-![Frontend Lab](./assets/lab.svg)
+A local gallery for comparing frontend builds made by different models and skills from the same brief. Builds are plain static folders served as-is, so agents can keep writing simple HTML; the lab is a small dynamic app around them that updates itself while builds land.
 
 ## Quick start
 
 ```sh
-python3 -m http.server 4173 --bind localhost
+npm install
+npm run dev
 ```
 
-Open <http://localhost:4173/>.
+Open <http://localhost:5173/>. Vite serves the UI and proxies `/api` and `/projects` to a small Express server on `:4173`.
 
-## How it is organised
+For daily use in one process:
+
+```sh
+npm start          # builds the UI, then serves everything on http://localhost:4173
+```
+
+## How it works
 
 ```
-index.html            gallery shell
-app.js                gallery logic (projects, models, skills, variants, compare)
-styles.css
-assets/               fonts and icon
-prompts/frontend-base.md   prompt template used by the build scripts
-scripts/prepare-job.py     build a prompt for one project + preset
-scripts/queue-driver.py    track status, verify builds, plan the next run
+index.html              Vite entry
+src/                    React + TypeScript UI
+  App.tsx               routing (project / build / against in the URL)
+  components/           Gallery, Preview, icon and model marks
+  api.ts                state fetch + SSE subscription
+server/index.mjs        Express: /api/state, /api/events, /projects, dist
 projects/
-  catalog.json        slugs shown in the gallery
+  catalog.json          slugs shown in the gallery
   <project-slug>/
-    project.json      manifest: brief, builds, optional experiment
-    builds/...        one static folder per variant
+    project.json        manifest: brief, builds, optional experiment
+    builds/...          one static folder per variant
+prompts/frontend-base.md
+scripts/                optional queue helpers (prepare-job.py, queue-driver.py)
 ```
 
-Add a project by creating `projects/<slug>/`, putting its builds inside, and adding the slug to `projects/catalog.json`. Path segments may use letters, digits, underscores, hyphens and dots; project slugs are lowercase with hyphens.
+- `GET /api/state` — catalog, manifests, queued/running job status.
+- `GET /api/events` — SSE stream; the server watches `projects/**` with chokidar and pushes a fresh state whenever a manifest or build file changes.
+- `/projects/*` — the builds themselves, with `no-store` on JSON.
+
+The UI applies pushed state without a reload, so new builds appear as soon as they are added to a manifest, and the open preview reloads when files change.
+
+## Add a project
+
+Create `projects/<slug>/`, add the slug to `projects/catalog.json`, and describe its builds:
 
 ```json
 {
@@ -47,13 +61,13 @@ Add a project by creating `projects/<slug>/`, putting its builds inside, and add
 }
 ```
 
-`entry` and `cover` are relative to the project folder. Leave out `skill` for a baseline build. The first build opens by default; the rail switches model, skill and variant, and **VS** compares two builds side by side. A project with `"demo": true` shows a Demo badge.
+`entry` and `cover` are relative to the project folder. Leave out `skill` for a baseline build. The first build opens by default; the rail switches model, skill and variant, and **VS** compares two builds side by side. Projects with `"demo": true` show a Demo badge.
 
-`projects/morrow-notes` and `projects/index-editions` are small sample projects so the gallery is not empty on first run. Delete them and clear `projects/catalog.json` to start from scratch.
+`projects/morrow-notes` and `projects/index-editions` are sample projects. Delete them and clear `projects/catalog.json` to start empty.
 
 ## Optional: the build queue
 
-`scripts/` contains the harness used to run many builds across models and skills. It needs Playwright for verification:
+`scripts/` contains the harness used to run many builds across models and skills. Verification uses Playwright:
 
 ```sh
 python3 -m pip install playwright
@@ -66,21 +80,21 @@ Prepare a prompt for two variants of one preset:
 python3 scripts/prepare-job.py frontend-design --variants 2
 ```
 
-The prompt is composed from `prompts/frontend-base.md` with these placeholders filled in: `{{project_brief}}`, `{{variants}}`, `{{variant_plural}}`, `{{variant_dirs}}` and `{{assets_instruction}}`.
+Placeholders in `prompts/frontend-base.md`: `{{project_brief}}`, `{{variants}}`, `{{variant_plural}}`, `{{variant_dirs}}`, `{{assets_instruction}}`.
 
-Queue commands (they operate on the first project in `projects/catalog.json` unless `QUEUE_PROJECT` is set):
+Queue commands target the first project in `projects/catalog.json` unless `QUEUE_PROJECT` is set:
 
 ```sh
 echo '{"threads":{"<thread-id>":"completed"}}' | python3 scripts/queue-driver.py sync
-python3 scripts/queue-driver.py register <job-key>   # verifies in Chromium, adds to project.json
-python3 scripts/queue-driver.py plan                 # active jobs, free slots, next launches
+python3 scripts/queue-driver.py register <job-key>   # verifies in Chromium, updates project.json
+python3 scripts/queue-driver.py plan
 python3 scripts/queue-driver.py mark <job-key> running <thread-id>
 ```
 
-`sync` expects a map of thread id to status from whatever runs your agents. The scripts assume a project manifest with an `experiment` block (`model`, `maxConcurrent`, `basePrompt`, `skills`, `presets`); see the comment at the top of `queue-driver.py` for the shape they expect.
+`sync` expects a thread-id → status map from whatever runs your agents. The scripts expect an `experiment` block (`model`, `maxConcurrent`, `basePrompt`, `skills`, `presets`).
 
 ## Notes
 
-- The gallery serves builds straight from disk, so scripts, relative assets and `localStorage` behave like a real site. Keep the server bound to `localhost` and only run builds you trust.
-- Nothing here talks to a model provider. Point your own agent runner (T3 Code, OpenCode, a script) at the prompt and write the result into a build folder.
-- No credentials, run logs or personal projects are included. `projects/*/runs/` is ignored by git.
+- Builds run from disk with real relative paths, so scripts, assets and `localStorage` behave normally. Keep the server bound to localhost and only run builds you trust.
+- Nothing here calls a model provider; point your own runner at the composed prompt and write the result into a build folder.
+- No credentials, run logs or personal projects are included. `projects/*/runs/` and `dist/` are gitignored.

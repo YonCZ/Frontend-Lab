@@ -6,16 +6,13 @@
     <meta name="theme-color" content="#1b1a18" />
     <meta
       name="description"
-      content="A workspace for browsing and comparing frontend builds by project."
+      content="A local gallery for comparing frontend builds by project, model and skill."
     />
     <title>Frontend Lab</title>
-    <link rel="icon" href="assets/lab.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="app.js"></script>
+    <link rel="icon" href="/assets/lab.svg" type="image/svg+xml" />
   </head>
   <body>
-    <div id="app">
-      <main class="gallery"><p role="status">Loading projects…</p></main>
-    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
