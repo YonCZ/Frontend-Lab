@@ -139,14 +139,7 @@ if (serveDist) {
   });
 }
 
-chokidar
-  .watch(projectsDir, {
-    ignoreInitial: true,
-    ignored: (filePath) =>
-      filePath.includes(`${path.sep}runs${path.sep}`) ||
-      filePath.endsWith(`${path.sep}runs`),
-  })
-  .on("all", broadcast);
+chokidar.watch(projectsDir, { ignoreInitial: true }).on("all", broadcast);
 
 app.listen(port, "127.0.0.1", () => {
   console.log(
