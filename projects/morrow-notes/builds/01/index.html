@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Morrow Notes</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #1b5144;
+        color: #faf4e3;
+        font:
+          16px/1.5 "Courier New",
+          monospace;
+      }
+      header,
+      main {
+        width: min(1020px, calc(100% - 36px));
+        margin: auto;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 22px 0;
+        border-bottom: 1px solid #ffffff56;
+      }
+      header b {
+        font-size: 24px;
+      }
+      a {
+        color: inherit;
+      }
+      main {
+        padding: 64px 0;
+      }
+      section {
+        position: relative;
+        z-index: 0;
+        max-width: 760px;
+      }
+      .paper {
+        background: repeating-linear-gradient(
+          #fffdf4 0 31px,
+          #c8d6df 31px 32px
+        );
+        color: #1c251e;
+        padding: 35px 38px 41px;
+        border: 1px solid #b4bbb3;
+        box-shadow: 9px 10px 0 #0e3c31;
+      }
+      .paper::after {
+        content: "";
+        position: absolute;
+        right: -30px;
+        top: 16px;
+        width: 90%;
+        height: 94%;
+        background: #e7ddac;
+        transform: rotate(3deg);
+        z-index: -1;
+      }
+      h1 {
+        font-size: clamp(36px, 8vw, 90px);
+        line-height: 0.92;
+        letter-spacing: -0.07em;
+        margin: 0 0 24px;
+      }
+      .paper p {
+        max-width: 52ch;
+      }
+      header a,
+      .paper a {
+        background: #e9c360;
+        color: #1c251e;
+        padding: 8px 12px;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+        margin-top: 35px;
+      }
+      .cards article {
+        background: #fbf5e6;
+        color: #26352b;
+        padding: 20px;
+        box-shadow: 5px 5px #0e3c31;
+      }
+      .cards h2 {
+        font-size: 18px;
+        margin: 0 0 6px;
+      }
+      @media (max-width: 630px) {
+        main {
+          padding-top: 36px;
+        }
+        .paper {
+          padding: 24px 18px;
+        }
+        .paper::after {
+          right: -10px;
+        }
+        .cards {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header><b>Morrow.</b><a href="#method">How it works</a></header>
+    <main>
+      <section class="paper">
+        <h1>Hold onto the good thoughts.</h1>
+        <p>
+          Morrow is a notebook for ideas that take time. Make a note, link it to
+          something you already wrote, and come back when you have more to say.
+        </p>
+        <p><a href="#method">See the method ↓</a></p>
+      </section>
+      <div class="cards" id="method">
+        <article>
+          <h2>01 / Capture</h2>
+          Give an idea a card of its own.
+        </article>
+        <article>
+          <h2>02 / Connect</h2>
+          Link two notes and see what they have in common.
+        </article>
+      </div>
+    </main>
+  </body>
+</html>

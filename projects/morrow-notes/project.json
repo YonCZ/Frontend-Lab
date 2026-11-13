@@ -1,0 +1,14 @@
+{
+  "name": "Morrow Notes",
+  "brief": "Introduce a desktop app that connects your notes and makes old ideas easy to find again.",
+  "demo": true,
+  "cover": "cover.jpg",
+  "builds": [
+    {
+      "model": "Claude Opus",
+      "skill": "Frontend Design",
+      "variant": 1,
+      "entry": "builds/01/index.html"
+    }
+  ]
+}

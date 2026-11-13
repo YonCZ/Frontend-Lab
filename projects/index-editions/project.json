@@ -1,0 +1,14 @@
+{
+  "name": "Index Editions",
+  "brief": "Design an editorial homepage for an independent publication about architecture and public space.",
+  "demo": true,
+  "cover": "cover.jpg",
+  "builds": [
+    {
+      "model": "GPT-6 Astra",
+      "skill": "Frontend Design",
+      "variant": 1,
+      "entry": "builds/01/index.html"
+    }
+  ]
+}

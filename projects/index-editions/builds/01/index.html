@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Index Editions</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: #dce1d7;
+        color: #223248;
+        font:
+          16px/1.55 system-ui,
+          sans-serif;
+      }
+      header,
+      main {
+        width: min(1130px, calc(100% - 44px));
+        margin: auto;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid;
+        padding: 20px 0;
+        font-size: 14px;
+      }
+      header strong {
+        font-size: 20px;
+        letter-spacing: -0.06em;
+      }
+      a {
+        color: inherit;
+      }
+      main {
+        padding: 48px 0;
+      }
+      .feature {
+        display: grid;
+        grid-template-columns: 1fr 0.83fr;
+        gap: 34px;
+        align-items: center;
+      }
+      h1 {
+        font:
+          800 clamp(46px, 7.3vw, 96px) / 0.91 system-ui,
+          sans-serif;
+        letter-spacing: -0.09em;
+        margin: 14px 0 25px;
+      }
+      p {
+        max-width: 33ch;
+      }
+      small {
+        font-weight: 700;
+      }
+      .feature img {
+        width: 100%;
+        height: 422px;
+        object-fit: cover;
+        filter: saturate(0.66);
+      }
+      .feature a {
+        display: inline-block;
+        background: #223248;
+        color: #fff;
+        padding: 9px 13px;
+        text-decoration: none;
+      }
+      .issue {
+        border-top: 1px solid;
+        margin-top: 30px;
+        padding-top: 16px;
+      }
+      @media (max-width: 620px) {
+        .feature {
+          grid-template-columns: 1fr;
+          gap: 22px;
+        }
+        .feature img {
+          height: 300px;
+        }
+        main {
+          padding-top: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <strong>Index Editions</strong><a href="#issue">Current issue</a>
+    </header>
+    <main>
+      <section class="feature">
+        <div>
+          <small>Issue 04 / Public interiors</small>
+          <h1>Where the city comes inside.</h1>
+          <p>
+            Essays on libraries, lobbies, and the everyday rooms that belong to
+            everyone.
+          </p>
+          <a href="#issue">Read the issue</a>
+        </div>
+        <img
+          src="staircase.jpg"
+          alt="The curved concrete staircase of the Gallo-Roman Museum"
+        />
+      </section>
+      <section class="issue" id="issue">
+        <h2>A room for everyone</h2>
+        <p>
+          What happens when a public building gives people somewhere to stay?
+          Photography by
+          <a href="https://unsplash.com/photos/gNY6RsMIsPo"
+            >Sébastien Lavalaye</a
+          >.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
