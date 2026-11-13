@@ -9,3 +9,5 @@ projects/*/runs/
 dist/
 *.local
 screenshots/
+projects/catalog.local.json
+projects/test-*

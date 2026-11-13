@@ -63,7 +63,9 @@ async function loadProject(id) {
 }
 
 async function state() {
-  const catalog = await readJson(path.join(projectsDir, "catalog.json"), []);
+  const localCatalog = await readJson(path.join(projectsDir, "catalog.local.json"), null);
+  const catalog =
+    localCatalog ?? (await readJson(path.join(projectsDir, "catalog.json"), []));
   const ids = Array.isArray(catalog)
     ? [...new Set(catalog.filter((id) => typeof id === "string" && slug.test(id)))]
     : [];
@@ -147,7 +149,16 @@ if (serveDist) {
   app.use(vite.middlewares);
 }
 
-chokidar.watch(projectsDir, { ignoreInitial: true }).on("all", broadcast);
+const ignored = (filePath, stats) =>
+  Boolean(stats?.isSocket?.() || stats?.isFIFO?.()) ||
+  filePath.includes(`${path.sep}.taste-skill`) ||
+  filePath.includes(`${path.sep}.web-verify`) ||
+  filePath.includes(`${path.sep}node_modules`);
+
+chokidar
+  .watch(projectsDir, { ignoreInitial: true, ignored })
+  .on("all", broadcast)
+  .on("error", (error) => console.error("watch error:", error.message));
 
 app.listen(port, "127.0.0.1", () => {
   const mode = serveDist ? "production" : dev ? "development (HMR)" : "api";
