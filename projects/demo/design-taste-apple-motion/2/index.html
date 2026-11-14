@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demos: summon the note you half remember</title>
+<meta name="description" content="Demos is a notes app with one door. Type the word, the person or the place you remember, and the archive hands the note back with its source attached.">
+<meta name="theme-color" content="#0D1012">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%23A9C4FF'/%3E%3Cpath d='M4.4 6.2h7.2M4.4 9.8h4.4' stroke='%230D1012' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/fonts/schibsted-grotesk/font.css">
+<link rel="stylesheet" href="assets/fonts/dm-mono/font.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#palette">Skip to the archive</a>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#top" aria-label="Demos, top of page">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span>Demos</span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#keeps">What it keeps</a>
+      <a href="#door">The door</a>
+      <a href="#why">One archive</a>
+    </nav>
+    <button class="btn btn-quiet" type="button" data-open-palette>Open the archive</button>
+    <nav class="variants" aria-label="Design variants">
+      <span class="variants-label">Variant</span>
+      <a href="../1/index.html" aria-label="Variant 1: Ledger">1</a>
+      <a href="../2/index.html" aria-current="page" aria-label="Variant 2: Summon">2</a>
+      <a href="../3/index.html" aria-label="Variant 3: Atlas">3</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="wall" aria-hidden="true">
+      <div class="wall-col">
+        <span>Attention is a budget, not a muscle.</span>
+        <span>Priya can hold the Lisbon room until Friday.</span>
+        <span>The case against the dashboard.</span>
+        <span>Sourdough: 78% hydration, four folds.</span>
+        <span>Kitchen shelves 32cm apart.</span>
+        <span>Quiet interfaces need loud hierarchy.</span>
+        <span>Iron levels low. Re-test in six weeks.</span>
+        <span>Sea buckthorn sorbet, too sharp alone.</span>
+      </div>
+      <div class="wall-col">
+        <span>The Lisbon tram runs on the same wires since 1901.</span>
+        <span>A city is a machine for remembering.</span>
+        <span>The archive should be a folder of plain files.</span>
+        <span>Ask about the courtyard for dinner.</span>
+        <span>Two hours is enough.</span>
+        <span>Salt at 2%.</span>
+        <span>Do not buy more jars.</span>
+        <span>The room holds forty people.</span>
+      </div>
+      <div class="wall-col">
+        <span>Deposit is 30%.</span>
+        <span>Show the thing itself, with its context.</span>
+        <span>Re-test in six weeks.</span>
+        <span>The crumb opened up when I stopped rushing.</span>
+        <span>Who was at the dinner?</span>
+        <span>The brackets are still cast by hand.</span>
+        <span>One field, eleven notes.</span>
+        <span>Keep the source attached.</span>
+      </div>
+      <div class="wall-col">
+        <span>Not everything needs a folder.</span>
+        <span>The top jar is reachable without the stool.</span>
+        <span>Four kinds of note.</span>
+        <span>Nothing you noticed is lost.</span>
+        <span>Write it down before the tab closes.</span>
+        <span>The courtyard is free on Thursday.</span>
+        <span>Ask for the corner table.</span>
+        <span>Bring the small notebook.</span>
+      </div>
+    </div>
+
+    <div class="wrap hero-in">
+      <h1 class="enter">Summon the note you half remember.</h1>
+      <p class="hero-lede enter d1">Demos keeps every quote, call, link and idea, then hands it back from one field. Type a word, a person or a place, and the archive answers with the source attached.</p>
+
+      <div class="palette enter d2" id="palette" tabindex="-1" data-mode="results" aria-label="Demos archive demo">
+        <div class="pal-head">
+          <div class="pal-search">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.3"/><path d="M10.3 10.3 14 14"/></svg>
+            <label class="sr-only" for="ask">Search the archive</label>
+            <input id="ask" type="text" autocomplete="off" spellcheck="false" placeholder="Search the archive&hellip; a word, a person, a place">
+            <button class="pal-clear" id="ask-clear" type="button" hidden>Clear</button>
+          </div>
+          <span class="pal-key" aria-hidden="true">&#8984; K</span>
+          <button class="btn btn-small" type="button" id="new-note">New note</button>
+        </div>
+
+        <div class="pal-head pal-head-note" hidden>
+          <button class="pal-back" type="button" id="back-to-results">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3.5 5.5 8l4.5 4.5"/></svg>
+            <span>Back to the archive</span>
+          </button>
+          <span class="pal-key" aria-hidden="true">Esc</span>
+        </div>
+
+        <div class="pal-head pal-head-compose" hidden>
+          <span class="pal-mode">New note</span>
+          <span class="pal-key" aria-hidden="true">Esc</span>
+        </div>
+
+        <div class="pal-body" id="pal-body">
+          <div class="pal-results">
+            <ul class="result-list" id="result-list"></ul>
+            <div class="pal-empty" id="pal-empty" hidden>
+              <p class="pal-empty-title">Nothing in the archive matches that.</p>
+              <p class="pal-empty-text">The words may be different from the ones you saved. Write it down, and it will be here next time.</p>
+              <button class="btn btn-small" type="button" data-open-compose>Write this note</button>
+            </div>
+          </div>
+          <aside class="pal-preview" id="preview" aria-label="Selected note"></aside>
+        </div>
+
+        <div class="pal-note" id="note-view" hidden></div>
+
+        <form class="pal-compose" id="compose" hidden aria-label="New note">
+          <div class="compose-kinds">
+            <label><input type="radio" name="v2kind" value="Idea" checked><span>Idea</span></label>
+            <label><input type="radio" name="v2kind" value="Quote"><span>Quote</span></label>
+            <label><input type="radio" name="v2kind" value="Link"><span>Link</span></label>
+            <label><input type="radio" name="v2kind" value="Call"><span>Call</span></label>
+          </div>
+          <label class="sr-only" for="v2-text">The note</label>
+          <textarea id="v2-text" rows="4" placeholder="What do you want to keep?"></textarea>
+          <div class="compose-source">
+            <label class="sr-only" for="v2-source">Where it came from</label>
+            <input id="v2-source" type="text" autocomplete="off" placeholder="Where it came from. A book, a person, a link. Optional.">
+          </div>
+          <p class="compose-error" id="compose-error" aria-live="polite"></p>
+          <div class="compose-actions">
+            <button class="btn" type="submit">Save to the archive</button>
+            <span class="compose-hint">&#8984; Enter</span>
+          </div>
+        </form>
+
+        <div class="pal-foot">
+          <span class="pal-hints" id="pal-hints">
+            <kbd>&uarr;</kbd><kbd>&darr;</kbd> to move
+            <span class="hint-sep">/</span>
+            <kbd>&crarr;</kbd> to open
+            <span class="hint-sep">/</span>
+            <kbd>Esc</kbd> to clear
+          </span>
+          <span class="pal-count" id="pal-count" aria-live="polite">11 notes</span>
+        </div>
+      </div>
+
+      <p class="hero-foot enter d3" id="hero-foot">11 notes in this demo. Search runs on this page, and everything you add stays in this browser.</p>
+    </div>
+  </section>
+
+  <section class="keeps" id="keeps">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What it keeps.</h2>
+        <p>Four kinds of note, filed the same way: the words, the source, the day, and the notes beside them. The counts come from the demo archive on this page.</p>
+      </div>
+
+      <div class="kind-table" role="table" aria-label="Kinds of note in the archive">
+        <div class="kind-head" role="row">
+          <span role="columnheader">Kind</span>
+          <span role="columnheader">In this archive</span>
+          <span role="columnheader">Last kept</span>
+          <span role="columnheader">One example</span>
+          <span role="columnheader"></span>
+        </div>
+        <div class="kind-tr" role="row" data-row="Quote">
+          <span class="kind-cell-kind" role="cell">Quote</span>
+          <span class="kind-cell-count" role="cell" data-count="Quote">3 notes</span>
+          <span class="kind-cell-date" role="cell" data-last="Quote">9 Nov 2026</span>
+          <span class="kind-cell-example" role="cell">&ldquo;Attention is a budget, not a muscle.&rdquo;</span>
+          <span class="kind-cell-action" role="cell"><button type="button" class="quiet-link" data-search="quote">See all</button></span>
+        </div>
+        <div class="kind-tr" role="row" data-row="Call">
+          <span class="kind-cell-kind" role="cell">Call</span>
+          <span class="kind-cell-count" role="cell" data-count="Call">2 notes</span>
+          <span class="kind-cell-date" role="cell" data-last="Call">7 Nov 2026</span>
+          <span class="kind-cell-example" role="cell">Priya can hold the Lisbon room until Friday.</span>
+          <span class="kind-cell-action" role="cell"><button type="button" class="quiet-link" data-search="call">See all</button></span>
+        </div>
+        <div class="kind-tr" role="row" data-row="Idea">
+          <span class="kind-cell-kind" role="cell">Idea</span>
+          <span class="kind-cell-count" role="cell" data-count="Idea">4 notes</span>
+          <span class="kind-cell-date" role="cell" data-last="Idea">3 Nov 2026</span>
+          <span class="kind-cell-example" role="cell">Sourdough: 78% hydration, four folds.</span>
+          <span class="kind-cell-action" role="cell"><button type="button" class="quiet-link" data-search="idea">See all</button></span>
+        </div>
+        <div class="kind-tr" role="row" data-row="Link">
+          <span class="kind-cell-kind" role="cell">Link</span>
+          <span class="kind-cell-count" role="cell" data-count="Link">2 notes</span>
+          <span class="kind-cell-date" role="cell" data-last="Link">28 Oct 2026</span>
+          <span class="kind-cell-example" role="cell">The case against the dashboard.</span>
+          <span class="kind-cell-action" role="cell"><button type="button" class="quiet-link" data-search="link">See all</button></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="door" id="door">
+    <div class="wrap">
+      <div class="door-head">
+        <h2>What comes back.</h2>
+        <p>Three things you might remember. None of them is a title. Each one is enough.</p>
+      </div>
+      <div class="asks">
+        <a class="ask" href="#palette" data-search="sourdough">
+          <span class="ask-query">sourdough</span>
+          <span class="ask-result">&ldquo;Sourdough: 78% hydration, four folds, 24 hours cold.&rdquo;</span>
+          <span class="ask-meta">Idea, kept 3 Nov 2026</span>
+          <span class="ask-action">Run this search</span>
+        </a>
+        <a class="ask" href="#palette" data-search="priya lisbon">
+          <span class="ask-query">priya lisbon</span>
+          <span class="ask-result">Priya can hold the Lisbon room until Friday. Deposit is 30%.</span>
+          <span class="ask-meta">Call, kept 7 Nov 2026</span>
+          <span class="ask-action">Run this search</span>
+        </a>
+        <a class="ask" href="#palette" data-search="attention">
+          <span class="ask-query">attention</span>
+          <span class="ask-result">&ldquo;Attention is a budget, not a muscle. You cannot save it up.&rdquo;</span>
+          <span class="ask-meta">Quote, kept 9 Nov 2026</span>
+          <span class="ask-action">Run this search</span>
+        </a>
+      </div>
+      <p class="door-note">A search reads words, sources, kinds and tags. It does not need the title, because most notes never had one.</p>
+    </div>
+  </section>
+
+  <section class="why" id="why">
+    <div class="wrap">
+      <div class="why-head">
+        <h2>One door beats six places.</h2>
+        <p>A single thought arrives in a chat, a bookmark, a photo of a page and a notebook. Each place keeps its own fragment, and none of them can see the others.</p>
+      </div>
+      <div class="split">
+        <div class="split-col">
+          <p class="split-label">A thought, split</p>
+          <ul class="split-list">
+            <li>The chat you had with yourself</li>
+            <li>The bookmark folder you never opened</li>
+            <li>The notes app on your phone</li>
+            <li>A photo of page 62</li>
+            <li>The tab you closed on Friday</li>
+          </ul>
+        </div>
+        <div class="split-col split-col-right">
+          <p class="split-label">A thought, kept</p>
+          <ul class="split-list split-list-kept">
+            <li>The words, exactly as you wrote them</li>
+            <li>The source, and the page number</li>
+            <li>The day you saved it</li>
+            <li>The tags that place it</li>
+            <li>The notes it sits beside</li>
+          </ul>
+        </div>
+      </div>
+      <p class="why-foot">One field opens all five. That is the whole product.</p>
+    </div>
+  </section>
+
+  <section class="close" id="start">
+    <div class="wrap">
+      <h2>Close the tabs.<br>Keep the note.</h2>
+      <p class="close-lede">The archive is a demo, and it is already running. Search it, add to it, reload the page. Nothing leaves this browser.</p>
+      <div class="actions">
+        <button class="btn" type="button" data-open-palette>Search the archive</button>
+        <button class="link" type="button" data-open-compose>Write a note</button>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="wrap footer-in">
+        <span class="footer-brand">Demos</span>
+        <span>A local demo. Notes are stored in your browser.</span>
+        <button class="quiet-link" type="button" id="reset-demo">Reset demo notes</button>
+      </div>
+    </footer>
+  </section>
+
+</main>
+
+<div class="toast" id="toast" role="status" hidden>
+  <span id="toast-text">Saved to the archive</span>
+  <button type="button" id="toast-action">Undo</button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

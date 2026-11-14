@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Noema: three landing page directions</title>
+<meta name="description" content="One second-brain landing page, designed three ways. Choose a direction.">
+<meta name="theme-color" content="#f5f4ef">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%23111114'/%3E%3Ccircle cx='9.4' cy='12' r='5.2' fill='none' stroke='%23f5f4ef' stroke-width='1.3'/%3E%3Ccircle cx='14.6' cy='12' r='5.2' fill='none' stroke='%23f5f4ef' stroke-width='1.3'/%3E%3C/svg%3E">
+<style>
+  :root { --paper: #f5f4ef; --ink: #111114; --muted: #6a6b66; --line: #d8d5cc; --line-2: #c3bfb4; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; }
+  .wrap { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+  header { display: flex; align-items: center; justify-content: space-between; padding: 30px 0; border-bottom: 1px solid var(--line); }
+  .brand { display: flex; align-items: center; gap: 9px; font-size: 19px; letter-spacing: -.03em; text-decoration: none; }
+  .brand svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.4; }
+  .top { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 9.5px; color: var(--muted); letter-spacing: .02em; }
+  main { padding: 80px 0 100px; }
+  .eyebrow { margin: 0 0 20px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 10px; color: var(--muted); }
+  h1 { max-width: 900px; margin: 0; font-size: clamp(44px, 6.5vw, 86px); font-weight: 400; line-height: .98; letter-spacing: -.052em; }
+  .lede { max-width: 600px; margin: 26px 0 0; font-size: 16px; line-height: 1.6; color: var(--muted); }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 56px; }
+  .card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line-2);
+    border-radius: 16px;
+    background: #fff;
+    text-decoration: none;
+    overflow: hidden;
+    transition: transform .2s cubic-bezier(.2,.72,.22,1), border-color .2s ease, box-shadow .2s ease;
+  }
+  .card:hover { transform: translateY(-3px); border-color: var(--ink); box-shadow: 0 22px 44px -28px rgba(17,17,20,.4); }
+  .card:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  .card__preview { display: block; height: 248px; position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+  .card__body { display: block; padding: 18px 20px 20px; }
+  .card__meta { display: flex; align-items: baseline; gap: 10px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 9px; color: var(--muted); }
+  .card__meta b { font-weight: 400; color: var(--ink); }
+  .card__name { display: block; margin-top: 7px; font-size: 22px; letter-spacing: -.035em; }
+  .card__desc { display: block; margin: 8px 0 0; font-size: 12.5px; line-height: 1.55; color: var(--muted); }
+  .card__open { display: inline-flex; align-items: center; gap: 7px; margin-top: 16px; font-size: 11px; }
+  .card__open span { transition: transform .2s ease; }
+  .card:hover .card__open span { transform: translateX(3px); }
+
+  /* preview 1 */
+  .p1 { background: #f6f6f2; padding: 22px 20px 0; }
+  .p1__nav { display: flex; justify-content: space-between; align-items: center; font-size: 7px; color: #555; }
+  .p1__nav i { display: block; width: 38px; height: 3px; background: #d5d4cb; border-radius: 2px; }
+  .p1__h { display: block; margin-top: 20px; font-size: 22px; line-height: .98; letter-spacing: -.05em; text-align: center; }
+  .p1__app { display: grid; height: 128px; margin-top: 18px; border: 1px solid #dcdcd4; border-bottom: 0; border-radius: 7px 7px 0 0; background: #fff; grid-template-columns: 34px 1fr; overflow: hidden; box-shadow: 0 18px 34px -22px rgba(0,0,0,.3); }
+  .p1__side { display: flex; border-right: 1px solid #ecece6; background: #fafaf7; padding: 9px 7px; flex-direction: column; gap: 6px; }
+  .p1__side i { display: block; height: 3px; background: #deded7; border-radius: 2px; }
+  .p1__side i:nth-child(2) { width: 70%; background: #b9bab2; }
+  .p1__doc { display: block; padding: 12px 14px; }
+  .p1__doc b { display: block; font-size: 9px; letter-spacing: -.02em; }
+  .p1__doc i { display: block; height: 3px; margin-top: 6px; background: #e3e3dc; border-radius: 2px; }
+  .p1__doc i:nth-child(3) { width: 88%; }
+  .p1__doc i:nth-child(4) { width: 72%; }
+  .p1__doc i:nth-child(5) { width: 94%; }
+  .p1__chip { display: inline-block; margin-top: 9px; width: 46px; height: 8px; border: 1px solid #d8d8d0; border-radius: 9px; }
+
+  /* preview 2 */
+  .p2 { background: #07090d; padding: 22px 20px 0; }
+  .p2__nav { display: flex; justify-content: space-between; align-items: center; font-size: 7px; color: #8d919b; }
+  .p2__nav i { display: block; width: 36px; height: 3px; background: #30343c; border-radius: 2px; }
+  .p2__h { display: block; margin-top: 18px; font-family: Georgia, "Times New Roman", serif; font-size: 21px; line-height: .96; letter-spacing: -.04em; color: #f2efe6; }
+  .p2__sky { display: block; position: relative; height: 140px; margin-top: 12px; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; background: radial-gradient(150px 90px at 30% 30%, rgba(234,168,79,.16), transparent 70%), #0a0e15; overflow: hidden; }
+  .p2__line { position: absolute; height: 1px; background: rgba(255,255,255,.16); transform-origin: left center; }
+  .p2__dot { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: #eaa84f; box-shadow: 0 0 8px rgba(234,168,79,.6); }
+  .p2__card { position: absolute; left: 12px; bottom: 10px; width: 96px; padding: 7px; border: 1px solid rgba(255,255,255,.14); background: rgba(18,23,32,.8); border-radius: 4px; }
+  .p2__card b { display: block; font-family: Georgia, serif; font-size: 8px; font-weight: 400; color: #f2efe6; }
+  .p2__card i { display: block; height: 2px; margin-top: 4px; background: #343a45; }
+  .p2__card i:nth-child(3) { width: 78%; }
+
+  /* preview 3 */
+  .p3 { background-color: #e8edf3; background-image: linear-gradient(rgba(14,23,32,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(14,23,32,.06) 1px, transparent 1px); background-size: 16px 16px; padding: 22px 20px 0; }
+  .p3__bar { display: flex; justify-content: space-between; align-items: center; font-family: ui-monospace, Menlo, monospace; font-size: 7px; color: #5b6b79; border-bottom: 1px solid #a9b6c2; padding-bottom: 7px; }
+  .p3__h { display: block; margin-top: 16px; font-size: 21px; line-height: .98; letter-spacing: -.05em; color: #0e1720; }
+  .p3__fig { display: block; position: relative; height: 128px; margin-top: 14px; border: 1px solid #0e1720; background: rgba(252,253,254,.7); padding: 9px; }
+  .p3__note { display: block; height: 100%; border: 1px solid #0e1720; background: #fcfdfe; padding: 9px 10px; }
+  .p3__note b { display: block; font-size: 9px; letter-spacing: -.02em; }
+  .p3__note i { display: block; height: 3px; margin-top: 6px; background: #cfd8e0; }
+  .p3__note i:nth-child(3) { width: 88%; background: #b93a24; opacity: .45; }
+  .p3__note i:nth-child(4) { width: 72%; }
+  .p3__mark { position: absolute; display: grid; place-items: center; width: 14px; height: 14px; border: 1px solid #b93a24; border-radius: 50%; background: #e8edf3; color: #b93a24; font-family: ui-monospace, Menlo, monospace; font-size: 5px; }
+  .p3__mark--a { top: 5px; left: 4px; }
+  .p3__mark--b { top: 44px; right: 4px; }
+
+  footer { display: flex; justify-content: space-between; gap: 24px; padding: 22px 0 48px; border-top: 1px solid var(--line); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 9.5px; color: var(--muted); }
+  kbd { font-family: inherit; border: 1px solid var(--line-2); border-radius: 3px; padding: 1px 4px; font-size: 9px; }
+  @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } .card { display: grid; grid-template-columns: 1fr; } .card__preview { height: 220px; } main { padding-top: 56px; } }
+  @media (max-width: 560px) { .wrap { width: calc(100% - 32px); } h1 { font-size: 44px; } .top { display: none; } footer { flex-direction: column; gap: 8px; } }
+  @media (prefers-reduced-motion: reduce) { * { transition-duration: .001ms !important; } .card:hover { transform: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="brand" href="#top" aria-label="Noema">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9.3" cy="12" r="5.6"/><circle cx="14.7" cy="12" r="5.6"/><circle cx="12" cy="12" r="1.3" fill="currentColor" stroke="none"/></svg>
+      noema
+    </a>
+    <span class="top">Three directions / one product</span>
+  </header>
+
+  <main id="top">
+    <p class="eyebrow">A second brain / landing page study</p>
+    <h1>One product.<br>Three ways to make<br>it feel inevitable.</h1>
+    <p class="lede">The same note-taking app, the same product facts, and three different design arguments. Open a direction, then use the direction tab at the edge of any page.</p>
+
+    <div class="grid">
+      <a class="card" href="1/index.html">
+        <span class="card__preview p1" aria-hidden="true">
+          <span class="p1__nav"><i></i><i></i></span>
+          <span class="p1__h">Every idea arrives<br>with its context.</span>
+          <span class="p1__app">
+            <span class="p1__side"><i></i><i></i><i></i><i></i></span>
+            <span class="p1__doc"><b>Attention is a design material</b><i></i><i></i><i></i><i></i><span class="p1__chip"></span></span>
+          </span>
+        </span>
+        <span class="card__body">
+          <span class="card__meta"><b>01</b> Daylight / product-led</span>
+          <span class="card__name">Daylight</span>
+          <span class="card__desc">A precise, quiet page built around a live product window. The argument is confidence: show the thing, then get out of its way.</span>
+          <span class="card__open">Open direction</span>
+        </span>
+      </a>
+
+      <a class="card" href="2/index.html">
+        <span class="card__preview p2" aria-hidden="true">
+          <span class="p2__nav"><i></i><i></i></span>
+          <span class="p2__h">Nothing you read<br>has to go to waste.</span>
+          <span class="p2__sky">
+            <span class="p2__line" style="left:16%;top:30%;width:34%;transform:rotate(18deg)"></span>
+            <span class="p2__line" style="left:16%;top:30%;width:40%;transform:rotate(52deg)"></span>
+            <span class="p2__line" style="left:50%;top:52%;width:32%;transform:rotate(-30deg)"></span>
+            <span class="p2__dot" style="left:16%;top:27%"></span>
+            <span class="p2__dot" style="left:50%;top:49%;width:7px;height:7px"></span>
+            <span class="p2__dot" style="left:70%;top:22%"></span>
+            <span class="p2__dot" style="left:82%;top:58%"></span>
+            <span class="p2__card"><b>The spacing effect</b><i></i><i></i></span>
+          </span>
+        </span>
+        <span class="card__body">
+          <span class="card__meta"><b>02</b> Nightfall / atmospheric</span>
+          <span class="card__name">Nightfall</span>
+          <span class="card__desc">A dark room for the same idea. The product becomes a constellation of notes, and the page leans on warmth, depth, and a little wonder.</span>
+          <span class="card__open">Open direction</span>
+        </span>
+      </a>
+
+      <a class="card" href="3/index.html">
+        <span class="card__preview p3" aria-hidden="true">
+          <span class="p3__bar"><span>NOEMA / SECOND BRAIN</span><span>SHEET 03</span></span>
+          <span class="p3__h">Your notes are a system,<br>not a pile.</span>
+          <span class="p3__fig">
+            <span class="p3__note"><b>Attention is a design material</b><i></i><i></i><i></i><i></i></span>
+            <span class="p3__mark p3__mark--a">01</span>
+            <span class="p3__mark p3__mark--b">03</span>
+          </span>
+        </span>
+        <span class="card__body">
+          <span class="card__meta"><b>03</b> Blueprint / technical</span>
+          <span class="card__name">Blueprint</span>
+          <span class="card__desc">The page as an architectural sheet. Numbers, annotations, and proof carry the argument that a second brain is a system you can inspect.</span>
+          <span class="card__open">Open direction</span>
+        </span>
+      </a>
+    </div>
+  </main>
+
+  <footer>
+    <span>Noema / design prototype / 2026</span>
+    <span>Switch inside a direction with <kbd>Alt</kbd> + <kbd>1</kbd>, <kbd>2</kbd>, <kbd>3</kbd></span>
+  </footer>
+</div>
+</body>
+</html>

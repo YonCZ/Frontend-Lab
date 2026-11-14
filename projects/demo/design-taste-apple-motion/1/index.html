@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demos: keep the thought, keep the source</title>
+<meta name="description" content="Demos is a notes app for quotes, calls, links and ideas. Every note keeps its source, its date and the notes beside it. Capture one and find it again.">
+<meta name="theme-color" content="#F7F6F1">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='3' fill='%2317181A'/%3E%3Cpath d='M5.2 3.6v8.8M8.4 5.2h3M8.4 8h3' stroke='%23F7F6F1' stroke-width='1.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/fonts/instrument-serif/font.css">
+<link rel="stylesheet" href="assets/fonts/instrument-sans/font.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#app">Skip to the demo</a>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#top" aria-label="Demos, top of page">
+      <svg class="brand-mark" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.6 2.8v10.4M7.6 4.6h4.2M7.6 7.4h4.2M7.6 10.2h2.8"/></svg>
+      <span>Demos</span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#keeps">What it keeps</a>
+      <a href="#find">Finding it</a>
+      <a href="#why">Why an archive</a>
+    </nav>
+    <a class="btn btn-quiet" href="#app" data-open-composer>Write a note</a>
+    <nav class="variants" aria-label="Design variants">
+      <span class="variants-label">Variant</span>
+      <a href="../1/index.html" aria-current="page" aria-label="Variant 1: Ledger">1</a>
+      <a href="../2/index.html" aria-label="Variant 2: Summon">2</a>
+      <a href="../3/index.html" aria-label="Variant 3: Atlas">3</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <h1 class="enter">Keep the thought.<br>Keep the source.</h1>
+        <p class="lede enter d1">Demos is a notes app for quotes, calls, links and ideas that arrive at bad times. Each note keeps the page it came from, the day you wrote it, and the notes it sits beside. That is what makes it findable in two years.</p>
+        <div class="actions enter d2">
+          <button class="btn" type="button" data-open-composer>Write a note</button>
+          <a class="link" href="#keeps">See what it keeps</a>
+        </div>
+        <p class="fact enter d3">Every note keeps the words, the source, the date, and the notes beside it. Tags do the filing in the background.</p>
+      </div>
+
+      <div class="app enter d2" id="app" tabindex="-1" aria-label="Demos, live demo">
+        <div class="app-bar">
+          <div class="app-title">
+            <span class="app-dot" aria-hidden="true"></span>
+            <span>All notes</span>
+            <span class="app-count" id="total-count">11</span>
+          </div>
+          <div class="search">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.4"/><path d="M10.4 10.4 14 14"/></svg>
+            <label class="sr-only" for="search">Search notes, sources and people</label>
+            <input id="search" type="text" autocomplete="off" spellcheck="false" placeholder="Search words, people, places">
+            <button class="search-clear" type="button" id="search-clear" hidden>Clear</button>
+          </div>
+          <button class="btn btn-small" type="button" data-open-composer>Write</button>
+        </div>
+
+        <div class="app-body">
+          <div class="index">
+            <div class="index-head">
+              <span id="result-count" aria-live="polite">11 notes</span>
+              <span class="index-hint">newest first</span>
+            </div>
+            <ul class="note-list" id="note-list"></ul>
+            <div class="index-empty" id="index-empty" hidden>
+              <p>Nothing in the archive matches that.</p>
+              <p class="index-empty-hint">Try a word from the note, or the name of the person who told you.</p>
+            </div>
+          </div>
+
+          <article class="reader" id="reader" aria-live="polite"></article>
+        </div>
+
+        <div class="app-foot">
+          <span id="status">11 notes, kept in this browser</span>
+          <button class="link link-small" type="button" id="reset-demo">Reset demo</button>
+        </div>
+
+        <form class="composer" id="composer" hidden aria-label="New note">
+          <div class="composer-head">
+            <span class="composer-title">A new note</span>
+            <button class="icon-btn" type="button" id="composer-close" aria-label="Close the note">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>
+            </button>
+          </div>
+          <fieldset class="kinds">
+            <legend class="sr-only">Kind of note</legend>
+            <label><input type="radio" name="kind" value="Idea" checked><span>Idea</span></label>
+            <label><input type="radio" name="kind" value="Quote"><span>Quote</span></label>
+            <label><input type="radio" name="kind" value="Link"><span>Link</span></label>
+            <label><input type="radio" name="kind" value="Call"><span>Call</span></label>
+          </fieldset>
+          <label class="sr-only" for="note-text">The note</label>
+          <textarea id="note-text" rows="5" placeholder="What do you want to keep?"></textarea>
+          <label class="field-label" for="note-source">Where it came from</label>
+          <input id="note-source" type="text" autocomplete="off" placeholder="A book and page, a person, a link. Optional.">
+          <p class="composer-error" id="composer-error" aria-live="polite"></p>
+          <div class="composer-actions">
+            <button class="btn" type="submit">Save the note</button>
+            <span class="composer-hint">&#8984; Enter to save</span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="keeps" id="keeps">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What it keeps.</h2>
+        <p>Four kinds of note, filed the same way. Nothing needs a folder, a title or a system before it can be saved.</p>
+      </div>
+
+      <div class="kind-rows">
+        <article class="kind-row">
+          <div class="kind-name">Quote</div>
+          <div class="kind-body">
+            <p class="kind-text">&ldquo;Attention is a budget, not a muscle. You cannot save it up, and you cannot buy more of it.&rdquo;</p>
+            <p class="kind-meta">R. Fielding, The Memory Thief, p. 62. Kept 9 Nov 2026.</p>
+          </div>
+          <button class="kind-try" type="button" data-search="attention">Find this note</button>
+        </article>
+        <article class="kind-row">
+          <div class="kind-name">Link</div>
+          <div class="kind-body">
+            <p class="kind-text">The case against the dashboard. A dashboard answers questions nobody asked; show the thing itself, with its context.</p>
+            <p class="kind-meta">craftandquery.example, issue 14. Kept 28 Oct 2026.</p>
+          </div>
+          <button class="kind-try" type="button" data-search="dashboard">Find this note</button>
+        </article>
+        <article class="kind-row">
+          <div class="kind-name">Call</div>
+          <div class="kind-body">
+            <p class="kind-text">Priya can hold the Lisbon room until Friday. Deposit is 30%. Ask about the courtyard for dinner.</p>
+            <p class="kind-meta">Call with Priya. Kept 7 Nov 2026.</p>
+          </div>
+          <button class="kind-try" type="button" data-search="priya">Find this note</button>
+        </article>
+        <article class="kind-row">
+          <div class="kind-name">Idea</div>
+          <div class="kind-body">
+            <p class="kind-text">Sourdough: 78% hydration, four folds, 24 hours cold. The crumb opened up when I stopped rushing the bulk.</p>
+            <p class="kind-meta">Kitchen notebook. Kept 3 Nov 2026.</p>
+          </div>
+          <button class="kind-try" type="button" data-search="sourdough">Find this note</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="find" id="find">
+    <div class="wrap find-grid">
+      <div class="find-visual">
+        <div class="specimen" role="group" aria-label="One note, with its four fields">
+          <div class="specimen-row specimen-words">
+            <span class="specimen-label">Words</span>
+            <p>&ldquo;Attention is a budget, not a muscle.&rdquo;</p>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">Source</span>
+            <p class="specimen-value">R. Fielding, The Memory Thief, p. 62</p>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">Kept</span>
+            <p class="specimen-value">9 November 2026</p>
+          </div>
+          <div class="specimen-row">
+            <span class="specimen-label">Beside</span>
+            <div class="specimen-beside">
+              <span>On writing every day</span>
+              <span>Two hours is enough</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="find-copy">
+        <h2>Find it by the way you remember it.</h2>
+        <p class="section-lede">You rarely remember a title. You remember a phrase, a person, or the note that sat next to it. Demos searches all three, and shows you why each result matched.</p>
+
+        <div class="paths">
+          <a class="path" href="#app" data-search="budget">
+            <span class="path-kicker">A word you kept</span>
+            <span class="path-query">budget</span>
+            <span class="path-result">1 note, a quote with its page number</span>
+            <span class="path-action">Search this archive</span>
+          </a>
+          <a class="path" href="#app" data-search="priya">
+            <span class="path-kicker">A person you spoke to</span>
+            <span class="path-query">priya</span>
+            <span class="path-result">1 note, the call about the room</span>
+            <span class="path-action">Search this archive</span>
+          </a>
+          <a class="path" href="#app" data-search="lisbon">
+            <span class="path-kicker">A place from two years ago</span>
+            <span class="path-query">lisbon</span>
+            <span class="path-result">3 notes, a call, a link and a quote</span>
+            <span class="path-action">Search this archive</span>
+          </a>
+        </div>
+        <p class="find-note">Search reads the words, the source, the kind and the tags. It runs on this page, in this browser.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" id="why">
+    <div class="wrap">
+      <div class="why-head">
+        <h2>A pile forgets.<br>An archive doesn&rsquo;t.</h2>
+        <p>The note is rarely the problem. What goes missing is where it came from, what it was next to, and whether you already saved it.</p>
+      </div>
+      <div class="compare">
+        <div class="compare-labels" aria-hidden="true">
+          <span>A pile of notes</span>
+          <span>Demos</span>
+        </div>
+        <div class="compare-row">
+          <p class="compare-left">A quote with no page number, so you cannot cite it.</p>
+          <p class="compare-right">The quote, the book and the page, stored in one record.</p>
+        </div>
+        <div class="compare-row">
+          <p class="compare-left">The same idea saved twice, with no way to tell which is newer.</p>
+          <p class="compare-right">One note with the day attached, so you can tell.</p>
+        </div>
+        <div class="compare-row">
+          <p class="compare-left">A link you saved to read later and never saw again.</p>
+          <p class="compare-right">The link, what you thought of it, and the notes it belongs with.</p>
+        </div>
+        <div class="compare-row">
+          <p class="compare-left">Six places, none of which can see the other five.</p>
+          <p class="compare-right">One archive, searched from one field, on your own machine.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="close" id="start">
+    <div class="wrap">
+      <h2>Write one note.<br>Find it two years from now.</h2>
+      <p class="close-lede">The demo runs on this page. Notes you write stay in this browser, next to the ones already here.</p>
+      <div class="actions">
+        <button class="btn" type="button" data-open-composer>Write a note</button>
+        <button class="link" type="button" data-search="lisbon">Try a search instead</button>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="wrap footer-in">
+        <span class="footer-brand">Demos</span>
+        <span>A local demo. Notes are stored in your browser.</span>
+        <button class="link link-small" type="button" id="reset-demo-2">Reset demo notes</button>
+      </div>
+    </footer>
+  </section>
+
+</main>
+
+<div class="toast" id="toast" role="status" hidden>
+  <span id="toast-text">Saved to your archive</span>
+  <button type="button" id="toast-action">Undo</button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

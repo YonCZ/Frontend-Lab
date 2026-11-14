@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demos: nothing you noticed is lost</title>
+<meta name="description" content="Demos is a notes app for the things you notice. It links every note to the ones it belongs with, so you can find it by following instead of remembering.">
+<meta name="theme-color" content="#0E1615">
+<link rel="stylesheet" href="assets/fonts/syne/font.css">
+<link rel="stylesheet" href="assets/fonts/karla/font.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="mark" href="#top">Demos</a>
+    <nav class="pages" aria-label="Sections">
+      <a href="#keeps">What it keeps</a>
+      <a href="#find">Finding it</a>
+      <a href="#why">Why links</a>
+    </nav>
+    <button class="btn btn-sm" type="button" data-focus-composer>Keep a note</button>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy" data-enter>
+        <h1>Nothing you noticed is lost.</h1>
+        <p class="sub">Demos keeps the quote, the call and the half-thought. It also keeps what each one was next to, so the way back is not a search you have to word perfectly.</p>
+
+        <form class="capture" id="capture" novalidate>
+          <label for="thought">Keep a note</label>
+          <textarea id="thought" rows="2" placeholder="The shelf goes above the plug, not beside it."></textarea>
+          <div class="capture-row">
+            <button class="btn" type="submit">Keep it</button>
+            <p class="capture-hint">It links to notes that share a word.</p>
+          </div>
+          <p class="form-error" id="capture-error" role="alert" hidden></p>
+          <p class="capture-status" id="capture-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <p class="fact">Every note carries four things: words, source, day and neighbours. Nothing leaves this browser.</p>
+      </div>
+
+      <div class="field-panel" data-enter aria-label="Your notes as a linked field">
+        <div class="field-head">
+          <div class="field-title">
+            <span>Your notes, linked</span>
+            <span class="field-count" id="graphCount">6 notes, 5 links</span>
+          </div>
+          <div class="search">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M12.6 12.6 17 17"/></svg>
+            <input id="graphSearch" type="search" autocomplete="off" placeholder="Find a note" aria-label="Find a note in the graph">
+          </div>
+        </div>
+
+        <p class="match-line" id="matchLine" role="status">Click a note to read it. Its neighbours stay lit.</p>
+
+        <div class="graph" id="graph">
+          <svg class="edges" id="edges" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
+          <div class="nodes" id="nodes"></div>
+        </div>
+
+        <article class="detail" id="detail" aria-live="polite"></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="keeps">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Kept in the shape it arrived.</h2>
+        <p>A voice memo stays a voice memo. A quote keeps its page. You do not have to turn a thought into a filing decision before it is allowed in.</p>
+      </div>
+
+      <div class="shelf">
+        <article class="piece piece-quote">
+          <p class="piece-kind">Quote</p>
+          <blockquote>The half-life of a good interface is about three years. The habit it builds lasts a decade.</blockquote>
+          <p class="piece-meta">The Shape of Screens, page 88<br>Kept 12 Mar</p>
+        </article>
+
+        <article class="piece piece-voice">
+          <p class="piece-kind">Voice memo</p>
+          <h3>Kitchen measurements</h3>
+          <div class="wave" aria-hidden="true">
+            <i style="--h:18%"></i><i style="--h:42%"></i><i style="--h:65%"></i><i style="--h:30%"></i><i style="--h:80%"></i><i style="--h:52%"></i><i style="--h:95%"></i><i style="--h:38%"></i><i style="--h:70%"></i><i style="--h:24%"></i><i style="--h:58%"></i><i style="--h:40%"></i><i style="--h:76%"></i><i style="--h:28%"></i><i style="--h:50%"></i><i style="--h:34%"></i>
+          </div>
+          <p class="piece-body">The shelf goes above the plug, not beside it.</p>
+          <p class="piece-meta">0:42, recorded 9 Jan</p>
+        </article>
+
+        <article class="piece piece-link">
+          <p class="piece-kind">Link</p>
+          <h3>Memory palace piece</h3>
+          <p class="piece-body">A memory palace is just a route you already know, with new things left along it.</p>
+          <p class="piece-meta">theguardian.example<br>Saved from a tab, 4 Feb</p>
+        </article>
+
+        <article class="piece piece-photo">
+          <p class="piece-kind">Photo note</p>
+          <div class="wall" role="img" aria-label="A pale wall with one shelf line at eye level">
+            <div class="wall-light"></div>
+            <div class="wall-shelf"></div>
+            <div class="wall-object"></div>
+          </div>
+          <h3>Kitchen wall</h3>
+          <p class="piece-body">Warm white, matte, with a shelf at eye level.</p>
+          <p class="piece-meta">Screenshot, 11 Jan</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="find">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Finding is following.</h2>
+        <p>Search gets you in. The links between notes do the rest when you only remember the shape of the thing.</p>
+      </div>
+
+      <div class="routes">
+        <article class="route">
+          <h3>Ask with one word</h3>
+          <p>Search reads titles, text, sources and kinds. You do not need the exact phrase that is written in the note.</p>
+          <div class="route-visual">
+            <div class="mini-search"><span>chair</span><span id="routeCount">2 notes</span></div>
+            <p class="route-caption">Finds the link and the photo note.</p>
+          </div>
+        </article>
+
+        <article class="route">
+          <h3>Follow a neighbour</h3>
+          <p>Every note carries the ones it was kept next to. Open the chair, land on the kitchen wall, and never type either name.</p>
+          <div class="route-visual">
+            <ol class="chain">
+              <li>The chair<span>Link</span></li>
+              <li>Kitchen wall<span>Photo note</span></li>
+              <li>Sort by intention<span>Half-thought</span></li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="route">
+          <h3>Wait for it to return</h3>
+          <p>Demos brings back notes from the same week a year ago. The idea you did not use yet is still in the room.</p>
+          <div class="route-visual">
+            <div class="returned">
+              <p class="returned-label">A year ago this week</p>
+              <p class="returned-title">Sort by intention</p>
+              <p class="returned-body">What if the archive sorted by what you were trying to do?</p>
+              <p class="returned-meta">Typed on a walk, 21 Feb</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section why" id="why">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>A file name is not a memory.</h2>
+        <p>Scattered notes fail at the second visit, not the first. The screenshot is still on the phone; nothing about it says why you kept it.</p>
+      </div>
+
+      <div class="compare">
+        <article class="compare-side lost">
+          <p class="compare-label">What the camera roll knows</p>
+          <div class="file">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v5h4"/></svg>
+            <p>Screenshot 2024-03-11 at 22.14.08.png</p>
+          </div>
+          <ul class="facts">
+            <li><span>Kind</span><span>PNG, 2.4 MB</span></li>
+            <li><span>Where</span><span>Camera roll</span></li>
+            <li><span>Why</span><span>Unknown</span></li>
+          </ul>
+          <p class="compare-note">You remember saving it. You do not remember what it was for.</p>
+        </article>
+
+        <article class="compare-side kept">
+          <p class="compare-label">What the note knows</p>
+          <h3>Kitchen wall</h3>
+          <p class="compare-body">Warm white, matte, with a shelf at eye level. Copied from the third image.</p>
+          <ul class="facts">
+            <li><span>Source</span><span>Screenshot, 11 Jan</span></li>
+            <li><span>Next to</span><span>The chair, Kitchen measurements</span></li>
+            <li><span>Found by</span><span>“chair”, or the chair note</span></li>
+          </ul>
+          <p class="compare-note">The reason you kept it survives the visit.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="close" id="start">
+    <div class="wrap">
+      <h2>Your next good idea is already in there.</h2>
+      <p>Keep one note in the demo. It links itself to anything that shares a word, and it stays in this browser for the next visit.</p>
+      <button class="btn btn-lg" type="button" data-focus-composer>Keep a note</button>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-in">
+    <div class="footer-mark">
+      <p class="mark">Demos</p>
+      <p>A working demo. Notes live in your browser, not on a server.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#keeps">What it keeps</a>
+      <a href="#find">Finding it</a>
+      <a href="#why">Why links</a>
+    </nav>
+  </div>
+</footer>
+
+<nav class="variants" aria-label="Demo variant">
+  <span class="variants-label">Variant</span>
+  <a href="../1/index.html" aria-label="Variant 1: Register" title="Register">1</a>
+  <a href="../2/index.html" aria-label="Variant 2: Field" aria-current="page" title="Field">2</a>
+  <a href="../3/index.html" aria-label="Variant 3: Desk" title="Desk">3</a>
+</nav>
+
+<script src="app.js"></script>
+</body>
+</html>

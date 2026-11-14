@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Noema: Think faster than you can file</title>
+<meta name="description" content="Noema is a second brain with no folders to maintain. Capture in a keystroke, connect as you write, and find everything by asking.">
+<meta name="theme-color" content="#f7f7f4">
+<link rel="icon" href="../shared/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../shared/fonts/fontfaces.css">
+<link rel="stylesheet" href="../shared/switcher.css">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top" id="top">
+  <div class="wrap top__in">
+    <a class="brand" href="#top" aria-label="Noema, back to top">
+      <svg class="mark" viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="2.6" y="2.6" width="18.8" height="18.8" rx="6" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        <path d="M8.2 15.8V8.2l7.6 7.6V8.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Noema</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#story">How it works</a>
+      <a href="#specs">Specs</a>
+      <a href="#available">Available</a>
+    </nav>
+    <button class="jump" type="button" id="openPalette" aria-label="Jump to a section or action" aria-keyshortcuts="Meta+K Control+K">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m10.4 10.4 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span>Jump to…</span>
+      <kbd>⌘K</kbd>
+    </button>
+    <a class="btn btn--sm" href="#download">Download</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero__in">
+      <div class="hero__copy">
+        <p class="eyebrow"><span class="live" aria-hidden="true"></span>Noema 4.1 · a second brain without the filing</p>
+        <h1 id="hero-title">Think faster<br>than you can file.</h1>
+        <p class="hero__lead">One place to write, link and retrieve everything. No folders to maintain. No system to learn. Just a shortcut and the words you already use.</p>
+        <div class="acts">
+          <a class="btn" href="#download">Download Noema
+            <svg class="i" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <button class="btn btn--ghost" type="button" id="heroPalette">Open the command bar <kbd>⌘K</kbd></button>
+        </div>
+        <p class="hero__micro">Free for 500 notes · macOS 14+ · iOS 17+ · web</p>
+      </div>
+
+      <aside class="hero-panel reveal" data-delay="80" aria-label="A preview of the Noema command bar">
+        <button class="hero-panel__bar" type="button" id="panelPalette">
+          <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m10.4 10.4 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span>Jump to a note, person or place…</span>
+          <kbd>⌘K</kbd>
+        </button>
+        <ul class="hero-panel__list">
+          <li>
+            <span class="hero-panel__dot" aria-hidden="true"></span>
+            <span class="hero-panel__note"><b>Why memory needs a place</b><small>Essay · 3 links</small></span>
+            <span class="hero-panel__time">2m</span>
+          </li>
+          <li>
+            <span class="hero-panel__dot" aria-hidden="true"></span>
+            <span class="hero-panel__note"><b>The studio, finally quiet</b><small>Journal · 3 links</small></span>
+            <span class="hero-panel__time">Yest</span>
+          </li>
+          <li>
+            <span class="hero-panel__dot" aria-hidden="true"></span>
+            <span class="hero-panel__note"><b>Sleep is a filing system</b><small>Research · 5 links</small></span>
+            <span class="hero-panel__time">Mon</span>
+          </li>
+        </ul>
+        <div class="hero-panel__foot">
+          <span><kbd>↑</kbd><kbd>↓</kbd> to move</span>
+          <span><kbd>↵</kbd> to open</span>
+          <span class="hero-panel__state">All changes saved</span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="story" id="story" aria-labelledby="story-title">
+    <div class="wrap story__intro reveal">
+      <div>
+        <p class="label">How it works</p>
+        <h2 id="story-title">Three moves.<br>One surface.</h2>
+      </div>
+      <p class="story__lead">Noema is built around the way a thought actually behaves: it arrives unfinished, it finds neighbours, and it comes back when you stop looking for it. Scroll through the three.</p>
+    </div>
+
+    <div class="wrap story__grid">
+      <div class="stage" id="stage" data-state="capture" aria-hidden="true">
+        <div class="stage__chrome">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span class="stage__title">Noema · Library</span>
+          <span class="stage__label"><span id="stageNum">01</span><span id="stageName">Capture</span></span>
+          <span class="stage__save"><span class="stage__savedot"></span>Saved</span>
+        </div>
+        <div class="stage__views">
+
+          <div class="view view--capture">
+            <p class="view__crumb">Inbox <span>/</span> New note</p>
+            <div class="capture-note">
+              <p class="capture-note__kicker">Thursday, 6:40am</p>
+              <p class="capture-note__title">The best ideas arrive while walking.<span class="cursor"></span></p>
+              <p class="capture-note__body">On the loop by the river, just before the bridge. No phone, no podcast. The sentence finished itself.</p>
+            </div>
+            <div class="capture-toast"><svg viewBox="0 0 16 16"><path d="M3.5 8.5 6.5 11.5 12.5 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Saved to Inbox <span>400ms</span></div>
+            <div class="capture-foot"><span>No title required</span><span class="keys"><kbd>⌘</kbd><kbd>N</kbd> anywhere</span></div>
+          </div>
+
+          <div class="view view--connect">
+            <p class="view__crumb">Inbox <span>/</span> Why memory needs a place</p>
+            <p class="view__title">Why memory needs a place</p>
+            <p class="view__body">The mind forgets what it has nowhere to put. A page is not storage, it is a landmark.</p>
+            <div class="mini-map">
+              <svg viewBox="0 0 420 150" aria-hidden="true">
+                <path d="M210 76 C 170 50, 140 36, 92 28" fill="none" stroke="currentColor" stroke-width="1"/>
+                <path d="M210 76 C 250 50, 285 38, 330 30" fill="none" stroke="currentColor" stroke-width="1"/>
+                <path d="M210 76 C 210 104, 210 118, 210 138" fill="none" stroke="currentColor" stroke-width="1"/>
+              </svg>
+              <span class="mini-map__hub">Maps are memory</span>
+              <span class="mini-map__node mini-map__node--a">Memory palace</span>
+              <span class="mini-map__node mini-map__node--b">Sleep notes</span>
+              <span class="mini-map__node mini-map__node--c">The studio</span>
+            </div>
+            <div class="suggest">
+              <span class="suggest__row"><b>Sleep is a filing system</b><span class="pill pill--on">Accepted</span></span>
+              <span class="suggest__row"><b>The studio, finally quiet</b><span class="pill">Suggested</span></span>
+            </div>
+          </div>
+
+          <div class="view view--recall">
+            <p class="view__crumb">Recall</p>
+            <div class="recall-bar">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m10.4 10.4 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <span>where did I read about memory?</span>
+              <span class="cursor"></span>
+            </div>
+            <ul class="recall-results">
+              <li class="is-best">
+                <span class="recall-results__meta">Best match · 3 links</span>
+                <b>Why memory needs a place</b>
+                <span>The mind forgets what it has nowhere to put. A page is not storage, it is a landmark.</span>
+              </li>
+              <li>
+                <span class="recall-results__meta">2 hops · source</span>
+                <b>Memory palace, without the palace</b>
+                <span>You don't need a cathedral. A kitchen counter will do.</span>
+              </li>
+              <li>
+                <span class="recall-results__meta">2 hops · same place</span>
+                <b>The studio, finally quiet</b>
+                <span>Moved the desk to face the window. The work got easier within a day.</span>
+              </li>
+            </ul>
+            <p class="recall-foot">12 ms · searched 10,412 notes on this device</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="story__steps">
+        <article class="step is-active" data-state="capture" data-name="Capture" data-num="01">
+          <span class="step__n">01</span>
+          <h3>Write it before it leaves.</h3>
+          <p>⌘N from anywhere. One line. No title, no folder, no decision about where it belongs. The thought stays in the same place it arrived.</p>
+          <p class="step__detail"><kbd>⌘N</kbd> from anywhere · 400ms</p>
+        </article>
+        <article class="step" data-state="connect" data-name="Connect" data-num="02">
+          <span class="step__n">02</span>
+          <h3>Link without a filing system.</h3>
+          <p>As you write, Noema finds the notes that share a phrase, a source, a contradiction. Accept the link or ignore it. The connections are yours, not a machine's.</p>
+          <p class="step__detail">3 suggestions · 1 accepted</p>
+        </article>
+        <article class="step" data-state="recall" data-name="Recall" data-num="03">
+          <span class="step__n">03</span>
+          <h3>Ask, don't dig.</h3>
+          <p>Type the shape of the idea. Noema searches the words you wrote and the notes they connect to. The best match opens where you left it, with the context around it.</p>
+          <p class="step__detail">12 ms · on-device · offline</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="specs" id="specs" aria-labelledby="specs-title">
+    <div class="wrap">
+      <div class="specs__head reveal">
+        <div>
+          <p class="label">Specs</p>
+          <h2 id="specs-title">Small numbers,<br>on purpose.</h2>
+        </div>
+        <p class="specs__lead">The best second brain should be hard to notice. These are the numbers we hold ourselves to, measured on a 10,000-note library.</p>
+      </div>
+      <div class="specs__grid reveal" data-delay="80">
+        <div class="stat">
+          <p class="stat__n">0</p>
+          <p class="stat__k">folders</p>
+          <p class="stat__d">Nothing to decide before you write.</p>
+        </div>
+        <div class="stat">
+          <p class="stat__n">12<span>ms</span></p>
+          <p class="stat__k">search</p>
+          <p class="stat__d">On-device results across 10,000 notes.</p>
+        </div>
+        <div class="stat">
+          <p class="stat__n">1</p>
+          <p class="stat__k">keystroke</p>
+          <p class="stat__d">⌘N opens the capture field anywhere.</p>
+        </div>
+        <div class="stat">
+          <p class="stat__n">100<span>%</span></p>
+          <p class="stat__k">offline</p>
+          <p class="stat__d">The app works without a connection. Sync catches up.</p>
+        </div>
+      </div>
+      <p class="specs__note reveal">Measured on an M1 MacBook Air, Noema 4.1, 10,000 notes. Search time is the median of 100 local queries.</p>
+    </div>
+  </section>
+
+  <section class="available" id="available" aria-labelledby="available-title">
+    <div class="wrap available__in">
+      <div class="available__copy reveal">
+        <p class="label">Available</p>
+        <h2 id="available-title">Everywhere you think.</h2>
+        <p>Start on your Mac, finish on your phone. Noema is one library with four doors, and it works without a connection.</p>
+      </div>
+      <div class="devices reveal" data-delay="80" aria-label="Available on Mac, iPhone, iPad and the web">
+        <div class="device">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="6" width="24" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M2.5 26h27" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <b>Mac</b><span>macOS 14+</span>
+        </div>
+        <div class="device">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="9" y="3" width="14" height="26" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M13.5 25h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <b>iPhone</b><span>iOS 17+</span>
+        </div>
+        <div class="device">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="4" width="22" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M14 24h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <b>iPad</b><span>iPadOS 17+</span>
+        </div>
+        <div class="device">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 16h22M16 5c3.5 3.4 5 7 5 11s-1.5 7.6-5 11c-3.5-3.4-5-7-5-11s1.5-7.6 5-11Z" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          <b>Web</b><span>Any modern browser</span>
+        </div>
+      </div>
+    </div>
+    <div class="wrap privacy-line reveal" id="privacy">
+      <span class="privacy-line__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4.5" y="10" width="15" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 10V7.5a4 4 0 0 1 8 0V10" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
+      <p><b>Private by architecture.</b> End-to-end encrypted, offline by default, exportable as Markdown. Your notes are yours to keep and yours to leave with.</p>
+    </div>
+  </section>
+
+  <section class="cta" id="download" aria-labelledby="cta-title">
+    <div class="wrap">
+      <div class="cta__panel reveal">
+        <p class="label label--mint">Download</p>
+        <h2 id="cta-title">Nothing to file.<br><span>Everything to find.</span></h2>
+        <p class="cta__lead">Start free with 500 notes. Import from Obsidian, Notion, Apple Notes or a folder of Markdown in one step.</p>
+        <div class="acts acts--center">
+          <a class="btn btn--mint" href="#download">Download for Mac</a>
+          <a class="btn btn--outline" href="#download">Get it for iPhone</a>
+        </div>
+        <p class="cta__micro">macOS 14+ · iOS 17+ · Noema for web · 12 MB</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap foot__in">
+      <div class="foot__brand">
+        <a class="brand" href="#top" aria-label="Noema, back to top">
+          <svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.6" y="2.6" width="18.8" height="18.8" rx="6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8.2 15.8V8.2l7.6 7.6V8.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Noema</span>
+        </a>
+        <p>A second brain that gets out<br>of the way of the first one.</p>
+      </div>
+      <nav class="foot__cols" aria-label="Footer">
+        <div><p>Product</p><a href="#story">How it works</a><a href="#specs">Specs</a><a href="#available">Available</a><a href="#download">Download</a></div>
+        <div><p>Company</p><a href="#top">About</a><a href="#top">Journal</a><a href="#top">Careers</a><a href="#top">Contact</a></div>
+        <div><p>Trust</p><a href="#privacy">Privacy</a><a href="#privacy">Security</a><a href="#top">Accessibility</a><a href="#top">Terms</a></div>
+      </nav>
+    </div>
+    <div class="wrap foot__fine">
+      <span>© 2026 Noema Labs</span>
+      <span>Design prototype · three directions in the switcher below</span>
+    </div>
+  </footer>
+</main>
+
+<div class="palette" id="palette" hidden>
+  <div class="palette__scrim" data-palette-close></div>
+  <div class="palette__box" role="dialog" aria-modal="true" aria-label="Command bar">
+    <div class="palette__inputrow">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m10.4 10.4 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <input id="paletteInput" type="text" role="combobox" aria-expanded="true" aria-controls="paletteList" aria-autocomplete="list" aria-activedescendant="" placeholder="Jump to a section or action…" autocomplete="off" spellcheck="false">
+      <kbd>ESC</kbd>
+    </div>
+    <ul class="palette__list" id="paletteList" role="listbox" aria-label="Command results"></ul>
+    <div class="palette__foot">
+      <span><kbd>↑</kbd><kbd>↓</kbd> to move</span>
+      <span><kbd>↵</kbd> to open</span>
+      <span class="palette__brand">Noema</span>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden>
+  <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.5 8.5 6.5 11.5 12.5 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span id="toastText">Link copied</span>
+</div>
+
+<nav class="it-switch" aria-label="Design directions">
+  <span class="it-switch__label">Direction</span>
+  <a href="../1/"><span class="n">01</span><span class="t">Daylight</span></a>
+  <a href="../2/"><span class="n">02</span><span class="t">Nightfall</span></a>
+  <a href="../3/" aria-current="page"><span class="n">03</span><span class="t">Fieldwork</span></a>
+</nav>
+
+<script src="../shared/motion.js"></script>
+<script src="../shared/switcher.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

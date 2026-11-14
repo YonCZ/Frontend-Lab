@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demos: notes that come back when you ask</title>
+<meta name="description" content="Demos is a notes app for quotes, links, calls and half-thoughts. It keeps the source, the day and the neighbours of every note, then finds it again.">
+<meta name="theme-color" content="#E5E6DD">
+<link rel="stylesheet" href="assets/fonts/instrument-serif/font.css">
+<link rel="stylesheet" href="assets/fonts/instrument-sans/font.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="mark" href="#top">Demos</a>
+    <nav class="pages" aria-label="Sections">
+      <a href="#keeps">What it keeps</a>
+      <a href="#find">Finding it</a>
+      <a href="#place">One place</a>
+    </nav>
+    <button class="btn btn-sm" type="button" data-open-composer>Write a note</button>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy" data-enter>
+        <h1>Notes that come back when you ask.</h1>
+        <p class="sub">Demos keeps the quotes, links, calls and half-thoughts you would otherwise lose. Each one keeps its source, its day and the notes it sits next to.</p>
+        <div class="hero-actions">
+          <button class="btn" type="button" data-open-composer>Write a note</button>
+          <button class="btn-text" type="button" data-example-search="memory">Try an example search</button>
+        </div>
+        <p class="fact">Four fields on every note: the words, the source, the day, the neighbours.</p>
+      </div>
+
+      <div class="recall" data-enter aria-label="Demo archive">
+        <div class="recall-head">
+          <label class="recall-label" for="q">Search the archive</label>
+          <span class="recall-count" id="count">6 notes</span>
+        </div>
+
+        <div class="field">
+          <svg class="field-icon" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M12.6 12.6 17 17"/></svg>
+          <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="chair, onboarding, memory">
+          <kbd>⌘K</kbd>
+        </div>
+
+        <div class="panel-body">
+          <ul class="results" id="results" aria-live="polite"></ul>
+
+          <form class="composer" id="composer" hidden novalidate>
+            <div class="composer-top">
+              <p class="composer-title">New note</p>
+              <button class="composer-close" type="button" data-close-composer aria-label="Close the note form">
+                <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+              </button>
+            </div>
+            <label for="note-title">Title</label>
+            <input id="note-title" name="title" maxlength="80" placeholder="The chair">
+            <label for="note-body">Note</label>
+            <textarea id="note-body" name="body" rows="4" placeholder="Low chair, oak, 1962. The proportions are right; the upholstery is not."></textarea>
+            <label for="note-source">Where it came from</label>
+            <input id="note-source" name="source" maxlength="80" placeholder="Link, book, call, or where you were">
+            <p class="form-error" id="form-error" role="alert" hidden></p>
+            <div class="composer-actions">
+              <button class="btn btn-sm" type="submit">Save note</button>
+              <p class="hint">It stays in this browser.</p>
+            </div>
+          </form>
+        </div>
+
+        <div class="recall-foot" id="recallFoot">
+          <button class="btn btn-quiet btn-sm" type="button" data-open-composer>New note</button>
+          <p class="hint" id="status" role="status">Saved notes live in this browser.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="keeps">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>It keeps the thing and why you kept it.</h2>
+        <p>A note without a source is a rumour. Demos files the words with the page, the person, the day and what else was nearby. Here is what that looks like for four kinds of note.</p>
+      </div>
+
+      <ul class="register">
+        <li class="reg-row">
+          <p class="reg-kind">Quote</p>
+          <blockquote>The half-life of a good interface is about three years. The habit it builds lasts a decade.</blockquote>
+          <p class="reg-kept"><span>The Shape of Screens, page 88</span><span>Kept 12 Mar</span></p>
+        </li>
+        <li class="reg-row">
+          <p class="reg-kind">Call</p>
+          <blockquote>Cut the intro video to forty seconds. Nobody watches the second minute.</blockquote>
+          <p class="reg-kept"><span>Priya Raman, onboarding call</span><span>Kept 8 Mar</span></p>
+        </li>
+        <li class="reg-row">
+          <p class="reg-kind">Half-thought</p>
+          <blockquote>What if the archive sorted by what you were trying to do, not by when you saved it?</blockquote>
+          <p class="reg-kept"><span>Typed on a walk</span><span>Kept 21 Feb</span></p>
+        </li>
+        <li class="reg-row">
+          <p class="reg-kind">Link</p>
+          <blockquote>Low chair, oak, 1962. The proportions are right. The upholstery is not.</blockquote>
+          <p class="reg-kept"><span>furniturearchive.example</span><span>Kept 17 Jan</span></p>
+        </li>
+      </ul>
+
+      <p class="reg-foot">Screenshots, voice memos and highlights from a page land the same way. Nothing is stored without a date.</p>
+    </div>
+  </section>
+
+  <section class="section" id="find">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Three ways back to the same note.</h2>
+        <p>Search covers the words you remember. The other two cover the times you do not.</p>
+      </div>
+
+      <div class="routes">
+        <article class="route">
+          <h3>Ask in your own words</h3>
+          <p>One word is enough. Search reads titles, text, sources and kinds together, so the chair can be found as a link, a quote or a photo note.</p>
+          <div class="route-ask">
+            <div class="ask-field">
+              <span class="ask-term">chair</span>
+              <span class="ask-hint">2 notes</span>
+            </div>
+            <ol class="ask-results">
+              <li><span>The chair</span><span>furniturearchive.example</span></li>
+              <li><span>Kitchen wall</span><span>Screenshot, 11 Jan</span></li>
+            </ol>
+          </div>
+        </article>
+
+        <article class="route">
+          <h3>Follow the thread</h3>
+          <p>Every note lists the ones it was kept next to. Start at the chair and you end up at the kitchen wall without searching for either.</p>
+          <div class="thread" aria-label="Example chain of notes">
+            <div class="thread-node"><span class="thread-kind">Link</span><span>The chair</span></div>
+            <div class="thread-line" aria-hidden="true"></div>
+            <div class="thread-node"><span class="thread-kind">Neighbour</span><span>Kitchen wall</span></div>
+            <div class="thread-line" aria-hidden="true"></div>
+            <div class="thread-node"><span class="thread-kind">Next</span><span>Warm white, matte, with a shelf at eye level</span></div>
+          </div>
+        </article>
+
+        <article class="route">
+          <h3>Start from a day</h3>
+          <p>Dates are part of the note, not a folder you have to maintain. When you remember the week but not the words, walk the month.</p>
+          <div class="calendar" aria-label="Example month strip">
+            <div class="cal-scale">
+              <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span>
+            </div>
+            <div class="cal-track" aria-hidden="true">
+              <i class="dot dot-a"></i><i class="dot dot-b"></i><i class="dot dot-c is-on"></i><i class="dot dot-d"></i><i class="dot dot-e"></i>
+            </div>
+            <p class="cal-note"><span>8 March</span><span>Onboarding call with Priya</span></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section place" id="place">
+    <div class="wrap place-grid">
+      <div class="place-copy">
+        <h2>Five places is why it is gone.</h2>
+        <p>A screenshot in the camera roll. A quote in a chat with yourself. A tab you meant to read. A notebook at your parents' flat. A voice memo you will not scroll back to. Each one is a small, reasonable decision that makes the next search impossible.</p>
+        <ul class="points">
+          <li><strong>One search instead of five.</strong> Titles, text, sources and kinds sit in the same index.</li>
+          <li><strong>The source stays attached.</strong> A quote keeps its page. A link keeps its domain. A call keeps the person.</li>
+          <li><strong>Neighbours do the rest.</strong> When the words are gone, walk the note it was kept next to.</li>
+        </ul>
+      </div>
+
+      <div class="file-demo" data-state="loose" id="fileDemo">
+        <div class="file-head">
+          <p class="file-title" id="fileTitle">Five notes, five places</p>
+          <button class="btn btn-quiet btn-sm" type="button" id="fileToggle" aria-pressed="false">File them</button>
+        </div>
+
+        <ul class="slips" aria-label="Notes before filing">
+          <li class="slip slip-1"><span>the 40 second video</span></li>
+          <li class="slip slip-2"><span>chair photo</span></li>
+          <li class="slip slip-3"><span>p. 88 quote</span></li>
+          <li class="slip slip-4"><span>memory palace article</span></li>
+          <li class="slip slip-5"><span>sort by intention???</span></li>
+        </ul>
+
+        <ul class="filed" aria-label="The same notes filed">
+          <li><span class="filed-title">Onboarding call with Priya</span><span class="filed-meta">Call, 8 Mar</span></li>
+          <li><span class="filed-title">The chair</span><span class="filed-meta">furniturearchive.example, 17 Jan</span></li>
+          <li><span class="filed-title">Interfaces age faster than habits</span><span class="filed-meta">The Shape of Screens, p. 88</span></li>
+          <li><span class="filed-title">Memory palace piece</span><span class="filed-meta">theguardian.example, 4 Feb</span></li>
+          <li><span class="filed-title">Sort by intention</span><span class="filed-meta">Walk, 21 Feb</span></li>
+        </ul>
+
+        <p class="file-status" id="fileStatus" role="status">Nothing has a source yet. Press File them.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="close" id="start">
+    <div class="wrap close-in">
+      <h2>Start with the note you would otherwise lose.</h2>
+      <p>Write one thing now. It stays in this browser, and you can search it in any of the three layouts.</p>
+      <div class="close-actions">
+        <button class="btn btn-lg" type="button" data-open-composer>Write a note</button>
+        <a class="btn-text" href="#keeps">See what it keeps</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-in">
+    <div class="footer-mark">
+      <p class="mark">Demos</p>
+      <p>A working demo. Notes live in your browser, not on a server.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#keeps">What it keeps</a>
+      <a href="#find">Finding it</a>
+      <a href="#place">One place</a>
+    </nav>
+  </div>
+</footer>
+
+<nav class="variants" aria-label="Demo variant">
+  <span class="variants-label">Variant</span>
+  <a href="../1/index.html" aria-label="Variant 1: Register" aria-current="page" title="Register">1</a>
+  <a href="../2/index.html" aria-label="Variant 2: Field" title="Field">2</a>
+  <a href="../3/index.html" aria-label="Variant 3: Desk" title="Desk">3</a>
+</nav>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cairn · Your brain, but tidier</title>
+  <meta name="description" content="Cairn is the notebook that remembers with you. Notes, quotes and screenshots get a home, links find their pairs, and old thoughts come back when you need them." />
+  <meta name="theme-color" content="#fbf8f1" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f2eee3'/%3E%3Cg fill='none' stroke='%231a1812' stroke-width='1.7'%3E%3Cellipse cx='16' cy='23' rx='8' ry='3'/%3E%3Cellipse cx='16' cy='17' rx='6' ry='2.6'/%3E%3Cellipse cx='16' cy='11.5' rx='4' ry='2.2'/%3E%3C/g%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-head">
+    <div class="wrap head">
+      <a class="brand" href="#top" aria-label="Cairn, back to top">
+        <svg class="mark" viewBox="0 0 24 24" aria-hidden="true">
+          <ellipse cx="12" cy="19" rx="8.2" ry="3.2" />
+          <ellipse cx="12" cy="13.2" rx="6" ry="2.6" />
+          <ellipse cx="12" cy="8" rx="3.9" ry="2.2" />
+        </svg>
+        <span>Cairn</span>
+      </a>
+
+      <nav class="nav-pill" aria-label="Primary">
+        <a href="#bento">The app</a>
+        <a href="#method">How it works</a>
+        <a href="#files">Files</a>
+      </nav>
+
+      <div class="head-cta">
+        <a class="signin" href="#access">Sign in</a>
+        <a class="btn btn-dark btn-sm" href="#access">Get early access <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" id="top">
+      <div class="hero-head reveal">
+        <p class="badge"><span class="pulse" aria-hidden="true"></span>Private beta <span class="badge-sep" aria-hidden="true">·</span> 500 invites this month</p>
+        <h1>Your brain,<br />but <span class="marker">tidier<svg viewBox="0 0 200 20" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14C42 5 118 3 196 11" pathLength="200" /></svg></span>.</h1>
+        <p class="lede">Cairn is the notebook that remembers with you. Fragments get a home, links find their pairs, and the half-thought from March comes back the moment you need it.</p>
+        <div class="hero-actions">
+          <a class="btn btn-dark btn-lg" href="#access">Get early access <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn-soft btn-lg" href="#bento">See how it feels</a>
+        </div>
+        <p class="hero-fine">Free while in beta <span aria-hidden="true">·</span> macOS, iOS and web</p>
+      </div>
+
+      <div class="stage reveal" id="stage">
+        <canvas id="drift" aria-hidden="true"></canvas>
+        <div class="stage-cards" aria-hidden="true">
+          <article class="chip chip-meeting">
+            <span class="chip-label"><i class="dot violet"></i>Meeting <span aria-hidden="true">·</span> 14:03</span>
+            <p>“Two prices, one question.”</p>
+            <span class="chip-foot">Dana, product</span>
+          </article>
+
+          <article class="chip chip-quote">
+            <span class="chip-label"><i class="dot coral"></i>Reading <span aria-hidden="true">·</span> p. 74</span>
+            <p>The hand learns what the head forgets.</p>
+            <span class="chip-foot">Sennett, The Craftsman</span>
+          </article>
+
+          <article class="chip chip-sticky">
+            <span class="chip-label">Idea</span>
+            <p>pricing page → one question</p>
+          </article>
+
+          <div class="chip chip-linked">
+            <i class="dot mint"></i> linked to 6 notes
+          </div>
+
+          <article class="chip chip-voice">
+            <span class="chip-label"><i class="dot lemon"></i>Voice <span aria-hidden="true">·</span> 0:42</span>
+            <div class="wave" aria-hidden="true">
+              <i style="--h: 8px"></i><i style="--h: 16px"></i><i style="--h: 22px"></i><i style="--h: 12px"></i><i style="--h: 20px"></i><i style="--h: 9px"></i><i style="--h: 15px"></i><i style="--h: 6px"></i><i style="--h: 18px"></i><i style="--h: 11px"></i>
+            </div>
+            <span class="chip-foot">transcribed at 14:12</span>
+          </article>
+        </div>
+
+        <div class="stage-search">
+          <span class="ss-label">Ask your archive</span>
+          <div class="ss-row">
+            <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.6" /><path d="M13.3 13.3 17.4 17.4" /></svg>
+            <span class="ss-query" id="hero-query">why did we drop monthly pricing</span>
+            <span class="ss-caret" aria-hidden="true"></span>
+            <kbd>enter</kbd>
+          </div>
+          <div class="ss-foot"><span>4,182 notes <span aria-hidden="true">·</span> 11,208 links</span><span>local index</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="What people keep in Cairn">
+      <div class="ticker-track" aria-hidden="true">
+        <span>research notes <i>✳</i> journaling <i>✳</i> reading highlights <i>✳</i> meeting notes <i>✳</i> screenshots <i>✳</i> voice memos <i>✳</i> half-thoughts <i>✳</i></span>
+        <span>research notes <i>✳</i> journaling <i>✳</i> reading highlights <i>✳</i> meeting notes <i>✳</i> screenshots <i>✳</i> voice memos <i>✳</i> half-thoughts <i>✳</i></span>
+      </div>
+    </section>
+
+    <section class="section wrap" id="bento">
+      <div class="section-head reveal">
+        <p class="badge badge-plain">The whole point</p>
+        <h2>A home for the messy middle.</h2>
+        <p class="section-sub">Notes arrive as notes. Cairn connects them, indexes them, and keeps them as files you can open anywhere.</p>
+      </div>
+
+      <div class="bento">
+        <article class="card card-ask reveal">
+          <div class="card-top">
+            <span class="card-label">Recall</span>
+            <span class="card-badge">40 ms</span>
+          </div>
+          <h3>Ask for the idea, not the file name.</h3>
+          <div class="ask">
+            <div class="ask-bar">
+              <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="5.6" /><path d="M13.3 13.3 17.4 17.4" /></svg>
+              <span>monthly pricing</span>
+              <span class="ask-hint">6 results</span>
+            </div>
+            <div class="ask-result">
+              <span class="ask-dot" aria-hidden="true"></span>
+              <div>
+                <h4>Pricing decision, March</h4>
+                <p>We drop the monthly plan because the flat fee made the decision easier for small teams.</p>
+                <span class="ask-meta">note <span aria-hidden="true">·</span> 12 Mar 2026 <span aria-hidden="true">·</span> #pricing</span>
+              </div>
+            </div>
+            <div class="ask-result">
+              <span class="ask-dot coral" aria-hidden="true"></span>
+              <div>
+                <h4>Call with Dana</h4>
+                <p>Dana asked what the monthly plan was for. I did not have an answer that survived being said out loud.</p>
+                <span class="ask-meta">transcript <span aria-hidden="true">·</span> 9 Mar 2026 <span aria-hidden="true">·</span> 42 min</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card card-catch reveal" style="--d: 80ms">
+          <div class="card-top">
+            <span class="card-label">Capture</span>
+            <span class="card-badge">inbox 3</span>
+          </div>
+          <h3>Catch it before it leaves.</h3>
+          <p class="card-copy">Type it here, share it from your phone, or drop a link. Everything lands in one inbox.</p>
+          <form class="catch" id="catch-form">
+            <label class="sr-only" for="catch-input">Quick capture a thought</label>
+            <input id="catch-input" type="text" maxlength="90" placeholder="Drop a thought…" autocomplete="off" />
+            <button type="submit" aria-label="Add the thought">→</button>
+          </form>
+          <ul class="catch-list" id="catch-list" aria-live="polite">
+            <li><span>Dana’s line: two prices, one question.</span><em>2m</em></li>
+            <li><span>Look up the Sennett passage.</span><em>1h</em></li>
+          </ul>
+        </article>
+
+        <article class="card card-threads reveal">
+          <div class="card-top">
+            <span class="card-label">Links</span>
+            <span class="card-badge">11,208</span>
+          </div>
+          <h3>See what talks to what.</h3>
+          <div class="mini-graph" aria-hidden="true">
+            <svg viewBox="0 0 300 128">
+              <g class="mg-edges">
+                <line x1="150" y1="60" x2="88" y2="34" /><line x1="150" y1="60" x2="222" y2="30" />
+                <line x1="150" y1="60" x2="236" y2="88" /><line x1="150" y1="60" x2="94" y2="96" />
+                <line x1="150" y1="60" x2="160" y2="118" /><line x1="88" y1="34" x2="222" y2="30" />
+                <line x1="94" y1="96" x2="160" y2="118" /><line x1="236" y1="88" x2="222" y2="30" />
+              </g>
+              <g class="mg-nodes">
+                <circle cx="150" cy="60" r="9" class="big" /><circle cx="88" cy="34" r="5" class="violet" />
+                <circle cx="222" cy="30" r="6" class="coral" /><circle cx="236" cy="88" r="5" class="mint" />
+                <circle cx="94" cy="96" r="5" /><circle cx="160" cy="118" r="4" class="lemon" />
+              </g>
+            </svg>
+          </div>
+          <p class="card-foot">6 notes linked to “pricing decision”</p>
+        </article>
+
+        <article class="card card-files reveal" style="--d: 80ms" id="files">
+          <div class="card-top">
+            <span class="card-label">Files</span>
+            <span class="card-badge">11.4 MB</span>
+          </div>
+          <h3>Yours, even offline.</h3>
+          <pre class="file-tree"><span class="ft-dim">~/Cairn</span>
+├── daily/2026-11-14.md
+├── notes/pricing-decision.md
+├── notes/the-cost-of-finishing.md
+└── <span class="ft-dim">.cairn/links.json</span></pre>
+          <p class="card-foot">Plain Markdown. No database you can’t read.</p>
+        </article>
+
+        <article class="card card-offline reveal" style="--d: 160ms">
+          <div class="card-top">
+            <span class="card-label">Private by default</span>
+            <span class="toggle" role="img" aria-label="Sync is off"><i></i></span>
+          </div>
+          <h3>The network is optional.</h3>
+          <ul class="check-list">
+            <li><span aria-hidden="true">✓</span>Read and search with wifi off</li>
+            <li><span aria-hidden="true">✓</span>Sync through any folder you own</li>
+            <li><span aria-hidden="true">✓</span>Export is drag and drop</li>
+          </ul>
+          <p class="card-foot">No account required to open your notes.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="method">
+      <div class="quote-band reveal">
+        <div class="quote-glow" aria-hidden="true"></div>
+        <p class="eyebrow">Why Cairn</p>
+        <blockquote>The best note is the one you forgot you wrote.</blockquote>
+        <div class="quote-foot">
+          <p>Cairn is built for the moment a new idea meets an old one. Everything else, the folders, the tags, the filing, should get out of the way.</p>
+          <div class="quote-stats">
+            <div><b>4,182</b><span>notes in a sample archive</span></div>
+            <div><b>40 ms</b><span>to find one on a laptop</span></div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="sr-only">How Cairn works</h2>
+      <div class="moves">
+        <article class="move reveal">
+          <span class="move-num">01</span>
+          <h3>Catch anything</h3>
+          <p>Share sheet, menu bar, voice, screenshot. One inbox, every format, the source attached.</p>
+        </article>
+        <article class="move reveal" style="--d: 70ms">
+          <span class="move-num">02</span>
+          <h3>Let it connect</h3>
+          <p>Cairn suggests links from names, dates and lines you repeat. Accept the useful ones, ignore the rest.</p>
+        </article>
+        <article class="move reveal" style="--d: 140ms">
+          <span class="move-num">03</span>
+          <h3>Find it later</h3>
+          <p>Ask in your own words. Results open at the paragraph, with the note it lives in and the source it came from.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="access" id="access">
+      <div class="wrap access-inner reveal">
+        <p class="badge badge-plain">Private beta</p>
+        <h2>Start remembering.</h2>
+        <p>Five hundred invites this month. Bring the notes you already have; they will feel at home here.</p>
+        <form class="access-form" id="access-form" novalidate>
+          <label class="sr-only" for="email">Email address</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" aria-describedby="form-note" required />
+          <button class="btn btn-dark" type="submit">Request an invite <span aria-hidden="true">→</span></button>
+        </form>
+        <p class="form-note" id="form-note" role="status">No card. No import. No lock-in.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-top">
+      <div class="foot-brand">
+        <svg class="mark" viewBox="0 0 24 24" aria-hidden="true">
+          <ellipse cx="12" cy="19" rx="8.2" ry="3.2" />
+          <ellipse cx="12" cy="13.2" rx="6" ry="2.6" />
+          <ellipse cx="12" cy="8" rx="3.9" ry="2.2" />
+        </svg>
+        <p>A second brain that fits in a folder.</p>
+      </div>
+      <nav class="foot-col" aria-label="Product">
+        <span>Product</span>
+        <a href="#bento">The app</a>
+        <a href="#method">Method</a>
+        <a href="#files">Files</a>
+        <a href="#access">Early access</a>
+      </nav>
+      <nav class="foot-col" aria-label="Elsewhere">
+        <span>Elsewhere</span>
+        <a href="#">Instagram</a>
+        <a href="#">Are.na</a>
+        <a href="mailto:hello@cairn.app">Email</a>
+      </nav>
+      <div class="foot-col foot-meta">
+        <span>Colophon</span>
+        <p>Set in Bricolage Grotesque and Manrope. Built in Lisbon.</p>
+      </div>
+    </div>
+    <div class="wrap foot-bottom">
+      <span>© 2026 Cairn</span>
+      <span>Privacy</span>
+      <span>Terms</span>
+      <a href="#top" class="to-top">Back to top ↑</a>
+    </div>
+    <div class="foot-mega" aria-hidden="true">cairn</div>
+  </footer>
+
+  <nav class="switcher" aria-label="Design iterations">
+    <a href="../1/"><b>01</b><span>Paper</span></a>
+    <a href="../2/"><b>02</b><span>Console</span></a>
+    <a href="../3/" aria-current="page"><b>03</b><span>Drift</span></a>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>

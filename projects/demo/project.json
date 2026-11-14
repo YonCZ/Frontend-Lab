@@ -1,0 +1,135 @@
+{
+  "name": "Demo",
+  "brief": "Design the landing page for a note-taking application as essentially a second brain, in three iterations with a switcher.",
+  "cover": "cover.jpg",
+  "builds": [
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "No skill",
+      "variant": 1,
+      "entry": "1/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "No skill",
+      "variant": 2,
+      "entry": "2/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "No skill",
+      "variant": 3,
+      "entry": "3/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Design",
+      "variant": 1,
+      "entry": "design/1/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Design",
+      "variant": 2,
+      "entry": "design/2/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Apple Design",
+      "variant": 1,
+      "entry": "apple-design/1/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Apple Design",
+      "variant": 3,
+      "entry": "apple-design/3/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Apple Design +",
+      "variant": 1,
+      "entry": "apple-design-plus/1/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Apple Design +",
+      "variant": 2,
+      "entry": "apple-design-plus/2/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Apple Design +",
+      "variant": 3,
+      "entry": "apple-design-plus/3/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Design + Taste + Motion",
+      "variant": 1,
+      "entry": "design-taste-motion/1/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Design + Taste + Motion",
+      "variant": 2,
+      "entry": "design-taste-motion/2/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Design + Taste + Motion",
+      "variant": 3,
+      "entry": "design-taste-motion/3/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Design + Taste + Apple + Motion",
+      "variant": 1,
+      "entry": "design-taste-apple-motion/1/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Design + Taste + Apple + Motion",
+      "variant": 2,
+      "entry": "design-taste-apple-motion/2/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Design + Taste + Apple + Motion",
+      "variant": 3,
+      "entry": "design-taste-apple-motion/3/index.html"
+    }
+  ],
+  "experiment": {
+    "status": "running",
+    "runner": "t3-threads",
+    "model": "einfra/deepseek-v4.1-flash",
+    "maxConcurrent": 2,
+    "presets": [
+      {
+        "id": "baseline",
+        "name": "No skill",
+        "skills": [],
+        "variants": 3
+      },
+      {
+        "id": "design",
+        "name": "Design",
+        "skills": [],
+        "variants": 3
+      },
+      {
+        "id": "apple",
+        "name": "Apple Design",
+        "skills": [],
+        "variants": 3
+      },
+      {
+        "id": "apple-plus",
+        "name": "Apple Design +",
+        "skills": [],
+        "variants": 3
+      }
+    ]
+  }
+}

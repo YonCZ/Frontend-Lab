@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en" data-direction="nightfall">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Noema: nothing you read has to go to waste</title>
+<meta name="description" content="Noema is a second brain for readers. Keep what you read, what you write, and what you almost forgot in one connected place. Ask it six months later.">
+<meta name="theme-color" content="#07090d">
+<meta property="og:title" content="Noema: nothing you read has to go to waste">
+<meta property="og:description" content="Capture in a breath. Connect what belongs together. Ask your archive six months later.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%2307090d'/%3E%3Ccircle cx='9.4' cy='12' r='5.2' fill='none' stroke='%23eaa84f' stroke-width='1.3'/%3E%3Ccircle cx='14.6' cy='12' r='5.2' fill='none' stroke='%23eaa84f' stroke-width='1.3'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/fraunces/font.css">
+<link rel="stylesheet" href="fonts/instrument-sans/font.css">
+<link rel="stylesheet" href="fonts/ibm-plex-mono/font.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="nav__inner">
+    <a class="brand" href="#top" aria-label="Noema, top of page">
+      <svg class="brand__mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9.3" cy="12" r="5.6"/><circle cx="14.7" cy="12" r="5.6"/><circle class="brand__dot" cx="12" cy="12" r="1.35"/></svg>
+      <span class="brand__word">noema</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#capture">Capture</a>
+      <a href="#connect">Connect</a>
+      <a href="#ask">Ask</a>
+      <a href="#privacy">Privacy</a>
+    </nav>
+    <div class="nav__actions">
+      <span class="nav__note">Free in beta</span>
+      <button class="btn btn--small btn--amber" type="button" data-open-signup>Start free</button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="wrap hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow enter enter--1"><span class="eyebrow__star" aria-hidden="true">✳</span> A second brain for readers</p>
+        <h1 class="enter enter--2">Nothing you read<br>has to go to waste.</h1>
+        <p class="hero__lede enter enter--3">Noema keeps what you read, what you write, and what you almost forgot in one connected place. Ask it a question six months later and it answers from your own notes.</p>
+        <div class="hero__actions enter enter--4">
+          <button class="btn btn--amber" type="button" data-open-signup>Start free</button>
+          <a class="ghost-link" href="#ask">Ask the archive
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 3v9.2M4.5 9 8 12.5 11.5 9"/></svg>
+          </a>
+        </div>
+        <p class="hero__fact enter enter--4">Plain Markdown on your disk. Encrypted sync. No account required.</p>
+      </div>
+
+      <div class="sky enter enter--5" id="sky" aria-label="A map of connected notes">
+        <div class="sky__hint">Hover a note</div>
+        <svg class="sky__lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          <path data-line="spacing" d="M50 48 L23 20"/>
+          <path data-line="reread" d="M50 48 L81 24"/>
+          <path data-line="shallows" d="M50 48 L86 64"/>
+          <path data-line="uppsala" d="M50 48 L19 72"/>
+          <path data-line="memory" d="M50 48 L50 16"/>
+          <path data-line="inbox" d="M50 48 L70 84"/>
+          <path class="is-faint" data-line="faint1" d="M23 20 L50 16"/>
+          <path class="is-faint" data-line="faint2" d="M81 24 L86 64"/>
+          <path class="is-faint" data-line="faint3" d="M19 72 L50 48"/>
+          <path class="is-faint" data-line="faint4" d="M70 84 L86 64"/>
+        </svg>
+        <button class="star-node star-node--main" type="button" data-note="attention" style="--x:50%;--y:48%">attention<small>6 links</small></button>
+        <button class="star-node" type="button" data-note="spacing" style="--x:23%;--y:20%">spacing</button>
+        <button class="star-node" type="button" data-note="reread" style="--x:81%;--y:24%">rereading</button>
+        <button class="star-node" type="button" data-note="shallows" style="--x:86%;--y:64%">the shallows</button>
+        <button class="star-node" type="button" data-note="uppsala" style="--x:19%;--y:72%">uppsala</button>
+        <button class="star-node" type="button" data-note="memory" style="--x:50%;--y:16%">memory</button>
+        <button class="star-node" type="button" data-note="inbox" style="--x:70%;--y:84%">quiet inbox</button>
+
+        <div class="sky__card" id="sky-card" aria-live="polite">
+          <div class="sky__card-top"><span>Research</span><span>6 links</span></div>
+          <b id="sky-title">The spacing effect</b>
+          <p id="sky-body">Retrieval gets easier when the gap between passes grows. The second read should feel a little harder than the first.</p>
+          <div class="sky__card-foot"><span id="sky-meta">Edited 2h ago</span><span class="sky__match" id="sky-match">94% near</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--capture" id="capture">
+    <div class="wrap">
+      <div class="capture-head">
+        <div>
+          <p class="section-label"><span>01</span> Capture</p>
+          <h2>Get it out of your head<br>in one breath.</h2>
+        </div>
+        <p class="capture-head__lede">The window opens, the thought lands, the window closes. No title, no folder, no decision about where it belongs yet. That part comes later, on its own.</p>
+      </div>
+
+      <div class="desk">
+        <div class="desk__glow" aria-hidden="true"></div>
+        <form class="composer" id="composer">
+          <label class="sr-only" for="thought">What are you thinking about?</label>
+          <div class="composer__field">
+            <span class="composer__caret" aria-hidden="true"></span>
+            <input id="thought" type="text" autocomplete="off" maxlength="120" placeholder="What are you thinking about?">
+            <button class="btn btn--amber btn--small" type="submit">Keep it</button>
+          </div>
+          <div class="composer__meta"><span>Adds to Inbox</span><span>Press <kbd>↵</kbd> to save</span></div>
+        </form>
+
+        <div class="today">
+          <div class="today__head"><span>Today</span><span id="today-count">3 thoughts</span></div>
+          <div class="today__rail" id="today-rail">
+            <article class="thought-card">
+              <span class="thought-card__time">09:42</span>
+              <b>A note is a promise to return</b>
+              <p>The useful note is not the one you filed. It is the one you meet again.</p>
+              <span class="thought-card__links">3 connections</span>
+            </article>
+            <article class="thought-card">
+              <span class="thought-card__time">08:15</span>
+              <b>Memory is the residue of thought</b>
+              <p>From the Uppsala archive. A sentence on an index card, kept for thirty years.</p>
+              <span class="thought-card__links">2 connections</span>
+            </article>
+            <article class="thought-card">
+              <span class="thought-card__time">07:48</span>
+              <b>The shape of a question</b>
+              <p>Good questions are built, not found. Start with the note that keeps returning.</p>
+              <span class="thought-card__links">4 connections</span>
+            </article>
+          </div>
+        </div>
+      </div>
+
+      <div class="methods">
+        <div class="method"><span class="method__key">⌘ ⇧ Space</span><span>From anywhere on your Mac</span></div>
+        <div class="method"><span class="method__key">Paste</span><span>A link, a page, a screenshot</span></div>
+        <div class="method"><span class="method__key">Speak</span><span>On a walk, transcribed on device</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--connect" id="connect">
+    <div class="wrap">
+      <div class="connect-grid">
+        <div class="connect-copy">
+          <p class="section-label"><span>02</span> Connect</p>
+          <h2>A note is never<br>only one note.</h2>
+          <p class="lede">The moment a link lands, it works in both directions. Noema keeps the argument, the contradiction, and the note that started it all within reach. Choose a relation to open it.</p>
+          <div class="relations" id="relations" aria-label="Related notes">
+            <button class="relation is-active" type="button" data-note="spacing">
+              <span class="relation__type">supports</span>
+              <b>The spacing effect</b>
+              <span class="relation__meta">Research · 6 links</span>
+            </button>
+            <button class="relation" type="button" data-note="reread">
+              <span class="relation__type">extends</span>
+              <b>Why we reread</b>
+              <span class="relation__meta">Essay · 4 links</span>
+            </button>
+            <button class="relation" type="button" data-note="shallows">
+              <span class="relation__type">complicates</span>
+              <b>Reading notes: The Shallows</b>
+              <span class="relation__meta">Book · 8 links</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="note-window">
+          <div class="note-window__bar">
+            <span class="note-window__crumb">Attention &amp; design / Essay</span>
+            <span class="note-window__live"><i></i>saved</span>
+          </div>
+          <div class="note-window__body">
+            <h3 id="note-title">The spacing effect</h3>
+            <p class="note-window__meta" id="note-meta">Research · 6 links · edited 2h ago</p>
+            <p id="note-text">Retrieval gets easier when the gap between passes grows. The second read should feel a little harder than the first.</p>
+            <p>That small difficulty is the point: it is the moment the note stops being a record and becomes something you know. It sits close to <span class="inline-link" data-note="reread">why we reread</span> and to <span class="inline-link" data-note="shallows">the shallows</span>.</p>
+            <div class="note-window__tags">
+              <span>#memory</span><span>#practice</span>
+            </div>
+          </div>
+          <div class="note-window__foot">
+            <div class="backlink-mini"><span>Backlinks</span><b>3</b></div>
+            <div class="backlink-mini"><span>Links out</span><b>2</b></div>
+            <div class="backlink-mini"><span>Last opened</span><b>today</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--ask" id="ask">
+    <div class="wrap ask-grid">
+      <div class="ask-copy">
+        <p class="section-label"><span>03</span> Ask</p>
+        <h2>Ask six<br>months later.</h2>
+        <p class="lede">You will not remember the title, the folder, or the month. Describe the shape of the thought. Noema finds the notes that mean the same thing, and shows you where every sentence came from.</p>
+        <ul class="ask-facts">
+          <li>Semantic search runs on device.</li>
+          <li>Every answer cites its notes.</li>
+          <li>No internet connection required.</li>
+        </ul>
+      </div>
+
+      <div class="thread">
+        <div class="thread__head">
+          <span class="thread__title">Noema, over your archive</span>
+          <span class="thread__status">on device</span>
+        </div>
+        <div class="thread__scroll" id="thread-scroll" aria-live="polite">
+          <div class="bubble" id="thread-question">What did I learn about attention this year?</div>
+          <div class="answer" id="thread-answer">
+            <p>That attention is built by the room, not summoned by will. Three notes keep circling the same point: a quiet surface is a design decision, the medium trains the attention it asks for, and the inbox is a promise you have to keep by hand.</p>
+            <div class="answer__sources" id="thread-sources">
+              <span class="source-pill"><span>Attention is a design material</span><em>97%</em></span>
+              <span class="source-pill"><span>Reading notes: The Shallows</span><em>84%</em></span>
+              <span class="source-pill"><span>A quieter inbox</span><em>80%</em></span>
+            </div>
+          </div>
+        </div>
+        <form class="thread__input" id="thread-form">
+          <label class="sr-only" for="follow-up">Ask a follow-up</label>
+          <input id="follow-up" type="text" autocomplete="off" placeholder="Ask a follow-up…">
+          <button type="submit" aria-label="Ask">
+            <svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9h11M10 4.5 14.5 9 10 13.5"/></svg>
+          </button>
+        </form>
+        <div class="thread__suggest" id="thread-suggest">
+          <button type="button" data-q="Where do my files live?">Where do my files live?</button>
+          <button type="button" data-q="Why do I forget what I read?">Why do I forget what I read?</button>
+          <button type="button" data-q="What connects Uppsala and rereading?">What connects Uppsala and rereading?</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--private" id="privacy" data-nav-light>
+    <div class="wrap private-grid">
+      <div class="private-copy">
+        <p class="section-label section-label--dark"><span>04</span> Privacy</p>
+        <h2>A room<br>of your own.</h2>
+        <p class="lede lede--dark">Noema is a folder of files, not a service you have to trust. Sync is encrypted end to end and the search index is built on your machine. Delete the app tomorrow. The folder still opens.</p>
+        <p class="private-quote">“A second brain should outlive the company that made it.”</p>
+      </div>
+      <div class="manifest">
+        <div class="manifest__head"><span>What</span><span>Where it lives</span></div>
+        <div class="manifest__row"><b>Your notes</b><span>Markdown files, on your disk</span></div>
+        <div class="manifest__row"><b>Search index</b><span>Built on device, never uploaded</span></div>
+        <div class="manifest__row"><b>Sync</b><span>End-to-end encrypted</span></div>
+        <div class="manifest__row"><b>Reading your notes</b><span>No one at Noema can</span></div>
+        <div class="manifest__row"><b>Leaving</b><span>Delete the app. Keep the folder.</span></div>
+        <div class="manifest__foot">
+          <span class="manifest__path">~/Notes/noema</span>
+          <span class="manifest__state"><i></i>248 files, intact</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="close" id="start">
+    <div class="close__stars" aria-hidden="true"></div>
+    <div class="wrap close__inner">
+      <p class="section-label section-label--light"><span>05</span> Begin</p>
+      <h2>Think in fragments.<br>Find the whole.</h2>
+      <p class="close__lede">Import a folder. Write one line. Let the connections arrive.</p>
+      <div class="close__actions">
+        <button class="btn btn--amber" type="button" data-open-signup>Start free</button>
+        <a class="ghost-link" href="#capture">Write your first note</a>
+      </div>
+      <p class="close__fine">Free while Noema is in beta. Your files stay yours.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div class="footer__brand">
+      <a class="brand brand--footer" href="#top" aria-label="Noema, back to top">
+        <svg class="brand__mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9.3" cy="12" r="5.6"/><circle cx="14.7" cy="12" r="5.6"/><circle class="brand__dot" cx="12" cy="12" r="1.35"/></svg>
+        <span class="brand__word">noema</span>
+      </a>
+      <p>A second brain that keeps the thread.</p>
+    </div>
+    <nav class="footer__nav" aria-label="Footer">
+      <a href="#capture">Capture</a>
+      <a href="#connect">Connect</a>
+      <a href="#ask">Ask</a>
+      <a href="#privacy">Privacy</a>
+      <a href="#start">Start</a>
+    </nav>
+    <div class="footer__meta">
+      <span>Direction 02, Nightfall</span>
+      <span>Design prototype, 2026</span>
+    </div>
+  </div>
+</footer>
+
+<nav class="switcher" aria-label="Design directions">
+  <span class="switcher__label">Directions</span>
+  <a href="../1/index.html" aria-label="Direction 01, Daylight" title="Direction 01, Daylight"><b>01</b><span>Daylight</span></a>
+  <a href="../2/index.html" aria-current="page" aria-label="Direction 02, Nightfall" title="Direction 02, Nightfall"><b>02</b><span>Nightfall</span></a>
+  <a href="../3/index.html" aria-label="Direction 03, Blueprint" title="Direction 03, Blueprint"><b>03</b><span>Blueprint</span></a>
+</nav>
+
+<dialog class="signup" id="signup" aria-labelledby="signup-title">
+  <button class="signup__close" type="button" data-close-signup aria-label="Close">
+    <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 3 10 10M13 3 3 13"/></svg>
+  </button>
+  <div class="signup__body" id="signup-form-wrap">
+    <svg class="signup__mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9.3" cy="12" r="5.6"/><circle cx="14.7" cy="12" r="5.6"/><circle cx="12" cy="12" r="1.35"/></svg>
+    <h2 id="signup-title">Start your vault.</h2>
+    <p>One folder, on your disk. Beta invitations go out every Tuesday.</p>
+    <form id="signup-form" novalidate>
+      <label for="signup-email">Email</label>
+      <input id="signup-email" name="email" type="email" autocomplete="email" placeholder="you@studio.com">
+      <p class="signup__error" id="signup-error" role="alert" hidden>Enter an email address so we can send the invitation.</p>
+      <button class="btn btn--amber signup__submit" type="submit">Create my vault</button>
+      <p class="signup__fine">Prototype only. No account will be created.</p>
+    </form>
+  </div>
+  <div class="signup__body signup__body--done" id="signup-done" hidden>
+    <span class="signup__check"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="m4 10.5 4 4 8-9"/></svg></span>
+    <h2>That is the whole flow.</h2>
+    <p>In the real app, this is where the invitation lands. This prototype stops before anything leaves your browser.</p>
+    <button class="btn btn--amber" type="button" data-close-signup>Back to the page</button>
+  </div>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>

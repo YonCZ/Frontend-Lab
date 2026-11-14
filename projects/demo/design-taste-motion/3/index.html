@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demos: put it down, pick it up later</title>
+<meta name="description" content="Demos is a notes app for the things you save and never find again. Drop a quote, a caption or a half-thought on the desk, then search it by any word you remember.">
+<meta name="theme-color" content="#F7F5EF">
+<link rel="stylesheet" href="assets/fonts/gabarito/font.css">
+<link rel="stylesheet" href="assets/fonts/chivo/font.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="mark" href="#top">Demos</a>
+    <nav class="pages" aria-label="Sections">
+      <a href="#keeps">What lands here</a>
+      <a href="#find">Finding it</a>
+      <a href="#why">One desk</a>
+    </nav>
+    <button class="btn btn-sm" type="button" data-focus-composer>Write a note</button>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy" data-enter>
+        <h1>Put it down. Pick it up later.</h1>
+        <p class="sub">Demos is a notes app for the thing you save and never find again. A quote, a photo caption, a call, a half-thought. It all lands on one desk, with enough context to come back to.</p>
+        <div class="hero-actions">
+          <button class="btn" type="button" data-focus-composer>Write a note</button>
+          <a class="btn-text" href="#find">See how finding works</a>
+        </div>
+        <p class="fact">One note, four things kept with it: the words, the source, the day, the neighbours.</p>
+      </div>
+
+      <div class="desk" data-enter aria-label="The demo desk">
+        <div class="desk-head">
+          <p class="desk-title">The desk</p>
+          <p class="desk-count" id="deskCount">6 notes</p>
+        </div>
+
+        <form class="composer" id="composer" novalidate>
+          <label class="sr-only" for="note">What did you keep?</label>
+          <textarea id="note" rows="2" placeholder="The shelf goes above the plug, not beside it."></textarea>
+          <div class="composer-row">
+            <button class="btn btn-sm" type="submit">Pin it</button>
+            <p class="composer-hint">It stays in this browser.</p>
+          </div>
+          <p class="form-error" id="formError" role="alert" hidden></p>
+        </form>
+
+        <div class="search-row">
+          <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M12.6 12.6 17 17"/></svg>
+          <label class="sr-only" for="find">Search the desk</label>
+          <input id="find" type="search" autocomplete="off" placeholder="chair, Priya, memory">
+          <span class="search-count" id="searchCount" role="status">6 notes</span>
+        </div>
+
+        <ul class="cards" id="cards" aria-live="polite"></ul>
+        <p class="desk-foot" id="deskStatus" role="status">Six example notes. Add one and search for it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="keeps">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Everything you would otherwise leave in six places.</h2>
+        <p>Nothing has to be tidy to get in. A note keeps the format it arrived in, and the reason you kept it.</p>
+      </div>
+
+      <div class="pinboard">
+        <article class="pin pin-quote">
+          <span class="tape" aria-hidden="true"></span>
+          <p class="pin-kind">Quote</p>
+          <blockquote>The half-life of a good interface is about three years. The habit it builds lasts a decade.</blockquote>
+          <p class="pin-meta">The Shape of Screens, page 88<br>Kept 12 Mar</p>
+        </article>
+
+        <article class="pin pin-link">
+          <p class="pin-kind">Link</p>
+          <p class="pin-domain">theguardian.example</p>
+          <h3>Memory palace piece</h3>
+          <p class="pin-body">A memory palace is just a route you already know, with new things left along it.</p>
+          <p class="pin-meta">Saved from a tab, 4 Feb</p>
+        </article>
+
+        <article class="pin pin-voice">
+          <p class="pin-kind">Voice memo</p>
+          <div class="wave" aria-hidden="true">
+            <i style="--h:22%"></i><i style="--h:48%"></i><i style="--h:72%"></i><i style="--h:34%"></i><i style="--h:88%"></i><i style="--h:56%"></i><i style="--h:100%"></i><i style="--h:40%"></i><i style="--h:66%"></i><i style="--h:30%"></i><i style="--h:78%"></i><i style="--h:46%"></i><i style="--h:58%"></i><i style="--h:24%"></i>
+          </div>
+          <p class="pin-voice-time">0:42</p>
+          <p class="pin-body">The shelf goes above the plug, not beside it.</p>
+          <p class="pin-meta">Recorded 9 Jan</p>
+        </article>
+
+        <article class="pin pin-photo">
+          <span class="tape" aria-hidden="true"></span>
+          <p class="pin-kind">Photo note</p>
+          <div class="chair-art" role="img" aria-label="A low chair drawn in flat shapes on a pale floor">
+            <svg viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="320" height="180" fill="#F1EDE4"/>
+              <ellipse cx="168" cy="160" rx="82" ry="7" fill="#DED6C5"/>
+              <rect x="104" y="34" width="17" height="82" rx="2" fill="#B98A54"/>
+              <rect x="104" y="56" width="76" height="16" rx="2" fill="#B98A54"/>
+              <rect x="104" y="98" width="122" height="20" rx="2" fill="#B98A54"/>
+              <rect x="116" y="118" width="9" height="38" fill="#8A6538"/>
+              <rect x="206" y="118" width="9" height="38" fill="#8A6538"/>
+            </svg>
+          </div>
+          <h3>Low chair, 1962</h3>
+          <p class="pin-body">Low chair, oak, 1962. The proportions are right. The upholstery is not.</p>
+          <p class="pin-meta">Screenshot, 17 Jan</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section find" id="find">
+    <div class="wrap">
+      <div class="find-head">
+        <h2>You remember the shape, not the words.</h2>
+        <p>Finding is the whole product. Demos reads titles, text, sources and kinds, so one half-remembered detail is a route back.</p>
+      </div>
+
+      <div class="memories">
+        <article class="memory">
+          <p class="memory-label">You remember it was about a chair.</p>
+          <p class="memory-query">“chair”</p>
+          <div class="memory-result">
+            <p class="memory-title">The chair</p>
+            <p class="memory-meta">furniturearchive.example, 17 Jan</p>
+          </div>
+          <p class="memory-why">Matched in the title and the text.</p>
+        </article>
+
+        <article class="memory">
+          <p class="memory-label">You remember Priya said it on a call.</p>
+          <p class="memory-query">“Priya”</p>
+          <div class="memory-result">
+            <p class="memory-title">Onboarding call with Priya</p>
+            <p class="memory-meta">Call, 8 Mar</p>
+          </div>
+          <p class="memory-why">Matched the source as well as the note.</p>
+        </article>
+
+        <article class="memory">
+          <p class="memory-label">You remember the week you measured the kitchen.</p>
+          <p class="memory-query">“kitchen”</p>
+          <div class="memory-result">
+            <p class="memory-title">Kitchen wall</p>
+            <p class="memory-meta">Screenshot, 11 Jan</p>
+          </div>
+          <p class="memory-why">Matched the caption and the voice memo.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section why" id="why">
+    <div class="wrap why-grid">
+      <h2>A note you cannot find is a note you did not keep.</h2>
+      <div class="why-copy">
+        <p>Six tabs, a camera roll and a chat with yourself are six separate searches. The note is never the problem. The way back is.</p>
+        <p>One desk puts every kind of note behind one search, with the source still attached and the neighbours still named. That is the difference between saving something and keeping it.</p>
+
+        <div class="proof" aria-label="Example search result">
+          <div class="proof-field"><span>chair</span><span>2 notes</span></div>
+          <ul>
+            <li><span>The chair</span><span>Link</span></li>
+            <li><span>Kitchen wall</span><span>Photo note</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="close" id="start">
+    <div class="wrap close-grid">
+      <h2>Start with one note.</h2>
+      <div class="close-copy">
+        <p>Write the thing you would otherwise screenshot, quote into a chat or forget by Thursday. It stays in this browser.</p>
+        <button class="btn btn-lg" type="button" data-focus-composer>Write a note</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-in">
+    <div class="footer-mark">
+      <p class="mark">Demos</p>
+      <p>A working demo. Notes live in your browser, not on a server.</p>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="#keeps">What lands here</a>
+      <a href="#find">Finding it</a>
+      <a href="#why">One desk</a>
+    </nav>
+  </div>
+</footer>
+
+<nav class="variants" aria-label="Demo variant">
+  <span class="variants-label">Variant</span>
+  <a href="../1/index.html" aria-label="Variant 1: Register" title="Register">1</a>
+  <a href="../2/index.html" aria-label="Variant 2: Field" title="Field">2</a>
+  <a href="../3/index.html" aria-label="Variant 3: Desk" aria-current="page" title="Desk">3</a>
+</nav>
+
+<script src="app.js"></script>
+</body>
+</html>

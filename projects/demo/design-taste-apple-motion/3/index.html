@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demos: a second brain you can walk around</title>
+<meta name="description" content="Demos spreads your notes across one board and draws the links between them. Pin a thought now, follow the threads back to it later.">
+<meta name="theme-color" content="#F2F2ED">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' rx='4' fill='%23D1432F'/%3E%3Ccircle cx='8' cy='8' r='2.2' fill='%23F2F2ED'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/fonts/bricolage-grotesque/font.css">
+<link rel="stylesheet" href="assets/fonts/hanken-grotesk/font.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#board">Skip to the board</a>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a class="brand" href="#top" aria-label="Demos, top of page">
+      <span class="brand-dot" aria-hidden="true"></span>
+      <span>Demos</span>
+    </a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#holds">The board</a>
+      <a href="#thread">Threads</a>
+      <a href="#why">Why a map</a>
+    </nav>
+    <a class="btn btn-quiet" href="#capture" data-focus-capture>Pin a note</a>
+    <nav class="variants" aria-label="Design variants">
+      <span class="variants-label">Variant</span>
+      <a href="../1/index.html" aria-label="Variant 1: Ledger">1</a>
+      <a href="../2/index.html" aria-label="Variant 2: Summon">2</a>
+      <a href="../3/index.html" aria-current="page" aria-label="Variant 3: Atlas">3</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div class="hero-top">
+        <div class="hero-copy">
+          <h1 class="enter">A second brain<br>you can walk around.</h1>
+          <p class="hero-lede enter d1">Demos spreads your notes across one board and draws the links between them. Pin a thought now, follow the threads back to it later.</p>
+          <p class="hero-fact enter d2">Every card keeps its source, its date, and the notes beside it.</p>
+        </div>
+
+        <form class="capture enter d1" id="capture" aria-label="Pin a note">
+          <div class="capture-head">
+            <span class="capture-title">Pin a note</span>
+            <span class="capture-note">saved in this browser</span>
+          </div>
+          <label class="sr-only" for="new-text">The note</label>
+          <textarea id="new-text" rows="2" placeholder="What did you notice?"></textarea>
+          <div class="capture-mid">
+            <fieldset class="kinds">
+              <legend class="sr-only">Kind of note</legend>
+              <label><input type="radio" name="atlas-kind" value="Idea" checked><span>Idea</span></label>
+              <label><input type="radio" name="atlas-kind" value="Quote"><span>Quote</span></label>
+              <label><input type="radio" name="atlas-kind" value="Link"><span>Link</span></label>
+              <label><input type="radio" name="atlas-kind" value="Call"><span>Call</span></label>
+            </fieldset>
+          </div>
+          <div class="capture-row">
+            <label class="sr-only" for="new-source">Where it came from</label>
+            <input id="new-source" type="text" autocomplete="off" placeholder="Source, optional">
+            <button class="btn" type="submit">Pin it</button>
+          </div>
+          <p class="capture-error" id="capture-error" aria-live="polite"></p>
+        </form>
+      </div>
+
+      <div class="board-wrap enter d2">
+        <div class="board-bar">
+          <div class="board-search">
+            <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.3"/><path d="M10.3 10.3 14 14"/></svg>
+            <label class="sr-only" for="board-query">Search the board</label>
+            <input id="board-query" type="text" autocomplete="off" spellcheck="false" placeholder="Search the board">
+            <button class="board-clear" id="board-clear" type="button" hidden>Clear</button>
+          </div>
+          <p class="board-status"><span id="board-status" aria-live="polite">11 notes on the board</span><span class="board-status-hint">click a card to open it</span></p>
+          <div class="clusters" id="clusters" aria-label="Filter by cluster">
+            <button type="button" class="cluster" data-cluster="reading" aria-pressed="false"><span class="dot" aria-hidden="true"></span>Reading <span class="cluster-count" data-cluster-count="reading">5</span></button>
+            <button type="button" class="cluster" data-cluster="work" aria-pressed="false"><span class="dot" aria-hidden="true"></span>Work <span class="cluster-count" data-cluster-count="work">3</span></button>
+            <button type="button" class="cluster" data-cluster="home" aria-pressed="false"><span class="dot" aria-hidden="true"></span>Home <span class="cluster-count" data-cluster-count="home">3</span></button>
+          </div>
+        </div>
+
+        <div class="board" id="board" tabindex="-1">
+          <svg class="threads" id="threads" aria-hidden="true"></svg>
+          <div class="board-canvas" id="board-canvas">
+            <div class="board-col" data-col="0"></div>
+            <div class="board-col" data-col="1"></div>
+            <div class="board-col" data-col="2"></div>
+            <div class="board-col" data-col="3"></div>
+          </div>
+          <div class="board-empty" id="board-empty" hidden>
+            <p>No card matches that.</p>
+            <p class="board-empty-hint">Try a word from a note, or clear the search to see the whole board.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="holds" id="holds">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What the board holds.</h2>
+        <p>Every note belongs to a cluster and keeps the notes it sits beside. The board is the archive with those relations made visible.</p>
+      </div>
+      <div class="cluster-cols" id="cluster-cols">
+        <div class="cluster-col" data-cluster-col="reading">
+          <div class="cluster-col-head">
+            <span class="cluster-name">Reading</span>
+            <span class="cluster-num" data-cluster-count="reading">5</span>
+          </div>
+          <p class="cluster-desc">Books, essays and talks, with the page still attached.</p>
+          <ul class="cluster-list" data-cluster-list="reading"></ul>
+          <button class="quiet-link" type="button" data-cluster="reading">Show reading on the board</button>
+        </div>
+        <div class="cluster-col" data-cluster-col="work">
+          <div class="cluster-col-head">
+            <span class="cluster-name">Work</span>
+            <span class="cluster-num" data-cluster-count="work">3</span>
+          </div>
+          <p class="cluster-desc">Calls, rooms, trips and the things you promised someone.</p>
+          <ul class="cluster-list" data-cluster-list="work"></ul>
+          <button class="quiet-link" type="button" data-cluster="work">Show work on the board</button>
+        </div>
+        <div class="cluster-col" data-cluster-col="home">
+          <div class="cluster-col-head">
+            <span class="cluster-name">Home</span>
+            <span class="cluster-num" data-cluster-count="home">3</span>
+          </div>
+          <p class="cluster-desc">The kitchen, the flat, and the recipes worth repeating.</p>
+          <ul class="cluster-list" data-cluster-list="home"></ul>
+          <button class="quiet-link" type="button" data-cluster="home">Show home on the board</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="thread" id="thread">
+    <div class="wrap">
+      <div class="thread-head">
+        <h2>Follow the thread.</h2>
+        <p>You remember one note. The board shows the two it sits beside, so the next one is a step, not a search.</p>
+      </div>
+      <div class="trail" id="trail" aria-label="One thread through the board"></div>
+      <div class="thread-foot">
+        <button class="btn btn-ink" type="button" id="show-thread">Show this thread on the board</button>
+        <p>Three notes, three sources, one line between them.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="why" id="why">
+    <div class="wrap">
+      <div class="section-head why-head">
+        <h2>A pile loses the thread.</h2>
+        <p>Scattered notes keep the fragments. They lose the relation, which is the part that lets one note lead you to the next.</p>
+      </div>
+      <div class="compare">
+        <div class="compare-side">
+          <p class="compare-label">A pile</p>
+          <div class="pile" aria-hidden="true">
+            <span class="pile-card p1">a quote</span>
+            <span class="pile-card p2">a link</span>
+            <span class="pile-card p3">a call</span>
+            <span class="pile-card p4">a photo</span>
+            <span class="pile-card p5">a tab</span>
+          </div>
+          <p class="compare-line">Five fragments, five places, no way between them.</p>
+        </div>
+        <div class="compare-side">
+          <p class="compare-label">The board</p>
+          <div class="mini-map" aria-hidden="true">
+            <svg viewBox="0 0 420 250" preserveAspectRatio="none">
+              <path d="M68 56 C 130 56, 128 126, 190 126" class="mm-line"/>
+              <path d="M190 126 C 248 126, 250 60, 320 60" class="mm-line"/>
+              <path d="M190 126 C 248 126, 250 190, 320 190" class="mm-line"/>
+              <path d="M68 56 C 60 120, 80 200, 150 206" class="mm-line mm-soft"/>
+            </svg>
+            <span class="mini-card m1"><i class="dot"></i>A quote</span>
+            <span class="mini-card m2"><i class="dot dot-work"></i>A call</span>
+            <span class="mini-card m3"><i class="dot dot-home"></i>A recipe</span>
+            <span class="mini-card m4"><i class="dot dot-work"></i>A room</span>
+            <span class="mini-card m5"><i class="dot"></i>A link</span>
+          </div>
+          <p class="compare-line">Five notes, one board, every link visible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="close" id="start">
+    <div class="wrap">
+      <h2>Pin one thought.<br>Follow it later.</h2>
+      <p class="close-lede">The board is a demo, and it is yours to change. Pin a note, search for a word, open a card. Nothing leaves this browser.</p>
+      <div class="actions">
+        <button class="btn btn-ink" type="button" data-focus-capture>Pin a note</button>
+        <button class="link" type="button" data-focus-search>Search the board</button>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="wrap footer-in">
+        <span class="footer-brand">Demos</span>
+        <span>A local demo. Notes are stored in your browser.</span>
+        <button class="quiet-link" type="button" id="reset-demo">Reset demo notes</button>
+      </div>
+    </footer>
+  </section>
+
+</main>
+
+<dialog class="note-dialog" id="note-dialog" aria-labelledby="dialog-title">
+  <div class="dialog-in" id="dialog-in"></div>
+</dialog>
+
+<div class="toast" id="toast" role="status" hidden>
+  <span id="toast-text">Pinned to the board</span>
+  <button type="button" id="toast-action">Undo</button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
