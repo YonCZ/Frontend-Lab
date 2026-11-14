@@ -72,7 +72,7 @@ Create `projects/<slug>/`, add the slug to `projects/catalog.json`, and describe
 
 `scripts/` contains the harness used to run many builds across models and skills, plus a font kit and a screenshot helper.
 
-- `fonts/` — 16 OFL families (latin, 400/700) with ready `font.css` files; agents copy what they need into `assets/fonts/`.
+- `fonts/` — 48 OFL families (latin, 400/700 where available) with ready `font.css` files; agents copy what they need into `assets/fonts/`. Add more with `python3 scripts/fetch-fonts.py "Family Name"`.
 - `scripts/shot.py` — one-command screenshots (`--url`, `--out`, `--full`, `--selector`, `--contact "a,b"` for one stitched sheet), 1000px wide, JPEG by default.
 - `scripts/check.py` — structural QA without images: console errors, failed local requests, broken images, horizontal overflow, empty body.
 
