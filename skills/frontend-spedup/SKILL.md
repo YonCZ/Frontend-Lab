@@ -11,8 +11,8 @@ Check the page before you look at it. A screenshot costs seconds. A failed reque
 
 1. Build the page.
 2. Run the structural check and fix every failure.
-3. Look at images, at most two.
-4. Fix what you found, re-run the check, and re-screenshot only what changed.
+3. Look at images
+4. Fix what you found, repeat until you are satisfied
 
 ## Cheap checks before screenshots
 
@@ -26,8 +26,6 @@ Check the page before you look at it. A screenshot costs seconds. A failed reque
 
 ## Screenshot budget
 
-- One full-page image at 1000px wide, JPEG.
-- One contact sheet of the sections you changed, not one image per section.
 - Never re-read an unchanged image. One look per change set.
 
 ## When something looks wrong
@@ -37,6 +35,4 @@ Name the cause with an assertion first: computed style, bounding box, class list
 ## Do not
 
 - Install Playwright, Chromium, or any browser. It is already available.
-- Download fonts from Google Fonts. Use the local kit.
-- Screenshot after every edit, or screenshot the same section twice.
 - Replace assertions with "it looks fine".
