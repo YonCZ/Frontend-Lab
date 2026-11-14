@@ -2,7 +2,11 @@
 
 All families are SIL Open Font License, latin subset, ready `font.css` with relative `url()` paths.
 
+- Anton — `anton/font.css`
+- Anybody — `anybody/font.css`
 - Archivo — `archivo/font.css`
+- Archivo Black — `archivo-black/font.css`
+- Be Vietnam Pro — `be-vietnam-pro/font.css`
 - Bitter — `bitter/font.css`
 - Bodoni Moda — `bodoni-moda/font.css`
 - Bricolage Grotesque — `bricolage-grotesque/font.css`
@@ -20,6 +24,9 @@ All families are SIL Open Font License, latin subset, ready `font.css` with rela
 - Fraunces — `fraunces/font.css`
 - Funnel Display — `funnel-display/font.css`
 - Gabarito — `gabarito/font.css`
+- Geist — `geist/font.css`
+- Hanken Grotesk — `hanken-grotesk/font.css`
+- Hubot Sans — `hubot-sans/font.css`
 - IBM Plex Mono — `ibm-plex-mono/font.css`
 - IBM Plex Sans — `ibm-plex-sans/font.css`
 - Instrument Sans — `instrument-sans/font.css`
@@ -27,11 +34,13 @@ All families are SIL Open Font License, latin subset, ready `font.css` with rela
 - Inter — `inter/font.css`
 - JetBrains Mono — `jetbrains-mono/font.css`
 - Karla — `karla/font.css`
+- Lexend — `lexend/font.css`
 - Libre Baskerville — `libre-baskerville/font.css`
 - Literata — `literata/font.css`
 - Lora — `lora/font.css`
 - Manrope — `manrope/font.css`
 - Martian Mono — `martian-mono/font.css`
+- Mona Sans — `mona-sans/font.css`
 - Newsreader — `newsreader/font.css`
 - Onest — `onest/font.css`
 - Outfit — `outfit/font.css`
@@ -39,6 +48,7 @@ All families are SIL Open Font License, latin subset, ready `font.css` with rela
 - Playfair Display — `playfair-display/font.css`
 - Plus Jakarta Sans — `plus-jakarta-sans/font.css`
 - Public Sans — `public-sans/font.css`
+- Red Hat Display — `red-hat-display/font.css`
 - Schibsted Grotesk — `schibsted-grotesk/font.css`
 - Sora — `sora/font.css`
 - Source Code Pro — `source-code-pro/font.css`

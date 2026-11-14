@@ -1,7 +1,8 @@
-"""Download latin subsets of Google Fonts into the local kit.
+"""Download latin subsets of Google or Fontshare fonts into the local kit.
 
 Usage:
   python3 scripts/fetch-fonts.py "Public Sans" "DM Serif Display"
+  python3 scripts/fetch-fonts.py "Satoshi" "Clash Display" --fontshare
 
 Writes fonts/<family-slug>/{400,700}.woff2 plus a ready font.css with relative
 URLs, then rebuilds fonts/README.md. Uses curl, so no Python TLS setup needed.
@@ -27,19 +28,27 @@ def load_meta():
         return {}
 
 
-def css_for(family: str, weights: str) -> str:
-    url = ("https://fonts.googleapis.com/css2?family="
-           + family.replace(" ", "+") + f":wght@{weights}&display=swap")
+def css_for(family: str, weights: str, fontshare: bool = False) -> str:
+    if fontshare:
+        slug = re.sub(r"[^a-z0-9]+", "-", family.lower()).strip("-")
+        url = ("https://api.fontshare.com/v2/css?f[]="
+               + slug + "@" + weights.replace(";", ",") + "&display=swap")
+    else:
+        url = ("https://fonts.googleapis.com/css2?family="
+               + family.replace(" ", "+") + f":wght@{weights}&display=swap")
     return subprocess.run(["curl", "-sSL", "-A", UA, "--max-time", "20", url],
                           capture_output=True, text=True).stdout
 
 
-def fetch(family: str) -> int:
+def fetch(family: str, fontshare: bool = False) -> int:
     slug = re.sub(r"[^a-z0-9]+", "-", family.lower()).strip("-")
-    css = css_for(family, "400;700")
+    css = css_for(family, "400;700", fontshare)
     if "@font-face" not in css:
-        css = css_for(family, "400")
-    blocks = re.findall(r"/\*\s*([a-z\-]+)\s*\*/\s*@font-face\s*\{(.*?)\}", css, re.S)
+        css = css_for(family, "400", fontshare)
+    if fontshare:
+        blocks = [("latin", body) for body in re.findall(r"@font-face\s*\{(.*?)\}", css, re.S)]
+    else:
+        blocks = re.findall(r"/\*\s*([a-z\-]+)\s*\*/\s*@font-face\s*\{(.*?)\}", css, re.S)
     folder = fonts / slug
     folder.mkdir(parents=True, exist_ok=True)
     lines = [f"/* {family} — latin subset, OFL */"]
@@ -48,7 +57,9 @@ def fetch(family: str) -> int:
         if subset != "latin":
             continue
         weight = re.search(r"font-weight:\s*(\d+)", body).group(1)
-        src = re.search(r"url\((https://[^)]+\.woff2)\)", body).group(1)
+        src = re.search(r"url\('?(//[^)'\s]+\.woff2|https://[^)'\s]+\.woff2)'?\)", body).group(1)
+        if src.startswith("//"):
+            src = "https:" + src
         name = f"{weight}.woff2"
         subprocess.run(["curl", "-sSL", "-A", UA, "--max-time", "20",
                         "-o", str(folder / name), src], capture_output=True)
@@ -81,9 +92,11 @@ def rebuild_readme():
 
 if __name__ == "__main__":
     wanted = sys.argv[1:]
+    fontshare = "--fontshare" in wanted
+    wanted = [item for item in wanted if not item.startswith("--")]
     if not wanted:
-        sys.exit('usage: fetch-fonts.py "Family Name" ["Another Family"]')
+        sys.exit('usage: fetch-fonts.py "Family Name" ["Another Family"] [--fontshare]')
     for family in wanted:
-        count = fetch(family)
+        count = fetch(family, fontshare)
         print(f"{family}: {count} file(s)")
     rebuild_readme()
