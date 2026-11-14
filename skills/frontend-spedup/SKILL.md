@@ -16,13 +16,11 @@ Check the page before you look at it. A screenshot costs seconds. A failed reque
 
 ## Cheap checks before screenshots
 
-- `node --check app.js` for every script you wrote.
-- Every local asset exists. Grep the HTML and CSS for `src=` and `url(`, then `curl -o /dev/null -w "%{http_code}"` each path.
-- DOM assertions: page title, `h1`, primary CTA and cart/checkout buttons are present. Body text runs past 200 characters.
-- No horizontal overflow at 1440: `document.documentElement.scrollWidth <= clientWidth + 1`.
-- Every `img` reports `naturalWidth > 0`.
-- No page errors and no failed local requests.
-- One interaction pass: adding to cart changes the count, a dialog opens and closes, a form submits to a visible confirmation.
+- `node --check` every script you wrote.
+- The page loads with HTTP 200.
+- No page errors in the console.
+- No horizontal overflow at 1440.
+- Assert the flow: finish selection updates the price, quantity changes, adding to cart updates the count and subtotal, the cart survives a reload, checkout reaches a confirmation, and the cart clears.
 
 ## Screenshot budget
 
