@@ -1,18 +1,27 @@
+const providers: Array<[RegExp, string]> = [
+  [/claude|opus|sonnet|haiku|fable|anthropic/i, "anthropic.webp"],
+  [/gpt|openai|codex|sol/i, "openai.svg"],
+  [/gemini|google/i, "gemini.webp"],
+  [/deepseek/i, "deepseek.svg"],
+  [/kimi|moonshot/i, "kimi.webp"],
+  [/glm|zhipu/i, "glm.webp"],
+  [/grok|xai/i, "xai.svg"],
+  [/mistral/i, "mistral.svg"],
+  [/meta|llama/i, "meta.svg"],
+];
+
 export function ModelMark({ model }: { model: string }) {
-  if (/claude|opus|sonnet|haiku|fable/i.test(model)) {
+  const match = providers.find(([pattern]) => pattern.test(model));
+  if (match) {
     return (
-      <svg className="model-mark claude" viewBox="0 0 24 24" aria-hidden="true">
-        <path
-          d="M12 2v20M2 12h20M5 5l14 14M5 19 19 5M8 3l8 18M3 8l18 8M3 16l18-8M8 21l8-18"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.4"
-          strokeLinecap="round"
-        />
-      </svg>
+      <img
+        className="model-mark provider"
+        src={`/assets/providers/${match[1]}`}
+        alt=""
+        aria-hidden="true"
+      />
     );
   }
-  if (/sol|gemini/i.test(model)) return <span className="model-mark spark" aria-hidden="true" />;
   return (
     <span className="model-mark model-letter" aria-hidden="true">
       {[...model][0]?.toUpperCase() || "?"}

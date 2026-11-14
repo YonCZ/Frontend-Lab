@@ -115,4 +115,5 @@ Design skills are referenced by absolute path in the prompt, not auto-discovered
 
 - Builds run from disk with real relative paths, so scripts, assets and `localStorage` behave normally. Keep the server bound to localhost and only run builds you trust.
 - Nothing here calls a model provider; point your own runner at the composed prompt and write the result into a build folder.
+- Provider marks in `public/assets/providers/` come from [whichai.dev](https://www.whichai.dev/).
 - No credentials, run logs or personal projects are included. `projects/*/runs/` and `dist/` are gitignored.

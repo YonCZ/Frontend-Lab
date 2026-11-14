@@ -641,6 +641,9 @@ dialog p {
   height: 21px;
   flex: none;
 }
+.model-mark.provider {
+  object-fit: contain;
+}
 .claude {
   color: #ed8b66;
 }
