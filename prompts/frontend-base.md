@@ -1,6 +1,9 @@
-Build a runnable frontend prototype for the project brief below. Work in the assigned build folders and keep all project files there. Use index.html as the preview entry point.
-Design and build for desktop only, on a 1440px-wide canvas. Implement the interactions needed to demonstrate the main user flow. {{assets_instruction}}
-Build {{variants}} variant{{variant_plural}}, one in each assigned directory: {{variant_dirs}}.
+Build root: {{build_root}}
+Create {{variants}} desktop-only variant{{variant_plural}} (1440px canvas) of a runnable frontend prototype for the brief below. Each variant goes in its number folder ({{variant_dirs}}) under that root, with index.html as its entry; keep files inside its folder and use relative paths. Implement the interactions needed to demonstrate the main user flow. {{assets_instruction}}
 
 ## Project brief
 {{project_brief}}
+
+{{skills_line}}
+{{tools_line}}
+Preview: {{base_url}}/<N>/index.html

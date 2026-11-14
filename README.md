@@ -90,7 +90,7 @@ python3 scripts/prepare-job.py frontend-design --variants 2
 
 The generated prompt also points at the local font kit, `scripts/shot.py`, and the preview server on `http://localhost:5173`.
 
-Placeholders in `prompts/frontend-base.md`: `{{project_brief}}`, `{{variants}}`, `{{variant_plural}}`, `{{variant_dirs}}`, `{{assets_instruction}}`.
+Placeholders in `prompts/frontend-base.md`: `{{build_root}}`, `{{variants}}`, `{{variant_plural}}`, `{{variant_dirs}}`, `{{assets_instruction}}`, `{{project_brief}}`, `{{skills_line}}`, `{{tools_line}}`, `{{base_url}}`.
 
 Queue commands target the first project in `projects/catalog.json` unless `QUEUE_PROJECT` is set:
 

@@ -5,9 +5,9 @@ Usage:
   python3 scripts/prepare-job.py all-skills --project test-2
   python3 scripts/prepare-job.py frontend-design-1
 
-Composes the prompt from the experiment's basePrompt with the project brief,
-variant count and directories substituted, plus the preset's skills. Copies
-the project's inputs into each variant's assets folder. Writes the prompt to
+Composes the prompt from the experiment's basePrompt with the build root,
+variant count, skills, tooling and preview base substituted. Copies the
+project's inputs into each variant's assets folder. Writes the prompt to
 projects/<project>/runs/<label>.prompt.md and prints it.
 """
 import json
@@ -73,16 +73,15 @@ else:
     variants = [int(variant)]
     label = job
 
-folders = []
+build_root = project / 'builds' / folder_slug / preset_id
 inputs = project / 'inputs'
 for variant in variants:
-    folder = project / 'builds' / folder_slug / preset_id / str(variant)
+    folder = build_root / str(variant)
     assets = folder / 'assets'
     assets.mkdir(parents=True, exist_ok=True)
     if inputs.is_dir():
         for asset in inputs.iterdir():
             shutil.copy2(asset, assets / asset.name)
-    folders.append(folder)
 
 has_assets = inputs.is_dir() and any(inputs.iterdir())
 if has_assets:
@@ -91,37 +90,35 @@ if has_assets:
 else:
     assets_instruction = 'Do not use any supplied image or photo assets.'
 
-template = (root / experiment['basePrompt']).read_text()
-base_prompt = (template
-               .replace('{{image_input_instruction}}', '')
-               .replace('{{project_brief}}', data['brief'])
-               .replace('{{assets_instruction}}', assets_instruction)
-               .replace('{{variants}}', str(len(folders)))
-               .replace('{{variant_plural}}', '' if len(folders) == 1 else 's')
-               .replace('{{variant_dirs}}', ', '.join(str(folder) for folder in folders)))
-
-heading = ('Your assigned build directory is ' if len(folders) == 1
-           else 'Your assigned build directories are ')
-prompt = f'{heading}{", ".join(str(f) for f in folders)}. '
-prompt += ('All project writes belong inside it.\n\n' if len(folders) == 1
-           else 'All project writes belong inside them.\n\n')
-prompt += base_prompt
-
-for skill in preset['skills']:
-    prompt += f"\nRead and apply {experiment['skills'][skill]}.\n"
-
-prompt += (f'\nFonts: a local kit is in {root}/fonts (see fonts/README.md). Copy the families you use '
-           'into assets/fonts and reference them locally; you may download another family if you need one.\n')
-prompt += (f'\nScreenshots: Playwright is already installed. Use python3 {root}/scripts/shot.py '
-           '--url <page-url> --out <file.jpg> [--full] [--selector "CSS"]. Do not npm install a browser.\n')
-
-urls = [f'http://localhost:5173/projects/{project_id}/builds/{folder_slug}/'
-        f'{preset_id}/{v}/index.html' for v in variants]
-if len(urls) == 1:
-    prompt += f'\nThe gallery preview server is at http://localhost:5173. Your page is at {urls[0]}\n'
+skill_paths = [experiment['skills'][skill] for skill in preset['skills']]
+if len(skill_paths) == 1:
+    skills_line = f'Skill: {skill_paths[0]}'
+elif skill_paths:
+    skills_line = 'Skills: ' + ', '.join(skill_paths)
 else:
-    prompt += (f'\nThe gallery preview server is at http://localhost:5173. Your pages are at '
-               + ' and '.join(urls) + '\n')
+    skills_line = ''
+
+tools_line = (
+    f"Fonts: {root}/fonts (README.md); copy the families you use into each variant's assets/fonts, "
+    'others may be downloaded. '
+    f'Screenshots: python3 {root}/scripts/shot.py --url <page-url> --out shot.jpg [--full] '
+    '(Playwright installed).'
+)
+base_url = (f'http://localhost:5173/projects/{project_id}/builds/'
+            f'{folder_slug}/{preset_id}')
+
+template = (root / experiment['basePrompt']).read_text()
+prompt = (template
+          .replace('{{image_input_instruction}}', '')
+          .replace('{{build_root}}', str(build_root))
+          .replace('{{variants}}', str(len(variants)))
+          .replace('{{variant_plural}}', '' if len(variants) == 1 else 's')
+          .replace('{{variant_dirs}}', ', '.join(f'{v}/' for v in variants))
+          .replace('{{assets_instruction}}', assets_instruction)
+          .replace('{{project_brief}}', data['brief'])
+          .replace('{{skills_line}}', skills_line)
+          .replace('{{tools_line}}', tools_line)
+          .replace('{{base_url}}', base_url))
 
 (project / 'runs').mkdir(exist_ok=True)
 (project / 'runs' / f'{label}.prompt.md').write_text(prompt)
