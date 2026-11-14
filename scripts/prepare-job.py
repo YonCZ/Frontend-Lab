@@ -17,7 +17,7 @@ from pathlib import Path
 
 root = Path(__file__).resolve().parent.parent
 
-flags = {'--project': None, '--variants': None, '--model': None}
+flags = {'--project': None, '--variants': None, '--model': None, '--brand': None}
 args = []
 tokens = sys.argv[1:]
 index = 0
@@ -52,6 +52,7 @@ model_id = flags['--model'] or experiment.get('model')
 if not model_id:
     raise SystemExit('project.json has no experiment.model; pass --model')
 folder_slug = experiment.get('folder') or model_id.split('/')[-1]
+brand = flags['--brand'] or data.get('brand') or 'Demos'
 
 job = args[0]
 preset = next((item for item in experiment['presets'] if item['id'] == job), None)
@@ -111,6 +112,7 @@ template = (root / experiment['basePrompt']).read_text()
 prompt = (template
           .replace('{{image_input_instruction}}', '')
           .replace('{{build_root}}', str(build_root))
+          .replace('{{brand}}', brand)
           .replace('{{variants}}', str(len(variants)))
           .replace('{{variant_plural}}', '' if len(variants) == 1 else 's')
           .replace('{{variant_dirs}}', ', '.join(f'{v}/' for v in variants))

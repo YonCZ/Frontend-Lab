@@ -87,6 +87,7 @@ Prepare a prompt for two variants of one preset:
 
 ```sh
 python3 scripts/prepare-job.py frontend-design --variants 2
+python3 scripts/prepare-job.py frontend-design --variants 2 --brand "Trio"   # default brand is Demos
 ```
 
 The generated prompt also points at the local font kit, `scripts/shot.py`, and the preview server on `http://localhost:5173`.
