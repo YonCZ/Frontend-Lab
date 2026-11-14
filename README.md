@@ -68,6 +68,20 @@ Create `projects/<slug>/`, add the slug to `projects/catalog.json`, and describe
 
 `projects/morrow-notes` and `projects/index-editions` are sample projects. Delete them and clear `projects/catalog.json` to start empty.
 
+## React and Motion without installs
+
+The lab root already has `react`, `react-dom`, `motion`, `vite` and `@vitejs/plugin-react` in `node_modules`. Node resolves them upward, so a build folder inside the repo needs no install of its own.
+
+```sh
+cp -R templates/react-motion projects/<project>/<variant>
+# edit src/, then:
+cd projects/<project>/<variant> && npx vite build
+```
+
+The build takes about a second and writes `dist/index.html`. Point the manifest entry at it. `base: "./"` is already set, so the folder works under any path in the lab.
+
+Do not run `npm install` inside a build folder. Only add a dependency at the lab root.
+
 ## Optional: the build queue
 
 `scripts/` contains the harness used to run many builds across models and skills, plus a font kit and a screenshot helper.

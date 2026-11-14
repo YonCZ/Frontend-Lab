@@ -1,0 +1,15 @@
+:root {
+  color-scheme: light dark;
+  --paper: #f7f5ef;
+  --ink: #14140f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+}
