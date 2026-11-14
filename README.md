@@ -105,6 +105,12 @@ python3 scripts/queue-driver.py mark <job-key> running <thread-id>
 
 `sync` expects a thread-id → status map from whatever runs your agents. The scripts expect an `experiment` block (`model`, `maxConcurrent`, `basePrompt`, `skills`, `presets`).
 
+## Skills
+
+`skills/frontend-spedup/SKILL.md` is a verification-first companion skill: run structural checks before spending screenshots, then look at at most two images. Point your agent at it alongside whichever design skill you use.
+
+Design skills are referenced by absolute path in the prompt, not auto-discovered, so an agent cannot load extra skills you did not assign.
+
 ## Notes
 
 - Builds run from disk with real relative paths, so scripts, assets and `localStorage` behave normally. Keep the server bound to localhost and only run builds you trust.
