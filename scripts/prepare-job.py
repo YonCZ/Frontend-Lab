@@ -99,10 +99,10 @@ else:
     skills_line = ''
 
 tools_line = (
-    f"Fonts: {root}/fonts (README.md); copy the families you use into each variant's assets/fonts, "
-    'others may be downloaded. '
-    f'Screenshots: python3 {root}/scripts/shot.py --url <page-url> --out shot.jpg [--full] '
-    '(Playwright installed).'
+    f"Tools (in {root}): fonts/ — copy the families you use into each variant's assets/fonts; "
+    'scripts/check.py --url <page> for console/404/overflow; scripts/shot.py --url <page> --full or '
+    '--contact "css,selectors". Review at most 2 images (full page + contact sheet of changed sections); '
+    "don't re-read unchanged shots. Playwright installed."
 )
 base_url = (f'http://localhost:5173/projects/{project_id}/builds/'
             f'{folder_slug}/{preset_id}')

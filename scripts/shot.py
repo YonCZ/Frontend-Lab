@@ -22,6 +22,7 @@ parser.add_argument("--full", action="store_true")
 parser.add_argument("--selector", action="append", default=[])
 parser.add_argument("--quality", type=int, default=70)
 parser.add_argument("--wait", type=int, default=350, help="milliseconds after load")
+parser.add_argument("--contact", default="", help="comma-separated selectors stitched into one image")
 args = parser.parse_args()
 
 try:
@@ -37,7 +38,26 @@ with sync_playwright() as p:
     page = browser.new_page(viewport={"width": args.width, "height": args.height}, device_scale_factor=1)
     page.goto(args.url, wait_until="load", timeout=30000)
     page.wait_for_timeout(args.wait)
-    if args.selector:
+    if args.contact:
+        from io import BytesIO
+        from PIL import Image
+        parts = []
+        for selector in [item.strip() for item in args.contact.split(",") if item.strip()]:
+            target = page.locator(selector).first
+            target.scroll_into_view_if_needed()
+            page.wait_for_timeout(150)
+            parts.append(Image.open(BytesIO(target.screenshot(type="jpeg", quality=args.quality))).convert("RGB"))
+        width = max(part.width for part in parts)
+        gap = 12
+        height = sum(part.height for part in parts) + gap * (len(parts) - 1)
+        sheet = Image.new("RGB", (width, height), (24, 24, 24))
+        y = 0
+        for part in parts:
+            sheet.paste(part, (0, y))
+            y += part.height + gap
+        sheet.save(out, quality=args.quality)
+        print(f"{out} ({out.stat().st_size // 1024} KB, {len(parts)} sections)")
+    elif args.selector:
         for index, selector in enumerate(args.selector):
             target = page.locator(selector).first
             target.scroll_into_view_if_needed()
