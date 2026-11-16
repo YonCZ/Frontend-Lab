@@ -21,19 +21,22 @@ npm start          # builds the UI and the static pages, then serves everything 
 
 ```
 index.html              Vite entry for the lab app
+iterator.html           standalone iterator viewer shell
+previews.html           standalone previews list
 src/                    React + TypeScript UI only
-  App.tsx               routing (project / build / against in the URL)
-  components/           Gallery, Preview, MenuBar, icon and model marks
-  api.ts                state fetch + SSE subscription
+  App.tsx               routes: gallery, project preview, /iterators, /iterators/new
+  components/           Gallery, Iterators, NewIterator, AppBar, Preview, MenuBar
+  api.ts                state fetch, SSE subscription, status updates
 styles.css              the lab app stylesheet
 server/index.mjs        Express: API, gate, /projects, static pages, dist
 public/
-  pages.css             styles for the standalone iterator and preview pages
+  pages.css             styles for the standalone viewer and previews list
   assets/               Geist, the lab icon, provider marks
   fonts/                local font kit
 projects/
   catalog.json          portable slugs shown in the gallery
   catalog.local.json    machine-local slugs, ignored by git
+  status.local.json     Working / Settled state, ignored by git
   <slug>/
     project.json        manifest: brief, builds, optional experiment
     inputs/             authored copy and source images, when needed
@@ -48,6 +51,10 @@ skills/                 companion skills used by agents
 ```
 
 `iterators/` and `projects/*/runs/` and `dist/` are local working data. A fresh checkout has `projects/catalog.json` with `demo` and `build-lab`; add local projects to `catalog.local.json`.
+
+The gallery groups projects into **Working** and **Settled**. A checker on a working card moves it to Settled, and the up arrow on a settled card moves it back. The state lives in `projects/status.local.json` and is updated through `POST /api/projects/:id/status`. Group open and closed state is stored in the browser.
+
+The iterator listing and creation form are React routes at `/iterators` and `/iterators/new`. The viewer at `/iterator/:id` stays a standalone shell, because it loads arbitrary copied builds in an iframe.
 
 ## Build contract
 

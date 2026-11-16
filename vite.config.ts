@@ -18,9 +18,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: page("index.html"),
-        iterators: page("iterators.html"),
         iterator: page("iterator.html"),
-        iteratorsNew: page("iterators-new.html"),
         previews: page("previews.html"),
       },
     },

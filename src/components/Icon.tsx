@@ -18,6 +18,8 @@ const icons: Record<string, string> = {
   expand: '<path d="M9 4H4v5M15 4h5v5M20 15v5h-5M4 15v5h5"/>',
   shrink: '<path d="M4 9h5V4M20 9h-5V4M15 20v-5h5M9 20v-5H4"/>',
   pin: '<path d="M9 4h6l-.8 4.8L17 11v2H7v-2l2.8-2.2L9 4Z"/><path d="M12 13v7"/>',
+  loader: '<path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v5h-5"/>',
+  "arrow-up": '<path d="M12 19V5m-5 5 5-5 5 5"/>',
 };
 
 export function Icon({ name, className = "icon" }: { name: keyof typeof icons | string; className?: string }) {

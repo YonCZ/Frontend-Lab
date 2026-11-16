@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { fetchState, subscribe } from "./api";
+import { fetchState, setProjectStatus, subscribe } from "./api";
 import type { Build, State } from "./types";
 import { Gallery } from "./components/Gallery";
+import { Iterators } from "./components/Iterators";
+import { NewIterator } from "./components/NewIterator";
 import { Preview } from "./components/Preview";
 
 function readQuery() {
@@ -47,9 +49,35 @@ export default function App() {
     return project.builds.find((build) => build.entry === selection.against) ?? null;
   }, [project, selection.against, current]);
 
+  const path = location.pathname.replace(/\/+$/, "") || "/";
+  const iteratorsPage = path === "/iterators";
+  const newIteratorPage = path === "/iterators/new";
+
   useEffect(() => {
-    document.title = project ? `${project.name} · Frontend Lab` : "Frontend Lab";
-  }, [project]);
+    if (newIteratorPage) document.title = "New iterator · Frontend Lab";
+    else if (iteratorsPage) document.title = "Iterator · Frontend Lab";
+    else document.title = project ? `${project.name} · Frontend Lab` : "Frontend Lab";
+  }, [project, iteratorsPage, newIteratorPage]);
+
+  const setStatus = useCallback(async (id: string, status: "working" | "settled") => {
+    setState((current) =>
+      current
+        ? {
+            ...current,
+            projects: current.projects.map((item) => (item.id === id ? { ...item, status } : item)),
+          }
+        : current,
+    );
+    try {
+      await setProjectStatus(id, status);
+    } catch {
+      try {
+        setState(await fetchState());
+      } catch {
+        /* the next SSE frame corrects it */
+      }
+    }
+  }, []);
 
   const syncUrl = useCallback((next: { projectId: string | null; build?: string | null; against?: string | null }) => {
     if (!next.projectId) {
@@ -98,6 +126,14 @@ export default function App() {
     );
   }
 
+  if (iteratorsPage) {
+    return <Iterators projects={state.projects} promptPath={state.promptPath} />;
+  }
+
+  if (newIteratorPage) {
+    return <NewIterator projects={state.projects} promptPath={state.promptPath} />;
+  }
+
   if (project) {
     return (
       <Preview
@@ -122,6 +158,7 @@ export default function App() {
       promptPath={state.promptPath}
       prompt={state.prompt}
       onOpen={openProject}
+      onStatus={setStatus}
     />
   );
 }

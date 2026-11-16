@@ -10,6 +10,7 @@ const root = path.resolve(here, "..");
 const projectsDir = path.join(root, "projects");
 const distDir = path.join(root, "dist");
 const iteratorsDir = path.join(root, "iterators");
+const statusPath = path.join(projectsDir, "status.local.json");
 const noStore = (response) => response.set("Cache-Control", "no-store");
 const pageDir = () => (serveDist ? distDir : root);
 
@@ -92,6 +93,10 @@ async function state() {
     if (result.status === "fulfilled") projects.push(result.value);
     else failed.push(ids[index]);
   });
+  const statuses = await readJson(statusPath, {});
+  for (const project of projects) {
+    project.status = statuses[project.id] === "settled" ? "settled" : "working";
+  }
   const promptPath =
     projects.find((project) => project.experiment?.basePrompt)?.experiment.basePrompt ||
     "prompts/frontend-base.md";
@@ -109,7 +114,7 @@ let stateSignature = "";
 
 function nextRevision(projects, failed, promptPath, prompt) {
   const signature = JSON.stringify({
-    projects: projects.map((project) => [project.id, project.name, project.builds, project.cover, project.demo]),
+    projects: projects.map((project) => [project.id, project.name, project.builds, project.cover, project.demo, project.status]),
     failed,
     promptPath,
     prompt,
@@ -172,22 +177,37 @@ app.get(["/iterator/:id/admin", "/iterator/:id/admin/", "/iterator/:id", "/itera
   response.sendFile(path.join(pageDir(), "iterator.html"));
 });
 
-app.get("/iterators", (_request, response) => {
-  noStore(response);
-  response.sendFile(path.join(pageDir(), "iterators.html"));
-});
-
-app.get("/iterators/new", (_request, response) => {
-  noStore(response);
-  response.sendFile(path.join(pageDir(), "iterators-new.html"));
-});
-
 app.get("/previews", (_request, response) => {
   noStore(response);
   response.sendFile(path.join(pageDir(), "previews.html"));
 });
 
+app.get("/README.md", (_request, response) => {
+  noStore(response);
+  response.type("text/markdown; charset=utf-8");
+  response.sendFile(path.join(root, "README.md"));
+});
+
 app.use(express.json({ limit: "2mb" }));
+
+app.post("/api/projects/:id/status", async (request, response) => {
+  const id = request.params.id;
+  if (!slug.test(id)) {
+    response.status(400).json({ error: "invalid project id" });
+    return;
+  }
+  const status = request.body?.status;
+  if (status !== "working" && status !== "settled") {
+    response.status(400).json({ error: "status must be working or settled" });
+    return;
+  }
+  const statuses = await readJson(statusPath, {});
+  if (status === "working") delete statuses[id];
+  else statuses[id] = status;
+  await fs.writeFile(statusPath, JSON.stringify(statuses, null, 2) + "\n");
+  broadcast();
+  response.json({ id, status });
+});
 
 async function loadIterator(id) {
   const data = await readJson(path.join(iteratorsDir, id, "project.json"), null);

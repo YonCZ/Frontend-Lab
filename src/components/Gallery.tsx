@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { Project } from "../types";
+import { AppBar } from "./AppBar";
 import { Icon } from "./Icon";
 import { ModelMark } from "./ModelMark";
+import { ProjectFilesDialog } from "./ProjectFilesDialog";
 
 function plural(count: number, noun: string) {
   return `${count} ${noun}${count === 1 ? "" : "s"}`;
@@ -12,22 +14,36 @@ function oneLine(brief: string) {
   return line.replace(/^#+\s*/, "");
 }
 
+const groupsKey = "frontend-lab.project-groups";
+
+function readCollapsed() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(groupsKey) || "{}") as Record<string, unknown>;
+    return { working: Boolean(saved.working), settled: Boolean(saved.settled) };
+  } catch {
+    return { working: false, settled: false };
+  }
+}
+
 export function Gallery({
   projects,
   failed,
   promptPath,
   prompt,
   onOpen,
+  onStatus,
 }: {
   projects: Project[];
   failed: string[];
   promptPath: string;
   prompt: string;
   onOpen: (id: string) => void;
+  onStatus: (id: string, status: "working" | "settled") => void;
 }) {
   const previewProject = projects.find((project) => project.preview) ?? null;
   const [search, setSearch] = useState("");
-  const dialog = useRef<HTMLDialogElement>(null);
+  const [filesOpen, setFilesOpen] = useState(false);
+  const [collapsed, setCollapsed] = useState(readCollapsed);
   const searchInput = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -40,6 +56,10 @@ export function Gallery({
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem(groupsKey, JSON.stringify(collapsed));
+  }, [collapsed]);
 
   const visible = useMemo(() => {
     const query = search.trim().toLowerCase();
@@ -56,8 +76,144 @@ export function Gallery({
     );
   }, [projects, search]);
 
+  const working = visible.filter((project) => project.status !== "settled");
+  const settled = visible.filter((project) => project.status === "settled");
+  const settledCount = projects.filter((project) => project.status === "settled").length;
   const buildCount = projects.reduce((count, item) => count + item.builds.length, 0);
   const modelCount = new Set(projects.flatMap((item) => item.builds.map((build) => build.model))).size;
+
+  const toggleGroup = (key: "working" | "settled") =>
+    setCollapsed((current) => ({ ...current, [key]: !current[key] }));
+
+  const renderCard = (project: Project) => {
+    const builds = project.builds;
+    const models = [...new Set(builds.map((build) => build.model))];
+    const skills = new Set(builds.map((build) => build.skill)).size;
+    const running = project.runs
+      ? Object.values(project.runs).filter((job) => job.status === "running").length
+      : 0;
+    const summary =
+      project.experiment && !builds.length
+        ? `${project.experiment.status === "draft" ? "Draft" : project.experiment.status === "running" ? "Generating" : "No builds ready"} · ${plural(project.experiment.presets?.length ?? 0, "preset")}`
+        : oneLine(project.brief);
+    const isSettled = project.status === "settled";
+
+    return (
+      <article className={`card${isSettled ? " is-settled" : ""}`} key={project.id}>
+        <a
+          className="card-hit"
+          href={`?project=${encodeURIComponent(project.id)}`}
+          aria-label={`Open ${project.name}`}
+          onClick={(event) => {
+            event.preventDefault();
+            onOpen(project.id);
+          }}
+        />
+        <div className={`card-cover${project.cover ? "" : " is-empty"}`}>
+          {project.cover ? (
+            <img src={`/${project.cover}`} alt="" loading="lazy" />
+          ) : (
+            <span className="card-initial" aria-hidden="true">
+              {[...project.name][0]?.toUpperCase() || "?"}
+            </span>
+          )}
+          {project.demo ? (
+            <span className="badge">
+              <span /> Demo
+            </span>
+          ) : null}
+          {running > 0 ? (
+            <span className="badge badge-live">
+              <span /> Working {running}
+            </span>
+          ) : null}
+          <span className="card-count mono">
+            <strong>{builds.length}</strong> {builds.length === 1 ? "build" : "builds"}
+          </span>
+        </div>
+        <div className="card-copy">
+          <h3>{project.name}</h3>
+          <p>{summary}</p>
+        </div>
+        <div className="card-meta">
+          <span className="marks">
+            {models.slice(0, 4).map((model) => (
+              <ModelMark key={model} model={model} />
+            ))}
+          </span>
+          <span className="mono meta-line">
+            {builds.length
+              ? `${plural(models.length, "model")} · ${plural(skills, "skill")}`
+              : "Awaiting first build"}
+          </span>
+          {isSettled ? (
+            <button
+              type="button"
+              className="card-status is-restore"
+              title="Move back to Working"
+              aria-label={`Move ${project.name} back to Working`}
+              onClick={() => onStatus(project.id, "working")}
+            >
+              <Icon name="arrow-up" />
+            </button>
+          ) : (
+            <label className="card-status is-check" title="Move to Settled">
+              <input
+                type="checkbox"
+                aria-label={`Move ${project.name} to Settled`}
+                onChange={(event) => {
+                  event.currentTarget.checked = false;
+                  onStatus(project.id, "settled");
+                }}
+              />
+              <span className="check-box" aria-hidden="true">
+                <Icon name="check" />
+              </span>
+            </label>
+          )}
+        </div>
+      </article>
+    );
+  };
+
+  const renderGroup = (key: "working" | "settled", title: string, items: Project[]) => {
+    const isCollapsed = collapsed[key];
+    const bodyId = `group-${key}-body`;
+    return (
+      <section
+        className={`project-group${isCollapsed ? " is-collapsed" : ""}`}
+        aria-labelledby={`group-${key}-title`}
+      >
+        <button
+          type="button"
+          className="group-toggle"
+          aria-expanded={!isCollapsed}
+          aria-controls={bodyId}
+          onClick={() => toggleGroup(key)}
+        >
+          <Icon name="chevron" className="icon group-chevron" />
+          <Icon name="folder" className="icon group-folder" />
+          <span id={`group-${key}-title`} className="group-title">
+            {title}
+          </span>
+          <span className="mono">{items.length}</span>
+        </button>
+        <div id={bodyId} hidden={isCollapsed}>
+          {items.length ? (
+            <div className="project-grid">{items.map(renderCard)}</div>
+          ) : (
+            <p className="group-empty">
+              {search
+                ? "No matches."
+                : key === "settled"
+                  ? "Check a project to move it here."
+                  : "Nothing in progress."}
+            </p>
+          )}
+        </div>
+      </section>
+    );
+  };
 
   return (
     <>
@@ -65,30 +221,12 @@ export function Gallery({
         Skip to projects
       </a>
 
-      <header className="bar">
-        <span className="brand">
-          <span className="brand-glyph mono" aria-hidden="true">
-            FL
-          </span>
-          <span className="brand-word">Frontend Lab</span>
-        </span>
-        <span className="bar-divider" aria-hidden="true" />
-        <span className="bar-crumb">All projects</span>
-        <span className="bar-count mono">{projects.length}</span>
-        <div className="bar-actions">
-          <a className="bar-link" href="/iterators" title="Iterator workspaces">
-            <Icon name="panel" /> Iterator
-          </a>
-          {previewProject ? (
-            <a className="bar-link" href="/previews" title="Client preview">
-              <Icon name="external" /> Client preview
-            </a>
-          ) : null}
-          <button type="button" className="bar-link" onClick={() => dialog.current?.showModal()}>
-            <Icon name="folder" /> Project files
-          </button>
-        </div>
-      </header>
+      <AppBar
+        crumb="All projects"
+        count={projects.length}
+        hasPreview={Boolean(previewProject)}
+        onProjectFiles={() => setFilesOpen(true)}
+      />
 
       <main className="gallery">
         <section className="intro">
@@ -110,6 +248,10 @@ export function Gallery({
               <div>
                 <dt className="mono">Models</dt>
                 <dd className="mono">{modelCount}</dd>
+              </div>
+              <div>
+                <dt className="mono">Settled</dt>
+                <dd className="mono">{settledCount}</dd>
               </div>
             </dl>
           </div>
@@ -148,7 +290,7 @@ export function Gallery({
             <span className="mono result-count" role="status">
               {search ? `${visible.length} of ${projects.length}` : plural(projects.length, "project")}
             </span>
-            <button type="button" className="button" onClick={() => dialog.current?.showModal()}>
+            <button type="button" className="button" onClick={() => setFilesOpen(true)}>
               <Icon name="plus" /> New project
             </button>
           </div>
@@ -158,93 +300,28 @@ export function Gallery({
           <h2 id="projects-title" tabIndex={-1} className="sr-only">
             Projects
           </h2>
-          <div className="project-grid">
-            {visible.map((project) => {
-              const builds = project.builds;
-              const models = [...new Set(builds.map((build) => build.model))];
-              const skills = new Set(builds.map((build) => build.skill)).size;
-              const running = project.runs
-                ? Object.values(project.runs).filter((job) => job.status === "running").length
-                : 0;
-              const summary =
-                project.experiment && !builds.length
-                  ? `${project.experiment.status === "draft" ? "Draft" : project.experiment.status === "running" ? "Generating" : "No builds ready"} · ${plural(project.experiment.presets?.length ?? 0, "preset")}`
-                  : oneLine(project.brief);
-
-              return (
-                <article className="card" key={project.id}>
-                  <a
-                    className="card-link"
-                    href={`?project=${encodeURIComponent(project.id)}`}
-                    aria-label={`Open ${project.name}`}
-                    onClick={(event) => {
-                      event.preventDefault();
-                      onOpen(project.id);
-                    }}
-                  >
-                    <div className={`card-cover${project.cover ? "" : " is-empty"}`}>
-                      {project.cover ? (
-                        <img src={`/${project.cover}`} alt="" loading="lazy" />
-                      ) : (
-                        <span className="card-initial" aria-hidden="true">
-                          {[...project.name][0]?.toUpperCase() || "?"}
-                        </span>
-                      )}
-                      {project.demo ? (
-                        <span className="badge">
-                          <span /> Demo
-                        </span>
-                      ) : null}
-                      {running > 0 ? (
-                        <span className="badge badge-live">
-                          <span /> Working {running}
-                        </span>
-                      ) : null}
-                      <span className="card-count mono">
-                        <strong>{builds.length}</strong> {builds.length === 1 ? "build" : "builds"}
-                      </span>
-                      <span className="card-open" aria-hidden="true">
-                        <Icon name="arrow" />
-                      </span>
-                    </div>
-                    <div className="card-copy">
-                      <h3>{project.name}</h3>
-                      <p>{summary}</p>
-                      <div className="card-meta">
-                        <span className="marks">
-                          {models.slice(0, 4).map((model) => (
-                            <ModelMark key={model} model={model} />
-                          ))}
-                        </span>
-                        <span className="mono meta-line">
-                          {builds.length
-                            ? `${plural(models.length, "model")} · ${plural(skills, "skill")}`
-                            : "Awaiting first build"}
-                        </span>
-                      </div>
-                    </div>
-                  </a>
-                </article>
-              );
-            })}
-            {!visible.length ? (
-              <div className="empty-gallery">
-                <h3>{search ? "No matching projects" : "No projects here yet"}</h3>
-                <p>
-                  {search
-                    ? "Try a different project name or brief."
-                    : "Add a project folder to your workspace to see it here."}
-                </p>
-                <button
-                  type="button"
-                  className="button"
-                  onClick={() => (search ? setSearch("") : dialog.current?.showModal())}
-                >
-                  {search ? "Clear search" : "Project files"}
-                </button>
-              </div>
-            ) : null}
-          </div>
+          {visible.length ? (
+            <div className="project-groups">
+              {renderGroup("working", "Working", working)}
+              {renderGroup("settled", "Settled", settled)}
+            </div>
+          ) : (
+            <div className="empty-gallery">
+              <h3>{search ? "No matching projects" : "No projects here yet"}</h3>
+              <p>
+                {search
+                  ? "Try a different project name or brief."
+                  : "Add a project folder to your workspace to see it here."}
+              </p>
+              <button
+                type="button"
+                className="button"
+                onClick={() => (search ? setSearch("") : setFilesOpen(true))}
+              >
+                {search ? "Clear search" : "Project files"}
+              </button>
+            </div>
+          )}
           <p className="sr-only" role="status">
             {plural(visible.length, "matching project")}
           </p>
@@ -254,31 +331,11 @@ export function Gallery({
         </section>
       </main>
 
-      <dialog id="workspace-dialog" ref={dialog} aria-labelledby="workspace-title">
-        <div className="dialog-header">
-          <h2 id="workspace-title">Add a project</h2>
-          <button
-            type="button"
-            className="icon-button"
-            aria-label="Close"
-            onClick={() => dialog.current?.close()}
-          >
-            <Icon name="close" />
-          </button>
-        </div>
-        <p>
-          Put each runnable build in its own folder under <code>projects/</code>. Add its entry file,
-          model, skill, and variant to that project's <code>project.json</code>.
-        </p>
-        <p>
-          For a new project, add its folder name to <code>projects/catalog.json</code> and reload the
-          gallery. The shared prompt at <code>{promptPath}</code> is composed with each project's brief
-          before a build runs.
-        </p>
-        <a className="button" href="README.md" target="_blank" rel="noopener">
-          Open workspace instructions <Icon name="external" />
-        </a>
-      </dialog>
+      <ProjectFilesDialog
+        open={filesOpen}
+        onClose={() => setFilesOpen(false)}
+        promptPath={promptPath}
+      />
     </>
   );
 }

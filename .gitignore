@@ -15,3 +15,5 @@ projects/test-*
 projects/demo/archive/
 projects/trio/
 .shots/
+
+projects/status.local.json

@@ -35,6 +35,33 @@ export type Project = {
   experiment: Experiment | null;
   runs: Record<string, JobStatus> | null;
   preview: boolean;
+  kind: "generator" | "iterator";
+  status: "working" | "settled";
+};
+
+export type IteratorBuild = {
+  model: string;
+  skill: string;
+  variant: number;
+  entry: string;
+  url: string;
+};
+
+export type IteratorSource = {
+  label: string;
+  project: string;
+  model: string;
+  skill: string;
+  copy: string;
+  url: string;
+};
+
+export type IteratorProject = {
+  id: string;
+  name: string;
+  brief: string;
+  builds: IteratorBuild[];
+  sources: IteratorSource[];
 };
 
 export type State = {
