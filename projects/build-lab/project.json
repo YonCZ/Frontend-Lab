@@ -109,6 +109,114 @@
       "skill": "Apple Design +",
       "variant": 6,
       "entry": "builds/sol6-dark/apple-design-plus/3/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Design",
+      "variant": 1,
+      "entry": "builds/deepseek/design-taste/1/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Design",
+      "variant": 2,
+      "entry": "builds/deepseek/design-taste/2/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Design",
+      "variant": 3,
+      "entry": "builds/deepseek/design-taste/3/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Apple Design",
+      "variant": 1,
+      "entry": "builds/deepseek/apple-design/1/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Apple Design",
+      "variant": 2,
+      "entry": "builds/deepseek/apple-design/2/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Apple Design",
+      "variant": 3,
+      "entry": "builds/deepseek/apple-design/3/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Design",
+      "variant": 7,
+      "entry": "builds/sol6-tech/design-taste/1/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Design",
+      "variant": 8,
+      "entry": "builds/sol6-tech/design-taste/2/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Design",
+      "variant": 9,
+      "entry": "builds/sol6-tech/design-taste/3/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design",
+      "variant": 7,
+      "entry": "builds/sol6-tech/apple-design/1/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design",
+      "variant": 8,
+      "entry": "builds/sol6-tech/apple-design/2/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design",
+      "variant": 9,
+      "entry": "builds/sol6-tech/apple-design/3/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design +",
+      "variant": 7,
+      "entry": "builds/sol6-tech/apple-design-plus/1/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design +",
+      "variant": 8,
+      "entry": "builds/sol6-tech/apple-design-plus/2/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design +",
+      "variant": 9,
+      "entry": "builds/sol6-tech/apple-design-plus/3/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash Free",
+      "skill": "Apple Design +",
+      "variant": 1,
+      "entry": "builds/deepseek-free/apple-design-plus/1/dist/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash Free",
+      "skill": "Apple Design +",
+      "variant": 2,
+      "entry": "builds/deepseek-free/apple-design-plus/2/dist/index.html"
+    },
+    {
+      "model": "DeepSeek V4.1 Flash Free",
+      "skill": "Apple Design +",
+      "variant": 3,
+      "entry": "builds/deepseek-free/apple-design-plus/3/dist/index.html"
     }
   ]
 }

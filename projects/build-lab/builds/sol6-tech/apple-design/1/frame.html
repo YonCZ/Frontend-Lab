@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test 1 · Layout experiment</title>
+  <style>
+    @font-face{font-family:Instrument;src:url(fonts/instrument-sans-400.woff2)}
+    *{box-sizing:border-box}body{margin:0;padding:32px;font-family:Instrument,Arial,sans-serif;color:#30342e;background:#fafbf9}header,footer{display:flex;justify-content:space-between;gap:20px;padding-bottom:22px;border-bottom:1px solid #dedfd9;font-size:12px}main{display:grid;grid-template-columns:1fr 2fr;gap:32px;padding:45px 0}h1{font-size:38px;font-weight:400;letter-spacing:-1.5px;margin:0 0 20px}p{font-size:13px;line-height:1.8;color:#73786f;max-width:380px}.layout{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.layout span{display:grid;place-items:center;min-height:130px;background:#f0f1ee;font-size:32px;color:#adb2a5}.layout span:first-child{grid-column:1/-1;min-height:200px}.variant-2 main{grid-template-columns:1fr}.variant-2 .layout{grid-template-columns:repeat(3,1fr)}.variant-2 .layout span:first-child{grid-column:auto;min-height:200px}.variant-3 .layout{grid-template-columns:1fr}.variant-3 .layout span{min-height:100px}.variant-4 main{grid-template-columns:2fr 1fr}.variant-4 .layout{grid-template-columns:1fr}footer{border:0;border-top:1px solid #dedfd9;padding-top:20px;color:#73786f;font-size:10px}@media(max-width:500px){body{padding:22px}main,.variant-4 main{grid-template-columns:1fr;gap:20px}.variant-2 .layout{grid-template-columns:1fr}h1{font-size:30px}}
+  </style>
+</head>
+<body>
+  <header><span>Test 1</span><span id="variant-label">Layout experiment</span></header>
+  <main><section><h1>Layout experiments.</h1><p>This local sample makes the Test 1 preview available. The supplied project data does not specify a model or original entry files.</p><p>Skill: No skill<br>Model: Not specified</p></section><div class="layout" aria-label="Sample layout"><span>01</span><span>02</span><span>03</span></div></main>
+  <footer><span>Frontend Lab / Sample layout</span><span>Local file</span></footer>
+  <script>const variant=Number(new URLSearchParams(location.search).get('variant'))||1;document.body.className=`variant-${variant}`;document.querySelector('#variant-label').textContent=`Variant ${String(variant).padStart(2,'0')}`;</script>
+</body>
+</html>

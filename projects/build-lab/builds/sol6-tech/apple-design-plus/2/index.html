@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" data-layout="2">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f9fb">
+  <meta name="description" content="A local workbench for browsing frontend projects and comparing builds.">
+  <title>Project library · Frontend Lab</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%232758df'/%3E%3Cpath d='M12 9H8v14h4m8-14h4v14h-4' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="menu-bar">
+    <a class="brand" href="index.html" data-action="library" aria-label="Frontend Lab library"><span class="brand-mark" aria-hidden="true">[<span></span>]</span>Frontend Lab</a>
+    <nav class="menu-nav" aria-label="Main navigation">
+      <a href="index.html" class="menu-link" data-action="library" aria-current="page">Library</a>
+      <button class="menu-link" id="compare-nav" data-action="compare" disabled>Compare<span id="compare-count" class="nav-count" hidden>2</span></button>
+    </nav>
+    <div class="menu-right"><span class="workspace-status"><span class="status-dot"></span>Local workspace</span><button class="search-shortcut" data-action="search" aria-label="Focus search"><kbd>/</kbd><span>Search</span></button></div>
+  </header>
+  <main id="main" tabindex="-1"></main>
+  <footer class="workspace-footer"><span class="footer-path">Frontend Lab <span>/</span> projects</span><span>Local files. No uploads.</span><span class="footer-key"><kbd>esc</kbd> Close preview</span></footer>
+  <div class="sr-only" id="announcement" role="status" aria-live="polite"></div>
+  <dialog class="preview-dialog" id="preview-dialog" aria-labelledby="preview-title">
+    <div class="overlay-toolbar"><div class="overlay-label"><span class="status-dot"></span><h2 id="preview-title">Build preview</h2></div><div class="overlay-actions"><button class="button" data-action="fullscreen" id="fullscreen-button">Full window <span aria-hidden="true">↗</span></button><button class="button" data-action="close-preview">Close <kbd>esc</kbd></button></div></div>
+    <div id="overlay-content" class="overlay-content"></div>
+  </dialog>
+</body>
+</html>

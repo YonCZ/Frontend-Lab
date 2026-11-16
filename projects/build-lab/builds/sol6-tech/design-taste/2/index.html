@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" data-layout="2" data-type="software">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A local workbench for reading project briefs, opening frontend builds and comparing variants.">
+  <meta name="theme-color" content="#f6f7f9">
+  <meta name="page-type" content="software">
+  <meta name="site-kind" content="software">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; frame-src 'self'; object-src 'none'; base-uri 'self'">
+  <title>Frontend Lab | Grid</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/instrument-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to projects</a>
+  <header class="menu-bar">
+    <a class="brand" href="index.html" aria-label="Frontend Lab library"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Frontend Lab</a>
+    <nav class="menu-items" aria-label="Main navigation">
+      <a class="menu-item is-active" href="index.html" aria-current="page">Library</a>
+      <button class="menu-item" type="button" data-action="workspace">Workspace</button>
+      <button class="menu-item" type="button" data-action="shortcuts">Shortcuts</button>
+    </nav>
+    <span class="connection"><span aria-hidden="true"></span>Local workspace</span>
+  </header>
+  <main id="main" tabindex="-1"></main>
+  <footer class="workspace-footer"><span class="mono">~/Frontend Lab/projects/</span><span>Local files. Open in place.</span><span class="footer-key"><kbd>/</kbd> to search</span></footer>
+  <dialog id="preview" class="preview-dialog" aria-labelledby="preview-title">
+    <div id="preview-content"></div>
+  </dialog>
+  <dialog id="utility" class="utility-dialog" aria-labelledby="utility-title">
+    <div class="utility-heading"><h2 id="utility-title"></h2><button class="icon-button" data-action="close-utility" aria-label="Close dialog" type="button">×</button></div>
+    <div id="utility-content"></div>
+  </dialog>
+  <div id="announcer" class="sr-only" role="status" aria-live="polite"></div>
+</body>
+</html>

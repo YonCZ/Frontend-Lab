@@ -337,7 +337,11 @@ const ignored = (filePath, stats) =>
   filePath.includes(`${path.sep}.web-verify`) ||
   filePath.includes(`${path.sep}node_modules`) ||
   filePath.includes(`${path.sep}dist`) ||
-  filePath.includes(`${path.sep}public`);
+  filePath.includes(`${path.sep}public`) ||
+  filePath.includes(`${path.sep}assets`) ||
+  filePath.includes(`${path.sep}thumbs`) ||
+  filePath.includes(`${path.sep}previews`) ||
+  filePath.includes(`${path.sep}fonts`);
 
 chokidar
   .watch(projectsDir, { ignoreInitial: true, ignored })
