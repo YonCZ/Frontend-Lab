@@ -52,7 +52,7 @@ skills/                 companion skills used by agents
 
 `iterators/` and `projects/*/runs/` and `dist/` are local working data. A fresh checkout has `projects/catalog.json` with `demo` and `build-lab`; add local projects to `catalog.local.json`.
 
-The gallery groups projects into **Working** and **Settled**. A checker on a working card moves it to Settled, and the up arrow on a settled card moves it back. The state lives in `projects/status.local.json` and is updated through `POST /api/projects/:id/status`. Group open and closed state is stored in the browser.
+The gallery groups projects into **Working** and **Settled**. A round check button in the cover moves a working card to Settled, and the up arrow in the cover moves it back. Projects without a cover show their first build as a live thumbnail. The state lives in `projects/status.local.json` and is updated through `POST /api/projects/:id/status`. Group open and closed state is stored in the browser.
 
 The iterator listing and creation form are React routes at `/iterators` and `/iterators/new`. The viewer at `/iterator/:id` stays a standalone shell, because it loads arbitrary copied builds in an iframe.
 

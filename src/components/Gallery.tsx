@@ -109,9 +109,18 @@ export function Gallery({
             onOpen(project.id);
           }}
         />
-        <div className={`card-cover${project.cover ? "" : " is-empty"}`}>
+        <div className={`card-cover${project.cover || project.builds.length ? "" : " is-empty"}`}>
           {project.cover ? (
             <img src={`/${project.cover}`} alt="" loading="lazy" />
+          ) : project.builds[0] ? (
+            <div className="card-preview" aria-hidden="true">
+              <iframe
+                src={`/${project.builds[0].entry}`}
+                title="First build preview"
+                tabIndex={-1}
+                loading="lazy"
+              />
+            </div>
           ) : (
             <span className="card-initial" aria-hidden="true">
               {[...project.name][0]?.toUpperCase() || "?"}
@@ -130,6 +139,27 @@ export function Gallery({
           <span className="card-count mono">
             <strong>{builds.length}</strong> {builds.length === 1 ? "build" : "builds"}
           </span>
+          {isSettled ? (
+            <button
+              type="button"
+              className="cover-action is-restore"
+              title="Move back to Working"
+              aria-label={`Move ${project.name} back to Working`}
+              onClick={() => onStatus(project.id, "working")}
+            >
+              <Icon name="arrow-up" />
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="cover-action is-check"
+              title="Move to Settled"
+              aria-label={`Move ${project.name} to Settled`}
+              onClick={() => onStatus(project.id, "settled")}
+            >
+              <Icon name="check" />
+            </button>
+          )}
         </div>
         <div className="card-copy">
           <h3>{project.name}</h3>
@@ -146,31 +176,6 @@ export function Gallery({
               ? `${plural(models.length, "model")} · ${plural(skills, "skill")}`
               : "Awaiting first build"}
           </span>
-          {isSettled ? (
-            <button
-              type="button"
-              className="card-status is-restore"
-              title="Move back to Working"
-              aria-label={`Move ${project.name} back to Working`}
-              onClick={() => onStatus(project.id, "working")}
-            >
-              <Icon name="arrow-up" />
-            </button>
-          ) : (
-            <label className="card-status is-check" title="Move to Settled">
-              <input
-                type="checkbox"
-                aria-label={`Move ${project.name} to Settled`}
-                onChange={(event) => {
-                  event.currentTarget.checked = false;
-                  onStatus(project.id, "settled");
-                }}
-              />
-              <span className="check-box" aria-hidden="true">
-                <Icon name="check" />
-              </span>
-            </label>
-          )}
         </div>
       </article>
     );
