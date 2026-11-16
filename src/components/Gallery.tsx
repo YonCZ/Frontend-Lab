@@ -19,6 +19,7 @@ export function Gallery({
   prompt: string;
   onOpen: (id: string) => void;
 }) {
+  const previewProject = projects.find((project) => project.preview) ?? null;
   const [search, setSearch] = useState("");
   const dialog = useRef<HTMLDialogElement>(null);
   const searchInput = useRef<HTMLInputElement>(null);
@@ -55,6 +56,14 @@ export function Gallery({
           <button type="button" onClick={() => dialog.current?.showModal()}>
             <Icon name="folder" /> Project files
           </button>
+          <a href="/iterators" title="Iterator workspaces">
+            <Icon name="panel" /> Iterator
+          </a>
+          {previewProject ? (
+            <a href="/previews" title="Client preview">
+              <Icon name="panel" /> Preview
+            </a>
+          ) : null}
         </nav>
         <header className="intro">
           <h1>Frontend Lab</h1>

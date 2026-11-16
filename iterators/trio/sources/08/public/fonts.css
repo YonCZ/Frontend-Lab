@@ -1,0 +1,3 @@
+/* Local font files. Served from public/, so paths stay relative to this file. */
+@import url("assets/fonts/anton/font.css");
+@import url("assets/fonts/public-sans/font.css");

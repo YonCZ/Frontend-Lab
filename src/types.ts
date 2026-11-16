@@ -33,6 +33,7 @@ export type Project = {
   builds: Build[];
   experiment: Experiment | null;
   runs: Record<string, JobStatus> | null;
+  preview: boolean;
 };
 
 export type State = {

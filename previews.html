@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#1b1a18" />
+    <title>Previews · Frontend Lab</title>
+    <link rel="icon" href="/assets/lab.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <main class="gallery">
+        <a class="skip" href="#previews-title">Skip to previews</a>
+        <nav class="gallery-nav" aria-label="Workspace">
+          <a class="nav-home" href="/" aria-label="Frontend Lab home">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1Z" /><path d="M9 21v-7h6v7" /></svg>
+          </a>
+          <a href="/">Lab</a>
+        </nav>
+        <header class="intro">
+          <h1>Previews</h1>
+          <p>Client-facing views. Each one shows only the designs chosen for review, with numbered variants and no lab controls.</p>
+        </header>
+        <section class="project-section" aria-labelledby="previews-title">
+          <h2 id="previews-title" tabindex="-1">Ready to share</h2>
+          <div class="project-grid" id="grid"></div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const grid = document.getElementById("grid");
+
+      function card(project) {
+        const article = document.createElement("article");
+        article.className = "project-card";
+        const link = document.createElement("a");
+        link.href = `/preview/${encodeURIComponent(project.id)}`;
+        link.setAttribute("aria-label", `Open preview for ${project.name}`);
+
+        const cover = document.createElement("div");
+        cover.className = "project-cover";
+        if (project.cover) {
+          const img = document.createElement("img");
+          img.src = project.cover;
+          img.alt = "";
+          cover.append(img);
+        }
+        const badge = document.createElement("span");
+        badge.className = "sample";
+        badge.innerHTML = "<span></span> Client preview";
+        cover.append(badge);
+
+        const body = document.createElement("div");
+        body.className = "card-body";
+        const title = document.createElement("h3");
+        title.textContent = project.name;
+        const meta = document.createElement("p");
+        meta.textContent = `${project.builds.length} designs shown`;
+        if (project.preview) {
+          fetch(`/projects/${encodeURIComponent(project.id)}/client.json`, { cache: "no-store" })
+            .then((response) => response.json())
+            .then((data) => {
+              const count = Array.isArray(data.variants) ? data.variants.length : 0;
+              if (count) meta.textContent = `${count} ${count === 1 ? "direction" : "directions"} to review`;
+            })
+            .catch(() => {});
+        }
+        body.append(title, meta);
+
+        link.append(cover, body);
+        article.append(link);
+        return article;
+      }
+
+      fetch("/api/state", { cache: "no-store" })
+        .then((response) => response.json())
+        .then((state) => {
+          const ready = (state.projects || []).filter((project) => project.preview);
+          if (!ready.length) {
+            grid.innerHTML =
+              '<div class="empty-gallery"><h3>No previews yet</h3><p>Add a client.json to a project to publish one.</p></div>';
+            return;
+          }
+          ready.forEach((project) => grid.append(card(project)));
+        })
+        .catch(() => {
+          grid.innerHTML =
+            '<div class="empty-gallery"><h3>Could not load previews</h3><p>Check that the server is running.</p></div>';
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,367 @@
+﻿<!DOCTYPE html>
+<html lang="cs">
+	<head>
+		<!-- 
+			Tento web byl vytvořen implementací responzivní šablony Free_Responsive_HTML5_Theme_for_Travel_Agency by TemplateMonster.com. Implementaci provedl:
+	  		ZEPPYR s.r.o. 
+			NÁBŘEŽNÍ 504, 675 51 JAROMĚŘICE NAD ROKYTNOU
+			http://www.minutes.cz/ info@minutes.cz
+		-->
+
+		<title>Cestovní agentura TRIO</title>
+		<meta charset="utf-8">
+		<meta name="format-detection" content="telephone=no" >
+		<meta property="og:type"          content="website" >
+		
+
+						
+		<link rel="icon" href="images/favicon.ico">
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="booking/css/booking.css">
+		<link rel="stylesheet" href="css/camera.css">
+		<link rel="stylesheet" href="css/owl.carousel.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/animated.css">
+		<link rel="stylesheet" href="css/form.css">
+
+		<script src="js/jquery.js"></script>
+		<script src="js/jquery-migrate-1.2.1.js"></script>
+		<script src="js/script.js"></script>
+		<script src="js/superfish.js"></script>
+		<script src="js/jquery.ui.totop.js"></script>
+		<script src="js/jquery.equalheights.js"></script>
+		<script src="js/jquery.mobilemenu.js"></script>
+		<script src="js/jquery.easing.1.3.js"></script>
+		<script src="js/owl.carousel.js"></script>
+		<script src="js/camera.js"></script>
+		<!--[if (gt IE 9)|!(IE)]><!-->
+		<script src="js/jquery.mobile.customized.min.js"></script>
+		<!--<![endif]-->
+		<script src="booking/js/booking.js"></script>
+		<script src="https://www.google.com/recaptcha/api.js"></script>
+		<script>
+		   function onSubmit(token) {
+		     document.getElementById("demo-form").submit();
+		   }
+		</script>
+		<script>
+			$(document).ready(function(){
+			jQuery('#camera_wrap').camera({
+				loader: false,
+				pagination: false ,
+				minHeight: '444',
+				thumbnails: false,
+				height: '48.375%',
+				caption: true,
+				navigation: true,
+				fx: 'mosaic'
+			});
+			/*carousel*/
+			var owl=$("#owl");
+				owl.owlCarousel({
+				items : 2, //10 items above 1000px browser width
+				itemsDesktop : [995,2], //5 items between 1000px and 901px
+				itemsDesktopSmall : [767, 2], // betweem 900px and 601px
+				itemsTablet: [700, 2], //2 items between 600 and 0
+				itemsMobile : [479, 1], // itemsMobile disabled - inherit from itemsTablet option
+				navigation : true,
+				pagination : false
+				});
+			$().UItoTop({ easingType: 'easeOutQuart' });
+			});
+		</script>
+		<!--[if lt IE 8]>
+		<div style=' clear: both; text-align:center; position: relative;'>
+			<a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+				<img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+			</a>
+		</div>
+		<![endif]-->
+		<!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+		<link rel="stylesheet" media="screen" href="css/ie.css">
+		<![endif]-->
+
+
+		<script>
+
+  			var _gaq = _gaq || [];
+ 			_gaq.push(['_setAccount', 'UA-11413027-2']);
+  			_gaq.push(['_trackPageview']);
+
+  			(function() {
+  			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		</script>
+	</head>
+
+
+<body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v20.0" nonce="Nh34CyHf"></script>
+
+<!-- ==============================old fb script fb up untill 2024=================================
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+-->
+
+
+
+<!--==============================header=================================-->
+
+<header>
+			<div class="container_12">
+				<div class="grid_12">
+	<div class="menu_block">
+						<nav class="horizontal-nav full-width horizontalNav-notprocessed">
+							<ul class="sf-menu">
+								<li class=current><a href="index.php?page=main">NABÍDKA ZÁJEZDŮ</a></li>
+								<li ><a href="index.php?page=lm">LAST MINUTE</a></li>
+								<li ><a href="index.php?page=ck">SMLUVNÍ CK</a></li>
+								<li ><a href="index.php?page=storno">STORNO PODMÍNKY</a></li>
+								<li ><a href="index.php?page=hist">HISTORIE</a></li>
+								<li ><a href="index.php?page=kon">KONTAKT</a></li>
+							</ul>
+						</nav>
+						<div class="clear"></div>
+					</div>
+</div>				
+				<div class="grid_12">
+					<h1>
+						
+							<a href="index.php"><img src="images/logo.png" alt="CA TRIO"></a>
+						
+					</h1>
+				</div>
+			</div>
+</header>
+<!--==============================Content=================================-->
+
+
+<!-- there you go / center list table -->
+
+	<div class="content">
+			<div class="container_12">
+				<div class="grid_8">
+					<h3>NEJBLIŽŠÍ ZÁJEZDY</h3>
+	<a href="index.php?page=main&id=" class="col1">JEDNODENNÍ</a> | <a href="index.php?page=main&id=" class="col1">VÍCEDENNÍ</a>
+	<br><br>
+            			
+					<div class="block2">
+						<a href="index.php?page=main&id=10294"><img src="img/trips/10294.jpg" alt="" class="img_inner fleft"></a>
+						<div class="extra_wrapper">
+							<div class="text1 col1"><a href="index.php?page=main&id=10294">Advent v Kittenberských zahradách</a><br>
+							<a href="index.php?page=main&id=10294" class="link1">28.11.2026 | ﻿560 Kč</a><br>
+							</div>
+							<p>
+"Stále oblíbený vánoční zájezd"<br><br>
+
+Program zájezdu:<br>
+Odjezd v brzkých odpoledních hodinách.<br><br>
+
+Jako kdybyste vstoupili... <a href="index.php?page=main&id=10294" class="col1">více info</a></p>
+						</div>
+					</div>
+            			
+					<div class="block2">
+						<a href="index.php?page=main&id=10307"><img src="img/trips/10307.jpg" alt="" class="img_inner fleft"></a>
+						<div class="extra_wrapper">
+							<div class="text1 col1"><a href="index.php?page=main&id=10307">Termální lázně Bük</a><br>
+							<a href="index.php?page=main&id=10307" class="link1">29.11.2026 | ﻿1.170 Kč</a><br>
+							</div>
+							<p>Jednodenní zájezd do termálních lázní v Büku.<br><br>
+
+Další termín: 29.12.<br><br>
+
+
+Bük je vzdálen pouhých 240 km a je znám pro sv... <a href="index.php?page=main&id=10307" class="col1">více info</a></p>
+						</div>
+					</div>
+            			
+					<div class="block2">
+						<a href="index.php?page=main&id=10313"><img src="img/trips/10313.jpg" alt="" class="img_inner fleft"></a>
+						<div class="extra_wrapper">
+							<div class="text1 col1"><a href="index.php?page=main&id=10313">Termální lázně Sárvár</a><br>
+							<a href="index.php?page=main&id=10313" class="link1">29.11.2026 | ﻿1.270 Kč</a><br>
+							</div>
+							<p>Jednodenní zájezd do termálních lázní v Sárváru.<br><br>
+
+Další termín: 29.12.<br><br>
+
+Bazény v Sarváru patří k nejmodernějším v... <a href="index.php?page=main&id=10313" class="col1">více info</a></p>
+						</div>
+					</div>
+            			
+					<div class="block2">
+						<a href="index.php?page=main&id=10303"><img src="img/trips/10303.jpg" alt="" class="img_inner fleft"></a>
+						<div class="extra_wrapper">
+							<div class="text1 col1"><a href="index.php?page=main&id=10303"> Vánoce na veselém kopci a osvětlený dům v Chotovicích</a><br>
+							<a href="index.php?page=main&id=10303" class="link1">05.12.2026 | ﻿780 Kč</a><br>
+							</div>
+							<p>
+Program zájezdu:<br>
+Odjezd v dopoledních hodinách<br><br>
+Oblíbený program  „Vánoce na Veselém Kopci“ je místem, kde  se dozvíme jak... <a href="index.php?page=main&id=10303" class="col1">více info</a></p>
+						</div>
+					</div>
+            			
+					<div class="block2">
+						<a href="index.php?page=main&id=8087"><img src="img/trips/8087.jpg" alt="" class="img_inner fleft"></a>
+						<div class="extra_wrapper">
+							<div class="text1 col1"><a href="index.php?page=main&id=8087">
+
+Vánoční Bratislava, čokoládovna Hauswirth<br><br>vyprodáno</a><br>
+							<a href="index.php?page=main&id=8087" class="link1">12.12.2026 | ﻿695 Kč</a><br>
+							</div>
+							<p>POZOR - platba v čokoládovně při nákupu pouze v hotovosti!!!<br><br>
+Program zájezdu:<br><br>
+Nejdříve v Rakousku navštívíme  čokoládovn... <a href="index.php?page=main&id=8087" class="col1">více info</a></p>
+						</div>
+					</div>
+            			
+					<div class="block2">
+						<a href="index.php?page=main&id=10244"><img src="img/trips/10244.jpg" alt="" class="img_inner fleft"></a>
+						<div class="extra_wrapper">
+							<div class="text1 col1"><a href="index.php?page=main&id=10244">Vánoční Vídeň </a><br>
+							<a href="index.php?page=main&id=10244" class="link1">19.12.2026 | ﻿585 Kč</a><br>
+							</div>
+							<p> Tradiční zájezd za vánoční atmosférou Vídně.<br><br>Ještě váháte? Tak neváhejte, udělejte si výlet a užijte si krásnou vánoční at... <a href="index.php?page=main&id=10244" class="col1">více info</a></p>
+						</div>
+					</div>
+            			
+					<div class="block2">
+						<a href="index.php?page=main&id=10321"><img src="img/trips/10321.jpg" alt="" class="img_inner fleft"></a>
+						<div class="extra_wrapper">
+							<div class="text1 col1"><a href="index.php?page=main&id=10321">SNĚHOVÁ KRÁLOVNA – muzikál na ledě</a><br>
+							<a href="index.php?page=main&id=10321" class="link1">20.02.2027 | ﻿290 Kč</a><br>
+							</div>
+							<p>
+Horácká multifunkční aréna Jihlava<br><br>
+Jeden z nejkrásnějších pohádkových příběhů o síle přátelství, lásky a odvahy ožije ... <a href="index.php?page=main&id=10321" class="col1">více info</a></p>
+						</div>
+					</div>
+            			
+					<div class="block2">
+						<a href="index.php?page=main&id=10322"><img src="img/trips/10322.jpg" alt="" class="img_inner fleft"></a>
+						<div class="extra_wrapper">
+							<div class="text1 col1"><a href="index.php?page=main&id=10322">Biograf láska II - Nový příběh </a><br>
+							<a href="index.php?page=main&id=10322" class="link1">02.05.2027 | ﻿620 Kč</a><br>
+							</div>
+							<p>Biograf láska II<br>
+
+Nový příběh<br><br>
+První muzikál s písničkami Hany Zagorové Biograf láska se setkal s nadšenými ohlasy a stal s... <a href="index.php?page=main&id=10322" class="col1">více info</a></p>
+						</div>
+					</div>
+            			
+					<div class="block2">
+						<a href="index.php?page=main&id=10323"><img src="img/trips/10323.jpg" alt="" class="img_inner fleft"></a>
+						<div class="extra_wrapper">
+							<div class="text1 col1"><a href="index.php?page=main&id=10323">Lotrando a Zubejda</a><br>
+							<a href="index.php?page=main&id=10323" class="link1">02.05.2027 | ﻿620 Kč</a><br>
+							</div>
+							<p>
+Lotrando a Zubejda<br><br>
+Divadelní adaptace pohádky "Lotrando a Zubejda" přináší na divadelní prkna příběh plný humoru, kouzel a nezapo... <a href="index.php?page=main&id=10323" class="col1">více info</a></p>
+						</div>
+					</div>
+            			
+					<div class="block2">
+						<a href="index.php?page=main&id=10292"><img src="img/trips/10292.jpg" alt="" class="img_inner fleft"></a>
+						<div class="extra_wrapper">
+							<div class="text1 col1"><a href="index.php?page=main&id=10292">Řecko - Kamena Vourla<br><br>záloha pouze 1.500 Kč </a><br>
+							<a href="index.php?page=main&id=10292" class="link1">26.08.2027 | ﻿17.490 Kč</a><br>
+							</div>
+							<p>
+Kamena Vourla je krásné řecké přímořské letovisko nacházející se na východním pobřeží středního Řecka, nedaleko zálivu Maliakos.... <a href="index.php?page=main&id=10292" class="col1">více info</a></p>
+						</div>
+					</div>
+
+				</div>
+				
+
+<!-- there you go / RIGHT MENU -->
+
+<div class="grid_3 prefix_1">
+					<h3 class="head1">ZÁJEZDY</h3>
+					<ul class="list">
+
+
+<!--***************************** PHP there you go / RIGHT MENU *******************************************-->
+
+
+
+              <li><a href="index.php?page=main&amp;sort=Adventní%20zájezdy"
+               class=menu>Adventní zájezdy</a></li>
+           
+                             
+      
+
+              <li><a href="index.php?page=main&amp;sort=Muzikály,%20koncerty,%20divadla"
+               class=menu>Muzikály, koncerty, divadla</a></li>
+           
+                             
+      
+
+              <li><a href="index.php?page=main&amp;sort=Pobytový%20Řecko%202027"
+               class=menu>Pobytový Řecko 2027</a></li>
+           
+                             
+      
+
+              <li><a href="index.php?page=main&amp;sort=Termální%20lázně"
+               class=menu>Termální lázně</a></li>
+           
+                             
+      
+
+<!--***************************** PHP there you go / left invididual trips table *******************************************-->
+
+
+					</ul>
+</div>
+
+
+			</div>
+		</div>
+	
+
+<!--==============================footer=================================-->
+
+		﻿<footer>
+			<div class="container_12">
+				<div class="grid_12">
+					<div class="socials">
+						<a href="https://www.facebook.com/TRIOcestovniagentura" class="fa fa-facebook"></a>
+						<a href="mailto:info@ca-trio.cz" class="fa fa-pencil"></a>
+						<a href="tel:+420737102348" class="fa fa-phone"></a>
+					</div>
+					<div class="copy">
+						CA TRIO LUDMILA PŘIKRYLOVÁ (c) 2026 | Sídlo: Šafaříkova 1304, 676 02 Moravské Budějovice | IČ: 12152854<br>
+						Podnikatel evidován v Živnostenském rejstříku vedeném Městským úřadem v Moravských Budějovicích.
+					</div>
+				</div>
+			</div>
+</footer>		
+		<script>
+			$(function (){
+				$('#bookingForm').bookingForm({
+					ownerEmail: '#'
+				});
+			})
+			$(function() {
+				$('#bookingForm input, #bookingForm textarea').placeholder();
+			});
+		</script>
+	</body>
+</html>
+

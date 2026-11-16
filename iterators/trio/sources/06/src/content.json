@@ -1,0 +1,829 @@
+{
+  "trips": [
+    {
+      "id": "10244",
+      "category": "advent",
+      "date": "2026-12-19",
+      "endDate": "",
+      "price": 585,
+      "image": "10244l.jpg",
+      "published": true,
+      "soldOut": false,
+      "seatCount": 49,
+      "occupied": [
+        3,
+        4,
+        11,
+        12,
+        17,
+        18
+      ],
+      "cs": {
+        "title": "Vánoční Vídeň",
+        "description": "Tradiční zájezd za vánoční atmosférou Vídně. Ještě váháte? Tak neváhejte, udělejte si výlet a užijte si krásnou vánoční atmosféru! Program zájezdu: Nejdříve navštívíme exteriér zámku Schönbrunn, který dýchá adventní atmosférou s nevšedním vánočním trhem, poté odjezd do centra Vídně. Pěší procházka vánočně osvětleným centrem, (Hofburg, Michalské náměstí, dóm Sv. Štěpána atd.) , čas na galerie, muzea, nákupy, volno k návštěvě adventních trhů. Nejslavnější vánoční trhy se tradičně konají na náměstí před vídeňskou radnicí. Určitě ochutnejte horký punč a porcelánový hrníček si ponechte jako hezkou vzpomínku. Vyberte si nějaké pečivo ze \"sladkého\" stánku, např. pravý vídeňský preclík z koblihového těsta, nebo Sacher dort. A na závěr si určitě poslechněte některý z vánočních koncertů v budově radnice. Doporučuji teplé oblečení a obuti!!!!",
+        "dateLabel": "19.12.2026",
+        "priceLabel": "585 Kč",
+        "priceNote": "",
+        "includes": [
+          "dopravu",
+          "průvodce"
+        ],
+        "excludes": [
+          "cestovní pojištění - možno sjednat v CA"
+        ],
+        "departures": [
+          "Třebíč, Úřad práce, 9:30",
+          "Jaroměřice nad Rokytnou, zámek, 9:50",
+          "Moravské Budějovice, náměstí Míru, 10:00",
+          "Znojmo, čerpací stanice Shell, 10:30",
+          "Odjezd z Vídně v 20:00"
+        ],
+        "program": [
+          "zájezdu",
+          "Nejdříve navštívíme exteriér zámku Schönbrunn, který dýchá adventní atmosférou s nevšedním vánočním trhem, poté odjezd do centra Vídně.",
+          "Pěší procházka vánočně osvětleným centrem, (Hofburg, Michalské náměstí, dóm Sv. Štěpána atd.) , čas na galerie, muzea, nákupy, volno k návštěvě adventních trhů. Nejslavnější vánoční trhy se tradičně konají na náměstí před vídeňskou radnicí.",
+          "Určitě ochutnejte horký punč a porcelánový hrníček si ponechte jako hezkou vzpomínku. Vyberte si nějaké pečivo ze \"sladkého\" stánku, např. pravý vídeňský preclík z koblihového těsta, nebo Sacher dort.",
+          "A na závěr si určitě poslechněte některý z vánočních koncertů v budově radnice.",
+          "Doporučuji teplé oblečení a obuti!!!!"
+        ],
+        "image": "10244l.jpg",
+        "soldOut": false
+      },
+      "en": {
+        "title": "Christmas Vienna (Vánoční Vídeň)",
+        "description": "A day trip for Vienna's Christmas atmosphere. The day starts at the exterior of Schönbrunn Palace with its Christmas market, then moves to the city centre. A walking route covers the illuminated centre, including the Hofburg, Michaelerplatz and St Stephen's Cathedral, with time left for galleries, museums, shopping and the Advent markets. The largest market stands in front of the Vienna City Hall. Visitors are encouraged to try hot punch and keep the porcelain cup, buy pastries such as a Viennese pretzel or a Sacher torte, and end the day at one of the Christmas concerts in the City Hall. Warm clothing and shoes are recommended.",
+        "dateLabel": "19 December 2026",
+        "priceLabel": "585 CZK",
+        "priceNote": "",
+        "includes": [
+          "Transport",
+          "Guide"
+        ],
+        "excludes": [
+          "Travel insurance, available at CA Trio"
+        ],
+        "departures": [
+          "Třebíč, Labour Office, 9:30",
+          "Jaroměřice nad Rokytnou, chateau, 9:50",
+          "Moravské Budějovice, náměstí Míru, 10:00",
+          "Znojmo, Shell petrol station, 10:30",
+          "Return from Vienna at 20:00"
+        ],
+        "program": [],
+        "image": "10244l.jpg",
+        "soldOut": false
+      }
+    },
+    {
+      "id": "10294",
+      "category": "advent",
+      "date": "2026-11-28",
+      "endDate": "",
+      "price": 560,
+      "image": "10294l.jpg",
+      "published": true,
+      "soldOut": false,
+      "seatCount": 49,
+      "occupied": [
+        3,
+        4,
+        11,
+        12,
+        17,
+        18
+      ],
+      "cs": {
+        "title": "Advent v Kittenberských zahradách",
+        "description": "Odjezd v brzkých odpoledních hodinách. Jako kdybyste vstoupili rovnou do pohádky, takový zažijete podvečer v kouzelném prostředí Kittenberských zahrad. Budete obdivovat různá zákoutí s vánoční výzdobou, sochami, loučemi, ohněm a dekoracemi. Zahrady jsou nasvíceny 400 000 světly, doplněny světelnou show a vánočnímy koncerty. K tomu betlém s ručně vyrobenými figurkami. Obří plovoucí adventní věnec, barevné vodorysky to je špička všech těch krás. Pro zahřátí si můžete dát puč, svařené vínko, nebo některou z dalších dobrot.V prodejně si můžete zakoupit různé vánoční dekorace, nebo jen tak něco pro vzpomínku. Doporučuji teplé oblečení a obuti!!!! Návrat ve večerních hodinách.",
+        "dateLabel": "28.11.2026",
+        "priceLabel": "560 Kč",
+        "priceNote": "",
+        "includes": [
+          "dopravu",
+          "průvodce"
+        ],
+        "excludes": [
+          "vstupné 11€ dosp., 6€ děti",
+          "cestovní pojištění - možno sjednat v CA TRIO"
+        ],
+        "departures": [
+          "Třebíč, Úřad práce, 11:30",
+          "Jaroměřice nad Rokytnou, zámek, 11:50",
+          "Moravské Budějovice, náměstí Míru, 12:00",
+          "Znojmo, čerpací stanice Shell, 12:30"
+        ],
+        "program": [
+          "zájezdu",
+          "Odjezd v brzkých odpoledních hodinách.",
+          "Jako kdybyste vstoupili rovnou do pohádky,",
+          "takový zažijete podvečer v kouzelném prostředí Kittenberských zahrad. Budete obdivovat různá zákoutí s vánoční výzdobou, sochami, loučemi, ohněm a dekoracemi. Zahrady jsou nasvíceny 400 000 světly, doplněny světelnou show a vánočnímy koncerty. K tomu betlém s ručně vyrobenými figurkami.",
+          "Obří plovoucí adventní věnec, barevné vodorysky to je špička všech těch krás.",
+          "Pro zahřátí si můžete dát puč, svařené vínko, nebo některou z dalších dobrot.V",
+          "prodejně si můžete zakoupit různé vánoční dekorace, nebo jen tak něco pro vzpomínku.",
+          "Doporučuji teplé oblečení a obuti!!!!",
+          "Návrat ve večerních hodinách."
+        ],
+        "image": "10294l.jpg",
+        "soldOut": false
+      },
+      "en": {
+        "title": "Advent in the Kittenberg Gardens (Advent v Kittenberských zahradách)",
+        "description": "An early afternoon departure and an evening in the Kittenberg Gardens. The route passes corners decorated for Christmas with statues, torches and open fire. The gardens carry 400,000 lights, a light show and Christmas concerts, plus a nativity scene with handmade figures, a giant floating Advent wreath and coloured water features. Visitors can warm up with punch or mulled wine and buy Christmas decorations in the shop. Warm clothing and shoes are recommended. Return in the evening.",
+        "dateLabel": "28 November 2026",
+        "priceLabel": "560 CZK",
+        "priceNote": "",
+        "includes": [
+          "Transport",
+          "Guide"
+        ],
+        "excludes": [
+          "Entrance, 11 EUR adult and 6 EUR child",
+          "Travel insurance, available at CA Trio"
+        ],
+        "departures": [
+          "Třebíč, Labour Office, 11:30",
+          "Jaroměřice nad Rokytnou, chateau, 11:50",
+          "Moravské Budějovice, náměstí Míru, 12:00",
+          "Znojmo, Shell petrol station, 12:30"
+        ],
+        "program": [],
+        "image": "10294l.jpg",
+        "soldOut": false
+      }
+    },
+    {
+      "id": "10303",
+      "category": "advent",
+      "date": "2026-12-05",
+      "endDate": "",
+      "price": 780,
+      "image": "10303l.jpg",
+      "published": true,
+      "soldOut": false,
+      "seatCount": 49,
+      "occupied": [
+        3,
+        4,
+        11,
+        12,
+        17,
+        18
+      ],
+      "cs": {
+        "title": "Vánoce na veselém kopci a osvětlený dům v Chotovicích",
+        "description": "Oblíbený program \"Vánoce na Veselém Kopci\" je místem, kde se dozvíme jak naši předci prožívali adventní období. Vše je doplněno lidovými koledami, předvádění výroby vánočních předmětů, možnost nákupu dárků atd. A k večeru se pojedeme podívat do Chotovic. Vánoční světýlka zdobí kompletně celý dům a přilehlou zahradu s altánem. Perfektní vizuální podívanou doprovází české koledy. Svojí unikátní a honosnou vánoční výzdobou se dům zapsal do Guinessovy knihy rekordů. Tu krásu musíte vidět na vlastní oči.",
+        "dateLabel": "05.12.2026",
+        "priceLabel": "780 Kč",
+        "priceNote": "760 Kč senioři 710 Kč děti",
+        "includes": [
+          "dopravu",
+          "průvodce",
+          "vstup do skanzenu"
+        ],
+        "excludes": [],
+        "departures": [
+          "Moravské Budějovice, náměstí Míru, 9:00",
+          "Jaroměřice nad Rokytnou, zámek, 9:10",
+          "Třebíč, Úřad práce, 9:30"
+        ],
+        "program": [
+          "zájezdu",
+          "Odjezd v dopoledních hodinách",
+          "Oblíbený program \"Vánoce na Veselém Kopci\" je místem, kde se dozvíme jak naši předci prožívali adventní období. Vše je doplněno lidovými koledami, předvádění výroby vánočních předmětů, možnost nákupu dárků atd.",
+          "A k večeru se pojedeme podívat do Chotovic. Vánoční světýlka zdobí kompletně celý dům a přilehlou zahradu s altánem. Perfektní vizuální podívanou doprovází české koledy. Svojí unikátní a honosnou vánoční výzdobou se dům zapsal do Guinessovy knihy rekordů.",
+          "Tu krásu musíte vidět na vlastní oči."
+        ],
+        "image": "10303l.jpg",
+        "soldOut": false
+      },
+      "en": {
+        "title": "Christmas at Veselý Kopec and the illuminated house in Chotovice (Vánoce na Veselém Kopci a osvětlený dům v Chotovicích)",
+        "description": "A morning departure to the open-air museum at Veselý Kopec, where the programme shows how earlier generations spent Advent. It includes folk carols, demonstrations of making Christmas objects and a chance to buy gifts. In the evening the group visits a house in Chotovice where lights cover the whole building and the garden with its gazebo, accompanied by Czech carols. The decoration earned the house a place in the Guinness Book of Records.",
+        "dateLabel": "5 December 2026",
+        "priceLabel": "780 CZK",
+        "priceNote": "760 CZK for seniors, 710 CZK for children",
+        "includes": [
+          "Transport",
+          "Guide",
+          "Entry to the open-air museum"
+        ],
+        "excludes": [],
+        "departures": [
+          "Moravské Budějovice, náměstí Míru, 9:00",
+          "Jaroměřice nad Rokytnou, chateau, 9:10",
+          "Třebíč, Labour Office, 9:30"
+        ],
+        "program": [],
+        "image": "10303l.jpg",
+        "soldOut": false
+      }
+    },
+    {
+      "id": "8087",
+      "category": "advent",
+      "date": "2026-12-12",
+      "endDate": "",
+      "price": 695,
+      "image": "8087l.jpg",
+      "published": true,
+      "soldOut": true,
+      "seatCount": 49,
+      "occupied": [
+        3,
+        4,
+        11,
+        12,
+        17,
+        18
+      ],
+      "cs": {
+        "title": "Vánoční Bratislava, čokoládovna Hauswirth",
+        "description": "Nejdříve v Rakousku navštívíme čokoládovnu Hauswirth . Po seznámení s výrobou jejich výroků a nákupu v podnikové prodejně odjedeme do Bratislavy. Projdeme se kouzelně vánočně vyzdobeném městem, (Katedrála sv. Martina, Michalská brána, Grasalkovičův palác, který je sídlem slovenské prezidentky, Stará radnice, bronzová socha Čumila, která je nejfotografovanější bratislavskou sochou, Slovenské národní divadlo) , kde bude společná prohlídka města ukončena. Poté volno na velmi krásné adventní trhy s dobrými vyhlášenými lahůdkami a zajímavými dárky . Těšit se můžete na kulturní program, který trhy vždy doprovází. Navečer odjezd domů.",
+        "dateLabel": "12.12.2026",
+        "priceLabel": "695 Kč",
+        "priceNote": "",
+        "includes": [
+          "dopravu",
+          "průvodce"
+        ],
+        "excludes": [
+          "cestovní pojištění - možno sjednat v CA TRIO"
+        ],
+        "departures": [
+          "Třebíč, Úřad práce, 8:00",
+          "Jaroměřice nad Rokytnou, zámek, 8:20",
+          "Moravské Budějovice, náměstí Míru, 8:30",
+          "Znojmo, čerpací stanice Shell, 9:00"
+        ],
+        "program": [
+          "zájezdu",
+          "Nejdříve v Rakousku navštívíme čokoládovnu Hauswirth . Po seznámení s výrobou jejich výroků a nákupu v podnikové prodejně odjedeme do Bratislavy.",
+          "Projdeme se kouzelně vánočně vyzdobeném městem, (Katedrála sv. Martina, Michalská brána, Grasalkovičův palác, který je sídlem slovenské prezidentky, Stará radnice, bronzová socha Čumila, která je nejfotografovanější bratislavskou sochou,",
+          "Slovenské národní divadlo) , kde bude společná prohlídka města ukončena.",
+          "Poté volno na velmi krásné adventní trhy s dobrými vyhlášenými lahůdkami a zajímavými dárky .",
+          "Těšit se můžete na kulturní program, který trhy vždy doprovází.",
+          "Navečer odjezd domů."
+        ],
+        "image": "8087l.jpg",
+        "soldOut": true
+      },
+      "en": {
+        "title": "Christmas Bratislava and the Hauswirth chocolate factory (Vánoční Bratislava, čokoládovna Hauswirth)",
+        "description": "The day begins in Austria at the Hauswirth chocolate factory, with a look at how the chocolates are made and time in the factory shop, then continues to Bratislava. A guided walk covers the decorated old town: St Martin's Cathedral, Michael's Gate, the Grassalkovich Palace, the Old Town Hall, the Čumil statue and the Slovak National Theatre. The afternoon is free for the Advent markets, their food stalls and gifts, with the accompanying cultural programme. Payment at the chocolate factory is cash only. Return in the evening.",
+        "dateLabel": "12 December 2026",
+        "priceLabel": "695 CZK",
+        "priceNote": "",
+        "includes": [
+          "Transport",
+          "Guide"
+        ],
+        "excludes": [
+          "Travel insurance, available at CA Trio"
+        ],
+        "departures": [
+          "Třebíč, Labour Office, 8:00",
+          "Jaroměřice nad Rokytnou, chateau, 8:20",
+          "Moravské Budějovice, náměstí Míru, 8:30",
+          "Znojmo, Shell petrol station, 9:00"
+        ],
+        "program": [],
+        "image": "8087l.jpg",
+        "soldOut": true
+      }
+    },
+    {
+      "id": "10321",
+      "category": "culture",
+      "date": "2027-02-20",
+      "endDate": "",
+      "price": 290,
+      "image": "10321l.jpg",
+      "published": true,
+      "soldOut": false,
+      "seatCount": 49,
+      "occupied": [
+        3,
+        4,
+        11,
+        12,
+        17,
+        18
+      ],
+      "cs": {
+        "title": "SNĚHOVÁ KRÁLOVNA , muzikál na ledě",
+        "description": "Jeden z nejkrásnějších pohádkových příběhů o síle přátelství, lásky a odvahy ožije v jedinečném provedení poprvé na ledě. Muzikál Sněhová královna je inspirovaný nesmrtelnou pohádkou Hanse Christiana Andersena. Diváci se mohou těšit na podívanou, která propojí svět hudby, tance a krasobruslení s dechberoucími výkony těch největších mistrů pohybu na ledě. Celé to bude korunovat unikátní scéna, světelná show i řada filmových projekcí. scénář - Jan a Alena Pixovi texty písní - Kristýna Pixová a Ondřej Suchý hudba - Zdeněk Barták kostýmy - Roman Šolc Těšit se tak můžeme na působivé ledové šaty, snové kostýmy víl i temné hávy sil zla.",
+        "dateLabel": "20.02.2027",
+        "priceLabel": "290 Kč",
+        "priceNote": "Vstupenky dle výběru v CA již od 840 Kč",
+        "includes": [],
+        "excludes": [],
+        "departures": [
+          "Moravské Budějovice, náměstí Míru, 12:00",
+          "Jaroměřice nad Rokytnou, zámek, 12:10",
+          "Třebíč, Úřad práce, 12:30"
+        ],
+        "program": [],
+        "image": "10321l.jpg",
+        "soldOut": false
+      },
+      "en": {
+        "title": "The Snow Queen, a musical on ice (SNĚHOVÁ KRÁLOVNA , muzikál na ledě)",
+        "description": "The Hans Christian Andersen fairy tale about friendship, love and courage, staged on ice. The show combines music, dance and figure skating with a stage set, light show and film projections. Script by Jan and Alena Pix, lyrics by Kristýna Pixová and Ondřej Suchý, music by Zdeněk Barták, costumes by Roman Šolc.",
+        "dateLabel": "20 February 2027",
+        "priceLabel": "290 CZK, transport",
+        "priceNote": "Tickets from 840 CZK when bought at CA Trio",
+        "includes": [],
+        "excludes": [],
+        "departures": [
+          "Moravské Budějovice, náměstí Míru, 12:00",
+          "Jaroměřice nad Rokytnou, chateau, 12:10",
+          "Třebíč, Labour Office, 12:30"
+        ],
+        "program": [],
+        "image": "10321l.jpg",
+        "soldOut": false
+      }
+    },
+    {
+      "id": "10322",
+      "category": "culture",
+      "date": "2027-05-02",
+      "endDate": "",
+      "price": 620,
+      "image": "10322l.jpg",
+      "published": true,
+      "soldOut": false,
+      "seatCount": 49,
+      "occupied": [
+        3,
+        4,
+        11,
+        12,
+        17,
+        18
+      ],
+      "cs": {
+        "title": "Biograf láska II - Nový příběh",
+        "description": "První muzikál s písničkami Hany Zagorové Biograf láska se setkal s nadšenými ohlasy a stal se mimořádnou divadelní událostí. Nyní je stejnými tvůrci připraven také Biograf láska 2: Nový příběh. Další nezapomenutelné hity devítinásobné Zlaté slavice ožijí v novém atraktivním příběhu, opět plném emocí, naděje i humoru. Autorka scénáře Uljana Donátová napsala zcela nový, na předchozím titulu nezávislý příběh. \"Vznikl příběh s novými hrdiny, novými situacemi, novými zápletkami. Ti, kteří první představení v viděli v Biografu láska 2 najdou odkazy a styčné body a takové milé, drobné souvislosti s jedničkou,\" Divadlo Kalich Praha",
+        "dateLabel": "02.05.2027",
+        "priceLabel": "620 Kč",
+        "priceNote": "",
+        "includes": [
+          "dopravu",
+          "průvodce"
+        ],
+        "excludes": [
+          "vstupenku",
+          "dle výběru v CA již od 849 Kč"
+        ],
+        "departures": [
+          "Moravské Budějovice, náměstí Míru, 10:00",
+          "Jaroměřice nad Rokytnou, zámek, 10:10",
+          "Třebíč, Úřad práce, 10:30",
+          "Jihlava, Billa, 11:00"
+        ],
+        "program": [],
+        "image": "10322l.jpg",
+        "soldOut": false
+      },
+      "en": {
+        "title": "Biograf láska II: A New Story (Biograf láska II - Nový příběh)",
+        "description": "A sequel to the musical built on Hana Zagorová's songs. The same authors wrote a new story with new characters and new turns, independent of the first show but with references to it for people who saw the original. Performed at Divadlo Kalich in Prague. Screenplay by Uljana Donátová.",
+        "dateLabel": "2 May 2027",
+        "priceLabel": "620 CZK, transport",
+        "priceNote": "",
+        "includes": [
+          "Transport",
+          "Guide"
+        ],
+        "excludes": [
+          "Ticket, from 849 CZK when bought at CA Trio"
+        ],
+        "departures": [
+          "Moravské Budějovice, náměstí Míru, 10:00",
+          "Jaroměřice nad Rokytnou, chateau, 10:10",
+          "Třebíč, Labour Office, 10:30",
+          "Jihlava, Billa, 11:00"
+        ],
+        "program": [],
+        "image": "10322l.jpg",
+        "soldOut": false
+      }
+    },
+    {
+      "id": "10323",
+      "category": "culture",
+      "date": "2027-05-02",
+      "endDate": "",
+      "price": 620,
+      "image": "10323l.jpg",
+      "published": true,
+      "soldOut": false,
+      "seatCount": 49,
+      "occupied": [
+        3,
+        4,
+        11,
+        12,
+        17,
+        18
+      ],
+      "cs": {
+        "title": "Lotrando a Zubejda",
+        "description": "Divadelní adaptace pohádky \"Lotrando a Zubejda\" přináší na divadelní prkna příběh plný humoru, kouzel a nezapomenutelných písniček, které rozveselí srdce malých i velkých diváků. Pod dubem, za dubem. Nám se stalo něco překrásného, Řízni, řízni, řízni a další. Oblíbenou filmovou pohádku Lotrando a Zubejda, natočil v roce 1996 Karel Smyczek. divadlo Broadway",
+        "dateLabel": "02.05.2027",
+        "priceLabel": "620 Kč",
+        "priceNote": "",
+        "includes": [
+          "dopravu",
+          "průvodce"
+        ],
+        "excludes": [
+          "vstupenku",
+          "dle výběru v CA již od 599 Kč"
+        ],
+        "departures": [
+          "Moravské Budějovice, náměstí Míru, 10:00",
+          "Jaroměřice nad Rokytnou, zámek, 10:10",
+          "Třebíč, Úřad práce, 10:30",
+          "Jihlava, Billa, 11:00"
+        ],
+        "program": [],
+        "image": "10323l.jpg",
+        "soldOut": false
+      },
+      "en": {
+        "title": "Lotrando and Zubejda (Lotrando a Zubejda)",
+        "description": "A stage adaptation of the fairy tale filmed by Karel Smyczek in 1996, with its songs and humour. Performed at Divadlo Broadway in Prague.",
+        "dateLabel": "2 May 2027",
+        "priceLabel": "620 CZK, transport",
+        "priceNote": "",
+        "includes": [
+          "Transport",
+          "Guide"
+        ],
+        "excludes": [
+          "Ticket, from 599 CZK when bought at CA Trio"
+        ],
+        "departures": [
+          "Moravské Budějovice, náměstí Míru, 10:00",
+          "Jaroměřice nad Rokytnou, chateau, 10:10",
+          "Třebíč, Labour Office, 10:30",
+          "Jihlava, Billa, 11:00"
+        ],
+        "program": [],
+        "image": "10323l.jpg",
+        "soldOut": false
+      }
+    },
+    {
+      "id": "10292",
+      "category": "greece",
+      "date": "2027-08-26",
+      "endDate": "2027-09-02",
+      "price": 17490,
+      "image": "10292l.jpg",
+      "published": true,
+      "soldOut": false,
+      "seatCount": 49,
+      "occupied": [
+        3,
+        4,
+        11,
+        12,
+        17,
+        18
+      ],
+      "cs": {
+        "title": "Řecko - Kamena Vourla",
+        "description": "Kamena Vourla je krásné řecké přímořské letovisko nacházející se na východním pobřeží středního Řecka, nedaleko zálivu Maliakos. Toto malé město je známé pro své překrásné pláže, léčivé termální prameny a relaxační atmosféru. Plážový hotel SISSY je příjemný hotel s prostornou subtropickou zahradou. K dispozici vstupní hala s recepcí, výtah, restaurace s venkovní terasou, bar, beach bar, disco club, animační programy, billiard, ping pong. Hotel pořádá řecké večery, animační programy s českým animátorem. Dále nabízí zapůjčení kol i elektrokol za poplatek. V blízkosti hotelu se nachází několik obchůdků, restaurací a taveren. Pláž je oblázková s pozvolným vstupem do moře. Navazuje přímo na hotelovou zahradu stíněnou stromy s lehátky zdarma. Dále venkovní bazén s lehátky zdarma a sluneční terasou s výhledem na moře. Ubytování: 2-3 lůž. pokoje, nebo rodinné pokoje premium se dvěma ložnicemi pro 3-4 osoby, sociální zařízení (WC, vana/sprcha, fén, ručníky, osušky, hygienické potřeby), SAT/TV, minilednička, klimatizace a trezor zdarma, Wi-Fi připojení v lobby, balkon s výhledem na moře. , Stravování: polopenze , snídaně a večeře formou bufetu. Hotelová restaurace Vám nabídne pokrmy inspirované řeckou tradiční a mezinárodní kuchyní a zároveň nabízí mnoho chutných jídel i pro vegetariány. Během dne si můžete dokoupit občerstvení za velice příznivé ceny v areálu hotelové zahrady , beach bar (pivo, víno, nealko nápoje, káva, zmrzlina, saláty, hod dog, hranolky, pizza, souvlaki, mořské plody). Na okraji městečka najdeme přírodní jezírka s teplými termálními prameny, která jsou zdarma. V letovisku se také pořádají místní trhy , kde se výborně a levně nakupuje. (s CK Apollon)",
+        "dateLabel": "26.08.2027",
+        "priceLabel": "17.490 Kč",
+        "priceNote": "10.990 Kč (3.osoba v pokoji do 12 let)",
+        "includes": [
+          "leteckou dopravu Brno-Volos-Brno včetně všech poplatků",
+          "transfer busem z letiště do místa pobytu a zpět",
+          "ubytování",
+          "polopenzi",
+          "služby stálého delegáta"
+        ],
+        "excludes": [
+          "pokoj premium 2.000 Kč/osoba/pobyt, 3.osoba do 12 let 1.000 Kč/pobyt",
+          "komplexní cestovní pojištění UNIQA včetně storna - 464 Kč/os. , pobyt",
+          "(doporučuji sjednat)",
+          "pobytovou taxu 5 €/den/pokoj , platba na místě",
+          "dopravu na letiště do Brna a zpět - 500 Kč/osoba",
+          "Doporučujeme rezervovat, pobyt bývá rychle vyprodán."
+        ],
+        "departures": [
+          "Moravské Budějovice, náměstí Míru, 2:00",
+          "Jaroměřice nad Rokytnou, zámek, 2:10",
+          "Třebíč, Úřad práce, 2:30"
+        ],
+        "program": [],
+        "image": "10292l.jpg",
+        "soldOut": false
+      },
+      "en": {
+        "title": "Greece: Kamena Vourla (Řecko - Kamena Vourla)",
+        "description": "Kamena Vourla is a seaside resort on the eastern coast of central Greece, near the Maliakos Gulf, known for its beaches, thermal springs and quiet pace. The group stays at Hotel SISSY, a beach hotel with a large subtropical garden, lobby and reception, lift, restaurant with an outdoor terrace, bar, beach bar, disco, animation programme with a Czech animator, billiards, table tennis and paid bike and e-bike rental. Shops, restaurants and tavernas sit within walking distance.\n\nThe pebble beach opens straight from the hotel garden, with free sunbeds under trees, and an outdoor pool with free sunbeds and a sea-view sun terrace. Rooms hold 2 to 3 beds, or families can take premium rooms with two bedrooms for 3 to 4 people. All rooms have a bathroom with WC, bath or shower, hair dryer, towels, toiletries, satellite TV, minibar, air conditioning, a free safe and a balcony with sea view. Wi-Fi works in the lobby. Half board is buffet breakfast and dinner, with Greek and international dishes and vegetarian options. The beach bar sells snacks, drinks and ice cream during the day. Thermal ponds with warm springs sit at the edge of town and are free, and the local market is cheap. Operated with CK Apollon.\n\nThe operator notes that the stay sells out early, so booking ahead matters.",
+        "dateLabel": "26 August to 2 September 2027",
+        "priceLabel": "17,490 CZK",
+        "priceNote": "10,990 CZK for a third person in the room up to 12 years",
+        "includes": [
+          "Return flights Brno to Volos, all fees included",
+          "Bus transfer from the airport to the hotel and back",
+          "Accommodation",
+          "Half board",
+          "Resident delegate"
+        ],
+        "excludes": [
+          "Premium room, 2,000 CZK per person per stay; third person up to 12 years, 1,000 CZK per stay",
+          "UNIQA comprehensive travel insurance including cancellation, 464 CZK per person per stay, recommended",
+          "Stay tax, 5 EUR per day per room, paid locally",
+          "Transport to Brno airport and back, 500 CZK per person"
+        ],
+        "departures": [
+          "Moravské Budějovice, náměstí Míru, 2:00",
+          "Jaroměřice nad Rokytnou, chateau, 2:10",
+          "Třebíč, Labour Office, 2:30"
+        ],
+        "program": [],
+        "image": "10292l.jpg",
+        "soldOut": false
+      }
+    },
+    {
+      "id": "10307",
+      "category": "spa",
+      "date": "2026-11-29",
+      "endDate": "",
+      "price": 1170,
+      "image": "10307l.jpg",
+      "published": true,
+      "soldOut": false,
+      "seatCount": 49,
+      "occupied": [
+        3,
+        4,
+        11,
+        12,
+        17,
+        18
+      ],
+      "cs": {
+        "title": "Termální lázně Bük",
+        "description": "Jednodenní zájezd do termálních lázní v Büku. Další termín: 29.12. Bük je vzdálen pouhých 240 km a je znám pro své termální lázně, které mají blahodárný vliv na pohybové ústrojí a žaludeční choroby . Prostory v lázních byly v roce 2003 rozšířeny o další relaxační bazény kryté i polokryté. Bazény o teplotě 33-36°C můžete využívat po celou dobu pobytu. K tomu byl otevřen bazén s teplou vodou, který slouží i k plavání. Dále můžete relaxovat ve wellness části (bazény s vířivkami, divokou řekou, bazénem pro děti, lehátky) V areálu se dále nachází místnost pro odpočinek, občerstvení, šatny (dámské, pánské), možnost zakoupení procedur: masáže, sauna, pedikúra. Pobyt vám zpříjemní koupací plášť a pantofle. Platba v celém areálu je možná v eurech, forintech i kartou. Relaxace v lázních cca 9 hod. Další termín: 29.12.",
+        "dateLabel": "29.11.2026",
+        "priceLabel": "1.170 Kč",
+        "priceNote": "1070 Kč děti, do 3 let 595 Kč",
+        "includes": [
+          "dopravu",
+          "průvodce",
+          "vstupné",
+          "sprchy, toalety, vysoušeče vlasů, lehátka",
+          "šatny",
+          "šatny se skřínkou za příplatek 40 Kč"
+        ],
+        "excludes": [
+          "cestovní pojištění - možno sjednat v CA TRIO"
+        ],
+        "departures": [
+          "Třebíč, Úřad práce, 5:00",
+          "Jaroměřice nad Rokytnou, zámek, 5:20",
+          "Moravské Budějovice, náměstí Míru, 5:30",
+          "Znojmo, čerpací stanice Shell, 6:00",
+          "Návrat večer"
+        ],
+        "program": [],
+        "image": "10307l.jpg",
+        "soldOut": false
+      },
+      "en": {
+        "title": "Bük thermal spa (Termální lázně Bük)",
+        "description": "A day trip to the thermal spa in Bük, 240 km away, known for baths that help with musculoskeletal and gastric complaints. The site added more relaxation pools, indoor and semi-covered, in 2003. Water runs at 33 to 36 degrees Celsius, with a warmer pool for swimming and a wellness area with whirlpools, a wild river, a children's pool and sunbeds. There is a rest room, refreshments and changing rooms, and visitors can buy treatments such as massage, sauna and pedicure. A bathrobe and slippers make the stay more comfortable. The whole area accepts euros, forints and cards. About nine hours at the spa. Another date runs on 29 December.",
+        "dateLabel": "29 November 2026",
+        "priceLabel": "1,170 CZK",
+        "priceNote": "1,070 CZK for children, 595 CZK under 3 years",
+        "includes": [
+          "Transport",
+          "Guide",
+          "Entrance",
+          "Showers, toilets, hair dryers and sunbeds",
+          "Changing rooms",
+          "Lockers, 40 CZK surcharge"
+        ],
+        "excludes": [
+          "Travel insurance, available at CA Trio"
+        ],
+        "departures": [
+          "Třebíč, Labour Office, 5:00",
+          "Jaroměřice nad Rokytnou, chateau, 5:20",
+          "Moravské Budějovice, náměstí Míru, 5:30",
+          "Znojmo, Shell petrol station, 6:00",
+          "Return in the evening"
+        ],
+        "program": [],
+        "image": "10307l.jpg",
+        "soldOut": false
+      }
+    },
+    {
+      "id": "10313",
+      "category": "spa",
+      "date": "2026-11-29",
+      "endDate": "",
+      "price": 1270,
+      "image": "10313l.jpg",
+      "published": true,
+      "soldOut": false,
+      "seatCount": 49,
+      "occupied": [
+        3,
+        4,
+        11,
+        12,
+        17,
+        18
+      ],
+      "cs": {
+        "title": "Termální lázně Sárvár",
+        "description": "Jednodenní zájezd do termálních lázní v Sárváru. Další termín: 29.12. Bazény v Sarváru patří k nejmodernějším v Maďarsku. Tyto vás ohromí vodní plochou 3.600 m2 a teplotou vody 30-36 C. Bazény kryté i polokryté s různými atrakcemi pro všechny, kteří touží po oddechu, vzpruze a osvěžení. Rozlehlý areál pro děti - kryté bazény, tobogány a skluzavky! Léčba osteoporózy, revmatizmu, pohybového ústrojí. V areálu občerstvení, šatny, odpočinkové místnosti, baby místnost, možnost zakoupení různých procedur. Doporučujeme koupací plášť a pantofle. Platba v celém areálu je možná v eurech, forintech i kartou. Relaxace v lázních cca 9 hod. Další termíny:",
+        "dateLabel": "29.11.2026",
+        "priceLabel": "1.270 Kč",
+        "priceNote": "1.100 Kč děti, do 3 let 595 Kč",
+        "includes": [
+          "dopravu",
+          "průvodce",
+          "vstupné",
+          "využití šatny, sprch, toalet, vysoušeče vlasů, lehátek"
+        ],
+        "excludes": [
+          "cestovní pojištění - možno sjednat v CA TRIO"
+        ],
+        "departures": [
+          "Třebíč, Úřad práce, 5:00",
+          "Jaroměřice nad Rokytnou, zámek, 5:20",
+          "Moravské Budějovice, náměstí Míru, 5:30",
+          "Znojmo, čerpací stanice Shell, 6:00",
+          "Návrat večer"
+        ],
+        "program": [],
+        "image": "10313l.jpg",
+        "soldOut": false
+      },
+      "en": {
+        "title": "Sárvár thermal spa (Termální lázně Sárvár)",
+        "description": "A day trip to the spa in Sárvár, whose pools are among the most modern in Hungary. The water area covers 3,600 square metres at 30 to 36 degrees Celsius, with indoor and semi-covered pools and attractions for adults and children. A large children's area has covered pools, slides and chutes. The water is used for osteoporosis, rheumatism and musculoskeletal treatment. The site has refreshments, changing rooms, rest rooms, a baby room and paid treatments. A bathrobe and slippers are recommended. Payment across the area accepts euros, forints and cards. About nine hours at the spa.",
+        "dateLabel": "29 November 2026",
+        "priceLabel": "1,270 CZK",
+        "priceNote": "1,100 CZK for children, 595 CZK under 3 years",
+        "includes": [
+          "Transport",
+          "Guide",
+          "Entrance",
+          "Changing rooms, showers, toilets, hair dryers and sunbeds"
+        ],
+        "excludes": [
+          "Travel insurance, available at CA Trio"
+        ],
+        "departures": [
+          "Třebíč, Labour Office, 5:00",
+          "Jaroměřice nad Rokytnou, chateau, 5:20",
+          "Moravské Budějovice, náměstí Míru, 5:30",
+          "Znojmo, Shell petrol station, 6:00",
+          "Return in the evening"
+        ],
+        "program": [],
+        "image": "10313l.jpg",
+        "soldOut": false
+      }
+    }
+  ],
+  "partners": {
+    "cs": [
+      {
+        "name": "EXIM + Fischer",
+        "description": "letecké pobyty v Egyptě, Tunisku, Turecku, Bulharsku, Řecku, Španělsku, na Kypru a exotika"
+      },
+      {
+        "name": "ATIS",
+        "description": "pobyty v Česku a na Slovensku, lázně, hory, chaty, chalupy, tábory pro děti, zimní pobyty"
+      },
+      {
+        "name": "AUTOTURIST",
+        "description": "pobyty v Česku, na Slovensku, v Itálii, Rakousku, Maďarsku, Španělsku, Francii, Slovinsku a Řecku, tranzitní ubytování, zimní pobyty"
+      },
+      {
+        "name": "BONTON",
+        "description": "pobyty v Řecku, Chorvatsku, Bulharsku, Itálii, Španělsku a Maďarsku, poznávací zájezdy do celého světa"
+      },
+      {
+        "name": "AZZURRO",
+        "description": "pobyty v Itálii a na italských ostrovech"
+      },
+      {
+        "name": "LUDOR",
+        "description": "Itálie, celé pobřeží včetně ostrovů, Čechy, Morava, Slovensko"
+      },
+      {
+        "name": "KOMPASTOUR",
+        "description": "pobyty v Itálii, Caorle"
+      },
+      {
+        "name": "SIAM",
+        "description": "pobyty a poznávací zájezdy, exotika"
+      },
+      {
+        "name": "ESO",
+        "description": "exotika, cesty za poznáním, Karibik, Indický oceán, Thajsko, Vietnam, Kambodža"
+      },
+      {
+        "name": "REDOK",
+        "description": "pobyty v Itálii, Chorvatsku, Egyptě, Karibiku, Libyi a Maroku, poznávací zájezdy po Evropě, cykloturistika"
+      },
+      {
+        "name": "TRAVEL 2002",
+        "description": "pobyty ve Španělsku, na řeckých ostrovech, v Bulharsku, Turecku a Chorvatsku"
+      },
+      {
+        "name": "HUNGARIA",
+        "description": "pobyty v Maďarsku"
+      },
+      {
+        "name": "KRASIM",
+        "description": "pobyty v Bulharsku"
+      },
+      {
+        "name": "ČEDOK",
+        "description": "letecké pobytové zájezdy v Bulharsku, Černé Hoře, Chorvatsku, Itálii, na Kypru, Madeiře, Maltě, v Maroku, Řecku, Španělsku, Tunisku a Turecku, poznávací zájezdy po severní Evropě a Rusku, klasické Evropě, Alpách, Středomoří a Balkánu, Egyptě a blízkém východě, Latinské Americe, jižní a východní Asii, Americe, zimní pobyty u nás i v zahraničí"
+      },
+      {
+        "name": "ALEXANDRIA",
+        "description": "Bulharsko, Řecko, Tunisko, Itálie, Chorvatsko, Španělsko, Kypr, exotika, informace v CA TRIO"
+      }
+    ],
+    "en": [
+      {
+        "name": "EXIM + Fischer",
+        "description": "air stays in Egypt, Tunisia, Turkey, Bulgaria, Greece, Spain, Cyprus and long-haul destinations"
+      },
+      {
+        "name": "ATIS",
+        "description": "stays in Czechia and Slovakia, including spas, mountains, cottages, farmhouses and children's camps, plus winter stays"
+      },
+      {
+        "name": "AUTOTURIST",
+        "description": "stays in Czechia, Slovakia, Italy, Austria, Hungary, Spain, France, Slovenia and Greece, transit accommodation, winter stays"
+      },
+      {
+        "name": "BONTON",
+        "description": "stays in Greece, Croatia, Bulgaria, Italy, Spain and Hungary, plus guided tours worldwide"
+      },
+      {
+        "name": "AZZURRO",
+        "description": "stays in Italy and the Italian islands"
+      },
+      {
+        "name": "LUDOR",
+        "description": "Italy and its full coastline including the islands, Bohemia, Moravia and Slovakia"
+      },
+      {
+        "name": "KOMPASTOUR",
+        "description": "stays in Italy, Caorle"
+      },
+      {
+        "name": "SIAM",
+        "description": "stays and guided tours, long-haul"
+      },
+      {
+        "name": "ESO",
+        "description": "long-haul discovery trips to the Caribbean, Indian Ocean, Thailand, Vietnam and Cambodia"
+      },
+      {
+        "name": "REDOK",
+        "description": "stays in Italy, Croatia, Egypt, the Caribbean, Libya and Morocco, guided tours across Europe, cycling holidays"
+      },
+      {
+        "name": "TRAVEL 2002",
+        "description": "stays in Spain, the Greek islands, Bulgaria, Turkey and Croatia"
+      },
+      {
+        "name": "HUNGARIA",
+        "description": "stays in Hungary"
+      },
+      {
+        "name": "KRASIM",
+        "description": "stays in Bulgaria"
+      },
+      {
+        "name": "ČEDOK",
+        "description": "air package stays in Bulgaria, Montenegro, Croatia, Italy, Cyprus, Madeira, Malta, Morocco, Greece, Spain, Tunisia and Turkey, plus guided tours of northern Europe and Russia, classic Europe, the Alps, the Mediterranean and the Balkans, Egypt and the Near East, Latin America, South and East Asia, the Americas, and winter stays at home and abroad"
+      },
+      {
+        "name": "ALEXANDRIA",
+        "description": "Bulgaria, Greece, Tunisia, Italy, Croatia, Spain, Cyprus and long-haul. Details at CA Trio."
+      }
+    ]
+  }
+}

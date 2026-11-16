@@ -1,0 +1,280 @@
+﻿<!DOCTYPE html>
+<html lang="cs">
+	<head>
+		<!-- 
+			Tento web byl vytvořen implementací responzivní šablony Free_Responsive_HTML5_Theme_for_Travel_Agency by TemplateMonster.com. Implementaci provedl:
+	  		ZEPPYR s.r.o. 
+			NÁBŘEŽNÍ 504, 675 51 JAROMĚŘICE NAD ROKYTNOU
+			http://www.minutes.cz/ info@minutes.cz
+		-->
+
+		<title>Cestovní agentura TRIO</title>
+		<meta charset="utf-8">
+		<meta name="format-detection" content="telephone=no" >
+		<meta property="og:type"          content="website" >
+		
+
+						
+		<link rel="icon" href="images/favicon.ico">
+		<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="stylesheet" href="booking/css/booking.css">
+		<link rel="stylesheet" href="css/camera.css">
+		<link rel="stylesheet" href="css/owl.carousel.css">
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/animated.css">
+		<link rel="stylesheet" href="css/form.css">
+
+		<script src="js/jquery.js"></script>
+		<script src="js/jquery-migrate-1.2.1.js"></script>
+		<script src="js/script.js"></script>
+		<script src="js/superfish.js"></script>
+		<script src="js/jquery.ui.totop.js"></script>
+		<script src="js/jquery.equalheights.js"></script>
+		<script src="js/jquery.mobilemenu.js"></script>
+		<script src="js/jquery.easing.1.3.js"></script>
+		<script src="js/owl.carousel.js"></script>
+		<script src="js/camera.js"></script>
+		<!--[if (gt IE 9)|!(IE)]><!-->
+		<script src="js/jquery.mobile.customized.min.js"></script>
+		<!--<![endif]-->
+		<script src="booking/js/booking.js"></script>
+		<script src="https://www.google.com/recaptcha/api.js"></script>
+		<script>
+		   function onSubmit(token) {
+		     document.getElementById("demo-form").submit();
+		   }
+		</script>
+		<script>
+			$(document).ready(function(){
+			jQuery('#camera_wrap').camera({
+				loader: false,
+				pagination: false ,
+				minHeight: '444',
+				thumbnails: false,
+				height: '48.375%',
+				caption: true,
+				navigation: true,
+				fx: 'mosaic'
+			});
+			/*carousel*/
+			var owl=$("#owl");
+				owl.owlCarousel({
+				items : 2, //10 items above 1000px browser width
+				itemsDesktop : [995,2], //5 items between 1000px and 901px
+				itemsDesktopSmall : [767, 2], // betweem 900px and 601px
+				itemsTablet: [700, 2], //2 items between 600 and 0
+				itemsMobile : [479, 1], // itemsMobile disabled - inherit from itemsTablet option
+				navigation : true,
+				pagination : false
+				});
+			$().UItoTop({ easingType: 'easeOutQuart' });
+			});
+		</script>
+		<!--[if lt IE 8]>
+		<div style=' clear: both; text-align:center; position: relative;'>
+			<a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+				<img src="http://storage.ie6countdown.com/assets/100/images/banners/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today." />
+			</a>
+		</div>
+		<![endif]-->
+		<!--[if lt IE 9]>
+		<script src="js/html5shiv.js"></script>
+		<link rel="stylesheet" media="screen" href="css/ie.css">
+		<![endif]-->
+
+
+		<script>
+
+  			var _gaq = _gaq || [];
+ 			_gaq.push(['_setAccount', 'UA-11413027-2']);
+  			_gaq.push(['_trackPageview']);
+
+  			(function() {
+  			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		</script>
+	</head>
+
+
+<body>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v20.0" nonce="Nh34CyHf"></script>
+
+<!-- ==============================old fb script fb up untill 2024=================================
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/cs_CZ/sdk.js#xfbml=1&version=v3.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+-->
+
+
+
+<!--==============================header=================================-->
+
+<header>
+			<div class="container_12">
+				<div class="grid_12">
+	<div class="menu_block">
+						<nav class="horizontal-nav full-width horizontalNav-notprocessed">
+							<ul class="sf-menu">
+								<li ><a href="index.php?page=main">NABÍDKA ZÁJEZDŮ</a></li>
+								<li class=current><a href="index.php?page=lm">LAST MINUTE</a></li>
+								<li ><a href="index.php?page=ck">SMLUVNÍ CK</a></li>
+								<li ><a href="index.php?page=storno">STORNO PODMÍNKY</a></li>
+								<li ><a href="index.php?page=hist">HISTORIE</a></li>
+								<li ><a href="index.php?page=kon">KONTAKT</a></li>
+							</ul>
+						</nav>
+						<div class="clear"></div>
+					</div>
+</div>				
+				<div class="grid_12">
+					<h1>
+						
+							<a href="index.php"><img src="images/logo.png" alt="CA TRIO"></a>
+						
+					</h1>
+				</div>
+			</div>
+</header>
+<!--==============================Content=================================-->
+
+		<div class="content">
+			<div class="container_12">
+
+			
+				<div class="grid_7">
+					<br><br><br><br>Litujeme, ale v této chvíli není zveřejněn žádný zájezd LAST MINUTE.<br><br> V případě konkrétního požadavku nám zašlete dotaz prostřednictvím následujícího formuláře.			
+					<h3>POPTÁVKOVÝ FORMULÁŘ</h3>
+					<form id="form" action="index.php?page=pf" method="POST">
+
+						<div class="success_wrapper">
+							<div class="success-message">Contact form submitted</div>
+						</div>
+						<label class="name">
+							<input type="text" name="jméno" placeholder="Jméno:" data-constraints="@Required @JustLetters" />
+							<span class="empty-message">*This field is required.</span>
+							<span class="error-message">*This is not a valid name.</span>
+						</label>
+						<label class="email">
+							<input type="text" name="email" placeholder="Email:" data-constraints="@Required @Email" />
+							<span class="empty-message">*This field is required.</span>
+							<span class="error-message">*This is not a valid email.</span>
+						</label>
+						<label class="antispam">
+							<input type="text" name="antispam" placeholder="Antispamová kontrola 1 + 1 =" data-constraints="@Required @JustLetters"/>
+							<span class="empty-message">*Vyplňte prosím toto pole.</span>
+							<span class="error-message">*This is not a valid phone.</span>
+						</label>
+						
+						<label class="message">
+							<textarea name="poznámka" placeholder="Váš požadavek:" data-constraints='@Required @Length(min=20,max=999999)'></textarea>
+							<span class="empty-message">*This field is required.</span>
+							<span class="error-message">*The message is too short.</span>
+						</label>
+						<div>
+							<div class="clear"></div>
+							<div class="btns">
+								
+    								<input class="sub" type="submit" value="odeslat">  <input class="sub" type="reset" value="vymazat">
+		
+							</div>
+						</div>
+					</form>				
+					</div><br>
+
+					
+
+<!-- there you go / RIGHT MENU -->
+
+<div class="grid_3 prefix_1">
+					<h3 class="head1">ZÁJEZDY</h3>
+					<ul class="list">
+
+
+<!--***************************** PHP there you go / RIGHT MENU *******************************************-->
+
+
+
+              <li><a href="index.php?page=main&amp;sort=Adventní%20zájezdy"
+               class=menu>Adventní zájezdy</a></li>
+           
+                             
+      
+
+              <li><a href="index.php?page=main&amp;sort=Muzikály,%20koncerty,%20divadla"
+               class=menu>Muzikály, koncerty, divadla</a></li>
+           
+                             
+      
+
+              <li><a href="index.php?page=main&amp;sort=Pobytový%20Řecko%202027"
+               class=menu>Pobytový Řecko 2027</a></li>
+           
+                             
+      
+
+              <li><a href="index.php?page=main&amp;sort=Termální%20lázně"
+               class=menu>Termální lázně</a></li>
+           
+                             
+      
+
+<!--***************************** PHP there you go / left invididual trips table *******************************************-->
+
+
+					</ul>
+</div>
+
+
+			
+
+				
+			
+							
+			</div>
+		</div>
+
+
+
+
+
+	
+
+<!--==============================footer=================================-->
+
+		﻿<footer>
+			<div class="container_12">
+				<div class="grid_12">
+					<div class="socials">
+						<a href="https://www.facebook.com/TRIOcestovniagentura" class="fa fa-facebook"></a>
+						<a href="mailto:info@ca-trio.cz" class="fa fa-pencil"></a>
+						<a href="tel:+420737102348" class="fa fa-phone"></a>
+					</div>
+					<div class="copy">
+						CA TRIO LUDMILA PŘIKRYLOVÁ (c) 2026 | Sídlo: Šafaříkova 1304, 676 02 Moravské Budějovice | IČ: 12152854<br>
+						Podnikatel evidován v Živnostenském rejstříku vedeném Městským úřadem v Moravských Budějovicích.
+					</div>
+				</div>
+			</div>
+</footer>		
+		<script>
+			$(function (){
+				$('#bookingForm').bookingForm({
+					ownerEmail: '#'
+				});
+			})
+			$(function() {
+				$('#bookingForm input, #bookingForm textarea').placeholder();
+			});
+		</script>
+	</body>
+</html>
+

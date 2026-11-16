@@ -1,0 +1,22 @@
+:root {
+  color-scheme: light dark;
+  --paper: #f7f5ef;
+  --ink: #14140f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+}
+/* sticky site header on the ninth variant */
+.variant-9 .site-header{
+  position:sticky;
+  top:0;
+  z-index:60;
+  background:var(--ground);
+}

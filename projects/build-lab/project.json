@@ -1,0 +1,114 @@
+{
+  "name": "Build Lab",
+  "brief": "Frontend Lab is a local workbench for comparing frontend builds made by different models and skills from one brief. It is not a product page and not a portfolio. Its job is to make a folder of generated builds easy to scan, open and compare, then get out of the way.\n\nThe lab judges design work, so its own interface is the test case. Design one tech-minimal version of the lab as a static frontend, and hold it to the standard the lab applies to everything it shows.\n\n## What the lab must do\n\nThree screens and one flow.\n\nLibrary. Every project as one entry: name, one line from its brief, build count, models involved. Search filters by project name and model as you type. The list stays usable with ten projects and with fifty.\n\nProject. Read the brief that produced the builds, then browse the builds. Each build shows model, skill and variant. Selecting a build opens it large. A second build can be pinned beside it for comparison, and changing the selected build keeps the pinned one.\n\nPreview. A build runs in a frame. It can take the full window and return. Escape closes it.\n\n## Tech minimalism, defined\n\nMinimal here means quiet and technical, not empty. Screenshots are the content. The interface is the frame.\n\n- One accent, plus ink, muted and one surface. No second accent.\n- One type pairing at most, plus a monospace face for metadata: counts, paths, model names, keys and timestamps.\n- Numbers use tabular figures and line up in columns.\n- Whitespace before borders, borders before shadows. Hairlines only. No drop shadows, no gradients, no glow.\n- No decorative icon per row. Use an icon only where it replaces a word the reader knows.\n- No card chrome unless it marks a real group.\n- Calm states and short transitions. Nothing animates for show.\n- Density is allowed. A technical tool shows counts, model and skill at a glance.\n- No marketing tone, no oversized slogans, no stock warmth.\n\n## One menu bar\n\nEvery variant uses the same menu bar design. Same height, same items, same type treatment, same active state, same position. The variation lives below the bar, so a reader switching variants never has to relearn it.\n\n## Content\n\nUse this data. Do not invent projects, models or numbers.\n\nProject Trio: 36 builds, models DeepSeek V4.1 Flash and GPT Sol 6.1 High. Brief: a Czech travel agency site with a trip listing, detail pages, seat booking and a hidden admin area.\n\nProject Demo: 16 builds, model DeepSeek V4.1 Flash. Brief: a landing page for a note-taking app, iterated three times with a switcher.\n\nProject Test 1: 4 builds. Layout experiments.\n\nEach build carries a model, a skill, a variant number and an entry path. Skills include Design, Apple Design, Apple Design + and No skill.\n\nThe brief text is long and must stay readable: clamp it, then let the reader expand it.\n\n## Screens and states\n\n- Library: full, filtered, empty search result.\n- Project: brief collapsed and expanded, build grid, one selected build.\n- Compare: two builds side by side, with a clear way to drop the pinned one.\n- Preview: overlay open, full window, closed.\n- Phone layout for library and project.\n\n## Constraints\n\n- Do not reuse the current lab styles or layout. This is a new design.\n- No stock photos. A cover is a neutral block, a single hue, or the project initial.\n- Builds run in iframes from local files. No external network calls.\n- Keyboard: logical tab order, visible focus, escape closes the overlay.\n- Interface text in English. Czech project titles may appear as data.\n- Desktop is primary. The phone layout must be usable, not a squeezed desktop.\n\n## Starter\n\nStart from the demo build at /Users/yon/Desktop/Programming/Projects/Frontend Lab/projects/demo/1. Copy that folder into your variant folder and replace its content. It is one static page: index.html, styles.css, app.js and its fonts. Do not copy files from other projects, and do not add a build step.\n\nThe entry is index.html. The lab serves the folder as it is.\n\nNo backend. Embed the sample data in the app. State can live in the URL so a project and a build can be linked.\n\n## Definition of done\n\nEvery state above exists and can be reached. Search filters live. Compare survives a build switch. The overlay closes with escape. No console errors. The layout holds at a desktop width and at phone width. The design uses one accent and no decorative effects.",
+  "builds": [
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Design",
+      "variant": 1,
+      "entry": "builds/sol6/design-taste/1/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Design",
+      "variant": 2,
+      "entry": "builds/sol6/design-taste/2/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Design",
+      "variant": 3,
+      "entry": "builds/sol6/design-taste/3/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design",
+      "variant": 1,
+      "entry": "builds/sol6/apple-design/1/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design",
+      "variant": 2,
+      "entry": "builds/sol6/apple-design/2/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design",
+      "variant": 3,
+      "entry": "builds/sol6/apple-design/3/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design +",
+      "variant": 1,
+      "entry": "builds/sol6/apple-design-plus/1/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design +",
+      "variant": 2,
+      "entry": "builds/sol6/apple-design-plus/2/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design +",
+      "variant": 3,
+      "entry": "builds/sol6/apple-design-plus/3/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Design",
+      "variant": 4,
+      "entry": "builds/sol6-dark/design-taste/1/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Design",
+      "variant": 5,
+      "entry": "builds/sol6-dark/design-taste/2/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Design",
+      "variant": 6,
+      "entry": "builds/sol6-dark/design-taste/3/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design",
+      "variant": 4,
+      "entry": "builds/sol6-dark/apple-design/1/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design",
+      "variant": 5,
+      "entry": "builds/sol6-dark/apple-design/2/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design",
+      "variant": 6,
+      "entry": "builds/sol6-dark/apple-design/3/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design +",
+      "variant": 4,
+      "entry": "builds/sol6-dark/apple-design-plus/1/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design +",
+      "variant": 5,
+      "entry": "builds/sol6-dark/apple-design-plus/2/index.html"
+    },
+    {
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design +",
+      "variant": 6,
+      "entry": "builds/sol6-dark/apple-design-plus/3/index.html"
+    }
+  ]
+}

@@ -13,3 +13,5 @@ projects/catalog.local.json
 projects/test-*
 .lab-notes.md
 projects/demo/archive/
+projects/trio/
+.shots/

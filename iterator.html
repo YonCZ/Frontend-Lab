@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Iterator</title>
+    <link rel="icon" href="/assets/lab.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      body { background: #141312; }
+      iframe {
+        position: fixed; inset: 0; width: 100%; height: 100%;
+        border: 0; background: #fff;
+      }
+      .preview-tools { position: fixed; z-index: 5; top: 18px; right: 18px; }
+      .rail {
+        display: flex; flex-direction: column; gap: 2.5px;
+        width: 46px; max-height: calc(100dvh - 30px);
+        padding: 4px; overflow-y: auto; scrollbar-width: none;
+        border: 1px solid #403c38; border-radius: 9px; background: #292622;
+        box-shadow: 0 10px 30px rgba(0,0,0,.35);
+      }
+      .rail button,
+      .rail a {
+        display: grid; place-items: center; width: 100%; min-height: 34px;
+        padding: 0; border: 0; border-radius: 5px; background: transparent;
+        color: #bcb7b1; font: inherit; font-size: 13px; cursor: pointer;
+        text-decoration: none;
+      }
+      .rail button:hover,
+      .rail a:hover { color: #f0ece6; background: #34302c; }
+      .rail button[aria-current="true"] { color: #f0ece6; background: #3d3833; }
+      .rail-rule { height: 1px; margin: 2px 4px; background: #403c38; }
+      .info {
+        position: fixed; left: 18px; bottom: 16px; z-index: 5;
+        max-width: min(560px, calc(100vw - 96px));
+        padding: 9px 13px; border: 1px solid #403c38; border-radius: 8px;
+        background: #292622; color: #a39c94; font: 12px/1.5 Geist, ui-sans-serif, system-ui, sans-serif;
+      }
+      .info strong { color: #f0ece6; font-weight: 550; }
+      .info .tag {
+        display: inline-block; margin-right: 8px; padding: 1px 7px;
+        border: 1px solid #4a443f; border-radius: 999px; color: #bcb7b1;
+      }
+      @media (max-width: 640px) {
+        .preview-tools { top: 8px; right: 8px; }
+        .info { left: 8px; bottom: 8px; }
+      }
+    </style>
+  </head>
+  <body>
+    <iframe id="frame" title="Iterator build"></iframe>
+    <div class="preview-tools">
+      <aside class="rail" id="rail" aria-label="All variants"></aside>
+    </div>
+    <div class="info" id="info">Loading…</div>
+
+    <script>
+      const frame = document.getElementById("frame");
+      const rail = document.getElementById("rail");
+      const info = document.getElementById("info");
+      const parts = location.pathname.split("/").filter(Boolean);
+      const id = parts[1] || "";
+      const adminMode = parts[2] === "admin";
+      let items = [];
+
+      function show(index, push) {
+        const item = items[index];
+        if (!item) return;
+        frame.src = adminMode ? `${item.url}#/admin` : item.url;
+        rail.querySelectorAll("button").forEach((button, i) => {
+          if (i === index) button.setAttribute("aria-current", "true");
+          else button.removeAttribute("aria-current");
+        });
+        info.innerHTML =
+          `<span class="tag">${item.kind}</span>` +
+          `<strong>${item.label}</strong> · ${item.model} · ${item.skill}` +
+          (item.project ? ` · from ${item.project}` : "") +
+          (adminMode ? ` · <strong>admin</strong>` : "");
+        document.title = `${item.label} · Iterator`;
+        if (push) history.replaceState(null, "", `/iterator/${id}${adminMode ? "/admin" : ""}?v=${index + 1}`);
+      }
+
+      fetch(`/api/iterators/${encodeURIComponent(id)}`, { cache: "no-store" })
+        .then((response) => {
+          if (!response.ok) throw new Error("missing");
+          return response.json();
+        })
+        .then((project) => {
+          document.title = `${project.name} · Iterator`;
+          const sources = (project.sources || []).map((source, index) => ({
+            kind: "source",
+            label: source.label || `Source ${index + 1}`,
+            url: source.url,
+            model: source.model || "generated build",
+            skill: source.skill || source.project || "unknown source",
+            project: "",
+          }));
+          const builds = (project.builds || []).map((build) => ({
+            kind: "iterated",
+            label: `Variant ${build.variant}`,
+            url: build.url,
+            model: build.model,
+            skill: build.skill,
+            project: "",
+          }));
+          items = [...sources, ...builds];
+
+          if (!items.length) {
+            info.textContent = "No sources in this iterator.";
+            return;
+          }
+
+          const home = document.createElement("a");
+          home.href = "/iterators";
+          home.title = "All iterators";
+          home.setAttribute("aria-label", "All iterators");
+          home.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11 12 3l9 8"/><path d="M5 10v10h14V10"/></svg>';
+          rail.append(home);
+          const topRule = document.createElement("div");
+          topRule.className = "rail-rule";
+          rail.append(topRule);
+
+          items.forEach((item, index) => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.textContent = String(index + 1);
+            button.title = `${item.label} · ${item.model}`;
+            button.setAttribute("aria-label", item.label);
+            button.addEventListener("click", () => show(index, true));
+            rail.append(button);
+            if (index === sources.length - 1 && builds.length) {
+              const rule = document.createElement("div");
+              rule.className = "rail-rule";
+              rail.append(rule);
+            }
+          });
+
+          const requested = Number(new URLSearchParams(location.search).get("v") || "1");
+          show(Math.min(Math.max(requested, 1), items.length) - 1, false);
+        })
+        .catch(() => {
+          info.textContent = "Could not load the iterator.";
+        });
+    </script>
+  </body>
+</html>

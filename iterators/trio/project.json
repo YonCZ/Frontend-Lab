@@ -1,0 +1,90 @@
+{
+  "name": "Trio",
+  "kind": "iterator",
+  "brief": "Iterator workspace. Chosen designs are copied into sources/ and edited or merged into new builds.",
+  "builds": [],
+  "sources": [
+    {
+      "label": "GPT A+ 4 · Cairn paper",
+      "project": "trio",
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design +",
+      "entry": "projects/trio/builds/sol6/apple-plus-cairn/4/dist/index.html",
+      "copy": "sources/01",
+      "preview": "projects/trio/builds/sol6/apple-plus-cairn/4/dist/index.html"
+    },
+    {
+      "label": "GPT A+ 5 · Cairn paper",
+      "project": "trio",
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design +",
+      "entry": "projects/trio/builds/sol6/apple-plus-cairn/5/dist/index.html",
+      "copy": "sources/02",
+      "preview": "projects/trio/builds/sol6/apple-plus-cairn/5/dist/index.html"
+    },
+    {
+      "label": "DS Apple 6 · Bricolage",
+      "project": "trio",
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Apple Design",
+      "entry": "projects/trio/builds/deepseek/apple-design/6/dist/index.html",
+      "copy": "sources/10",
+      "preview": "projects/trio/builds/deepseek/apple-design/6/dist/index.html"
+    },
+    {
+      "label": "DS Apple 2 · cream and sage",
+      "project": "trio",
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Apple Design",
+      "entry": "projects/trio/builds/deepseek/apple-design/2/dist/index.html",
+      "copy": "sources/04",
+      "preview": "projects/trio/builds/deepseek/apple-design/2/dist/index.html"
+    },
+    {
+      "label": "DS A+ 2 · pale green",
+      "project": "trio",
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Apple Design +",
+      "entry": "projects/trio/builds/deepseek/apple-design-plus/2/dist/index.html",
+      "copy": "sources/05",
+      "preview": "projects/trio/builds/deepseek/apple-design-plus/2/dist/index.html"
+    },
+    {
+      "label": "GPT A+ 6 · white and blue",
+      "project": "trio",
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design +",
+      "entry": "projects/trio/builds/sol6/apple-plus-special/6/dist/index.html",
+      "copy": "sources/06",
+      "preview": "projects/trio/builds/sol6/apple-plus-special/6/dist/index.html"
+    },
+    {
+      "label": "GPT A+ 1 · blue editorial",
+      "project": "trio",
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design +",
+      "entry": "projects/trio/builds/sol6/apple-plus-sol/1/dist/index.html",
+      "copy": "sources/07",
+      "preview": "projects/trio/builds/sol6/apple-plus-sol/1/dist/index.html"
+    },
+    {
+      "label": "DS A+ 9 · off-white theme",
+      "project": "trio",
+      "model": "DeepSeek V4.1 Flash",
+      "skill": "Apple Design +",
+      "entry": "projects/trio/builds/deepseek/ds-apple-liked/9/dist/index.html",
+      "copy": "sources/08",
+      "preview": "projects/trio/builds/deepseek/ds-apple-liked/9/dist/index.html"
+    },
+    {
+      "label": "GPT A+ 9 · off-white theme",
+      "project": "trio",
+      "model": "GPT Sol 6.1 High",
+      "skill": "Apple Design +",
+      "entry": "projects/trio/builds/sol6/apple-plus-liked/9/dist/index.html",
+      "copy": "sources/09",
+      "preview": "projects/trio/builds/sol6/apple-plus-liked/9/dist/index.html"
+    }
+  ],
+  "experiment": null
+}

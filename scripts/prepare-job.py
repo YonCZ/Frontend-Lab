@@ -74,12 +74,16 @@ else:
     variants = [int(variant)]
     label = job
 
+folder_slug = preset.get('folder') or folder_slug
 build_root = project / 'builds' / folder_slug / preset_id
 inputs = project / 'inputs'
+starter = root / 'templates' / 'react-motion'
 for variant in variants:
     folder = build_root / str(variant)
-    assets = folder / 'assets'
+    assets = folder / 'public' / 'assets'
     assets.mkdir(parents=True, exist_ok=True)
+    if not (folder / 'index.html').exists() and starter.is_dir():
+        shutil.copytree(starter, folder, dirs_exist_ok=True)
     if inputs.is_dir():
         for asset in inputs.iterdir():
             shutil.copy2(asset, assets / asset.name)
@@ -87,7 +91,7 @@ for variant in variants:
 has_assets = inputs.is_dir() and any(inputs.iterdir())
 if has_assets:
     names = ', '.join(sorted(p.name for p in inputs.iterdir()))
-    assets_instruction = f'Use the supplied assets at assets/: {names}.'
+    assets_instruction = f'Use the supplied assets at public/assets/: {names}.'
 else:
     assets_instruction = 'Do not use any supplied image or photo assets.'
 
@@ -100,10 +104,10 @@ else:
     skills_line = ''
 
 tools_line = (
-    f"Tools (in {root}): fonts/ — copy the families you use into each variant's assets/fonts; "
+    f"Tools (in {root}): fonts/ — copy the families you use into each variant's public/assets/fonts; "
     'scripts/check.py --url <page> for console/404/overflow; scripts/shot.py --url <page> --full or '
     '--contact "css,selectors". Review at most 2 images (full page + contact sheet of changed sections); '
-    "don't re-read unchanged shots. Playwright installed."
+    "don't re-read unchanged shots. Playwright installed. Build with `npx vite build`; never run npm install."
 )
 base_url = (f'http://localhost:5173/projects/{project_id}/builds/'
             f'{folder_slug}/{preset_id}')

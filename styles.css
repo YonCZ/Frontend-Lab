@@ -126,8 +126,21 @@ button:disabled {
   border-right: 1px solid var(--border);
 }
 .gallery-nav a:hover,
-.gallery-nav button:hover {
+.gallery-nav button:hover,
+.gallery-nav a:not(.nav-home):hover {
   color: var(--ink);
+}
+.gallery-nav a:not(.nav-home) {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 13px;
+  min-height: 31px;
+  color: var(--muted);
+  border: 0;
+  background: none;
+  font-size: 14px;
+  text-decoration: none;
 }
 .intro {
   display: flex;

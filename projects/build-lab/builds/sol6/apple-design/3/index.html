@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Browse local frontend projects and compare their builds.">
+  <meta name="theme-color" content="#fafaf9">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='6' y='6' width='16' height='20' rx='2' fill='none' stroke='%23242424' stroke-width='2'/%3E%3Cpath d='M12 6V3h14v20h-4' fill='none' stroke='%23242424' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <title>Library | Frontend Lab</title>
+</head>
+<body class="variant-3">
+  <a href="#main" class="skip">Skip to content</a>
+  <div id="app"></div>
+  <dialog id="preview" aria-labelledby="preview-title">
+    <div class="preview-toolbar">
+      <div class="preview-heading"><span class="eyebrow">Preview</span><strong id="preview-title"></strong></div>
+      <div class="toolbar-actions"><button id="window-toggle" class="button">Full window</button><button id="close-preview" class="button">Close <kbd>Esc</kbd></button></div>
+    </div>
+    <div id="overlay-frames" class="viewer-frames"></div>
+  </dialog>
+  <div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
