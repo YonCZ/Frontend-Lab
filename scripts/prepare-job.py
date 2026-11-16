@@ -104,7 +104,7 @@ else:
     skills_line = ''
 
 tools_line = (
-    f"Tools (in {root}): fonts/ — copy the families you use into each variant's public/assets/fonts; "
+    f"Tools (in {root}): public/fonts/ — copy the families you use into each variant's public/assets/fonts; "
     'scripts/check.py --url <page> for console/404/overflow; scripts/shot.py --url <page> --full or '
     '--contact "css,selectors". Review at most 2 images (full page + contact sheet of changed sections); '
     "don't re-read unchanged shots. Playwright installed. Build with `npx vite build`; never run npm install."

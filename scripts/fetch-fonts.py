@@ -4,8 +4,9 @@ Usage:
   python3 scripts/fetch-fonts.py "Public Sans" "DM Serif Display"
   python3 scripts/fetch-fonts.py "Satoshi" "Clash Display" --fontshare
 
-Writes fonts/<family-slug>/{400,700}.woff2 plus a ready font.css with relative
-URLs, then rebuilds fonts/README.md. Uses curl, so no Python TLS setup needed.
+Writes public/fonts/<family-slug>/{400,700}.woff2 plus a ready font.css with
+relative URLs, then rebuilds public/fonts/README.md. Uses curl, so no Python TLS
+setup needed.
 """
 import json
 import re
@@ -16,7 +17,7 @@ from pathlib import Path
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
 root = Path(__file__).resolve().parent.parent
-fonts = root / "fonts"
+fonts = root / "public" / "fonts"
 fonts.mkdir(exist_ok=True)
 meta_path = fonts / "families.json"
 
@@ -85,7 +86,7 @@ def rebuild_readme():
     (fonts / "README.md").write_text(
         "# Font kit\n\nAll families are SIL Open Font License, latin subset, ready `font.css` with relative `url()` paths.\n\n"
         + "\n".join(rows)
-        + "\n\nCopy the folders you use into `assets/fonts/` and include `font.css` or copy its `@font-face` rules. "
+        + "\n\nCopy the folders you use into `public/assets/fonts/` and include `font.css` or copy its `@font-face` rules. "
           "Add another family with `python3 scripts/fetch-fonts.py \"Family Name\"`.\n"
     )
 

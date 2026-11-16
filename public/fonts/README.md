@@ -61,4 +61,4 @@ All families are SIL Open Font License, latin subset, ready `font.css` with rela
 - Work Sans — `work-sans/font.css`
 - Young Serif — `young-serif/font.css`
 
-Copy the folders you use into `assets/fonts/` and include `font.css` or copy its `@font-face` rules. Add another family with `python3 scripts/fetch-fonts.py "Family Name"`.
+Copy the folders you use into `public/assets/fonts/` and include `font.css` or copy its `@font-face` rules. Add another family with `python3 scripts/fetch-fonts.py "Family Name"`.

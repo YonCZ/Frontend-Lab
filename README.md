@@ -1,6 +1,6 @@
 # Frontend Lab
 
-A local gallery for comparing frontend builds made by different models and skills from the same brief. Builds are plain static folders served as-is, so agents can keep writing simple HTML; the lab is a small dynamic app around them that updates itself while builds land.
+A local gallery for comparing frontend builds made by different models and skills from the same brief. Builds are folders served as-is, so agents can keep writing simple HTML; the lab is a small dynamic app around them that updates while builds land.
 
 ## Quick start
 
@@ -14,35 +14,74 @@ Open <http://localhost:5173/>. One Node process runs Express and mounts Vite in 
 A production build is available when you want a frozen bundle:
 
 ```sh
-npm start          # builds the UI, then serves everything on http://localhost:4173
+npm start          # builds the UI and the static pages, then serves everything on http://localhost:4173
 ```
 
-## How it works
+## Structure
 
 ```
-index.html              Vite entry
-src/                    React + TypeScript UI
+index.html              Vite entry for the lab app
+src/                    React + TypeScript UI only
   App.tsx               routing (project / build / against in the URL)
-  components/           Gallery, Preview, icon and model marks
+  components/           Gallery, Preview, MenuBar, icon and model marks
   api.ts                state fetch + SSE subscription
-server/index.mjs        Express: /api/state, /api/events, /projects, dist
+styles.css              the lab app stylesheet
+server/index.mjs        Express: API, gate, /projects, static pages, dist
+public/
+  pages.css             styles for the standalone iterator and preview pages
+  assets/               Geist, the lab icon, provider marks
+  fonts/                local font kit
 projects/
-  catalog.json          slugs shown in the gallery
-  <project-slug>/
+  catalog.json          portable slugs shown in the gallery
+  catalog.local.json    machine-local slugs, ignored by git
+  <slug>/
     project.json        manifest: brief, builds, optional experiment
-    builds/...          one static folder per variant
+    inputs/             authored copy and source images, when needed
+    verify.json         optional project checks
+    builds/...          one folder per variant
+    runs/...            job and verification records, ignored by git
+iterators/              editable derivatives of selected designs
 prompts/frontend-base.md
-scripts/                optional queue helpers (prepare-job.py, queue-driver.py)
+scripts/                prepare, publish, verify, screenshots, fonts
+templates/              minimal static and Vite starters
+skills/                 companion skills used by agents
 ```
 
-- `GET /api/state` — catalog, manifests, queued/running job status, shared prompt.
-- `GET /api/events` — SSE stream; the server watches `projects/**` with chokidar (including `runs/status.json`) and pushes a fresh state whenever files change.
-- `/projects/*` — the builds themselves, with `no-store` on JSON.
+`iterators/` and `projects/*/runs/` and `dist/` are local working data. A fresh checkout has `projects/catalog.json` with `demo` and `build-lab`; add local projects to `catalog.local.json`.
 
-Two kinds of live update:
+## Build contract
 
-- **Content** (builds, manifests, job status) is pushed over SSE in every mode, dev or production. Agents only have to write files; cards and the open preview update without a reload.
-- **App code** (`src/`, CSS) is hot-swapped by Vite in `npm run dev`. A production bundle is fixed until it is rebuilt, same as any React or Next app.
+Every manifest build declares how it is produced:
+
+```json
+{
+  "model": "A model",
+  "skill": "Frontend Design",
+  "variant": 1,
+  "entry": "builds/01/index.html",
+  "build": "static"
+}
+```
+
+- `static`: `entry` is a file in the build folder, served as-is. No build step.
+- `vite`: the folder has `src/`, `package.json` and `vite.config.ts`, and `entry` is `dist/index.html`. Run `npx vite build` before publishing. `dist/` is disposable.
+
+Register a build through one command:
+
+```sh
+python3 scripts/publish.py --project build-lab \
+  --folder builds/deepseek-free/apple-design-plus/1 \
+  --model "DeepSeek V4.1 Flash Free" --skill "Apple Design +" --variant 1 \
+  --build vite --entry dist/index.html
+```
+
+`publish.py` rebuilds Vite when needed, runs `scripts/verify.py` at 1440, writes `projects/<id>/runs/<key>.json`, and only then adds or updates the manifest entry. A failed build never reaches `project.json`.
+
+Rebuild every Vite entry after a checkout:
+
+```sh
+python3 scripts/rebuild.py
+```
 
 ## Add a project
 
@@ -58,44 +97,70 @@ Create `projects/<slug>/`, add the slug to `projects/catalog.json`, and describe
       "model": "A model",
       "skill": "Frontend Design",
       "variant": 1,
-      "entry": "builds/01/index.html"
+      "entry": "builds/01/index.html",
+      "build": "static"
     }
   ]
 }
 ```
 
-`entry` and `cover` are relative to the project folder. Leave out `skill` for a baseline build. The first build opens by default; the rail switches model, skill and variant, and **VS** compares two builds side by side. Projects with `"demo": true` show a Demo badge.
+`entry` and `cover` are relative to the project folder. Leave out `skill` for a baseline build. The first build opens by default; the menu bar switches model, skill and variant, and **Compare** pins a second build side by side. Projects with `"demo": true` show a Demo badge.
 
-`projects/morrow-notes` and `projects/index-editions` are sample projects. Delete them and clear `projects/catalog.json` to start empty.
+Authored copy and source images can live in `projects/<slug>/inputs/`. Keep the brief in `project.json` unless it is long enough to deserve its own file.
+
+## Verification
+
+`scripts/verify.py` is the shared gate: HTTP status, console errors, page errors, failed requests, broken images, empty body, and horizontal overflow at 1440. Add `--mobile`, or `"mobile": true` in the project config, for a 390 pass. It accepts a project id so it can load `projects/<id>/verify.json`:
+
+```json
+{
+  "requiredText": ["Book a seat"],
+  "selectors": [".booking-form"],
+  "requiredAssets": ["hero.jpg"],
+  "script": "verify/flow.py",
+  "wait": 1200
+}
+```
+
+`script` is a Python file relative to the project. It exports `run(page, url)` and returns a list of problem strings, or `None`. Keep product flows and required photos there, not in the shared skill.
+
+`scripts/check.py` is the fast single-width wrapper used by agents. It runs the same engine at 1440 with no phone pass.
+
+```sh
+python3 scripts/check.py --url http://localhost:5173/projects/demo/1/index.html
+python3 scripts/verify.py --url ... --project build-lab --json
+```
+
+Playwright is already available:
+
+```sh
+python3 -m pip install playwright
+python3 -m playwright install chromium
+```
 
 ## React and Motion without installs
 
 The lab root already has `react`, `react-dom`, `motion`, `vite` and `@vitejs/plugin-react` in `node_modules`. Node resolves them upward, so a build folder inside the repo needs no install of its own.
 
 ```sh
-cp -R templates/react-motion projects/<project>/<variant>
+cp -R templates/react-motion projects/<project>/builds/<variant>
 # edit src/, then:
-cd projects/<project>/<variant> && npx vite build
+cd projects/<project>/builds/<variant> && npx vite build
 ```
 
-The build takes about a second and writes `dist/index.html`. Point the manifest entry at it. `base: "./"` is already set, so the folder works under any path in the lab.
+The build writes `dist/index.html`. Point the manifest entry at it and set `"build": "vite"`. `base: "./"` is already set, so the folder works under any path in the lab.
 
 Do not run `npm install` inside a build folder. Only add a dependency at the lab root.
 
-## Optional: the build queue
+## The build queue
 
-`scripts/` contains the harness used to run many builds across models and skills, plus a font kit and a screenshot helper.
+`scripts/` also contains the harness used to run many builds across models and skills.
 
-- `fonts/` — 48 OFL families (latin, 400/700 where available) with ready `font.css` files; agents copy what they need into `assets/fonts/`. Add more with `python3 scripts/fetch-fonts.py "Family Name"`.
-- `scripts/shot.py` — one-command screenshots (`--url`, `--out`, `--full`, `--selector`, `--contact "a,b"` for one stitched sheet), 1000px wide, JPEG by default.
-- `scripts/check.py` — structural QA without images: console errors, failed local requests, broken images, horizontal overflow, empty body.
-
-Verification uses Playwright:
-
-```sh
-python3 -m pip install playwright
-python3 -m playwright install chromium
-```
+- `scripts/prepare-job.py` prepares build folders and prints the composed prompt for a thread.
+- `scripts/queue-driver.py` tracks jobs; its `register` command now calls `scripts/publish.py`, so registration has one path.
+- `scripts/rebuild.py` rebuilds every `"build": "vite"` entry.
+- `public/fonts/` holds the OFL families. Add more with `python3 scripts/fetch-fonts.py "Family Name"`.
+- `scripts/shot.py` takes one-command screenshots (`--url`, `--out`, `--full`, `--selector`, `--contact "a,b"`).
 
 Prepare a prompt for two variants of one preset:
 
@@ -104,7 +169,7 @@ python3 scripts/prepare-job.py frontend-design --variants 2
 python3 scripts/prepare-job.py frontend-design --variants 2 --brand "Trio"   # default brand is Demos
 ```
 
-The generated prompt also points at the local font kit, `scripts/shot.py`, and the preview server on `http://localhost:5173`.
+The generated prompt points at the local font kit, `scripts/check.py`, `scripts/shot.py`, and the preview server on `http://localhost:5173`.
 
 Placeholders in `prompts/frontend-base.md`: `{{build_root}}`, `{{variants}}`, `{{variant_plural}}`, `{{variant_dirs}}`, `{{assets_instruction}}`, `{{project_brief}}`, `{{skills_line}}`, `{{tools_line}}`, `{{base_url}}`.
 
@@ -112,16 +177,16 @@ Queue commands target the first project in `projects/catalog.json` unless `QUEUE
 
 ```sh
 echo '{"threads":{"<thread-id>":"completed"}}' | python3 scripts/queue-driver.py sync
-python3 scripts/queue-driver.py register <job-key>   # verifies in Chromium, updates project.json
+python3 scripts/queue-driver.py register <job-key>
 python3 scripts/queue-driver.py plan
 python3 scripts/queue-driver.py mark <job-key> running <thread-id>
 ```
 
-`sync` expects a thread-id → status map from whatever runs your agents. The scripts expect an `experiment` block (`model`, `maxConcurrent`, `basePrompt`, `skills`, `presets`).
+The scripts expect an `experiment` block (`model`, `maxConcurrent`, `basePrompt`, `skills`, `presets`).
 
 ## Skills
 
-`skills/frontend-spedup/SKILL.md` is a verification-first companion skill: run structural checks before spending screenshots, then look at at most two images. Point your agent at it alongside whichever design skill you use.
+`skills/frontend-spedup/SKILL.md` is a verification-first companion skill: run structural checks before spending screenshots, then look at at most two images. Project-specific checks belong in `verify.json`, not in the shared skill.
 
 Design skills are referenced by absolute path in the prompt, not auto-discovered, so an agent cannot load extra skills you did not assign.
 
@@ -129,5 +194,6 @@ Design skills are referenced by absolute path in the prompt, not auto-discovered
 
 - Builds run from disk with real relative paths, so scripts, assets and `localStorage` behave normally. Keep the server bound to localhost and only run builds you trust.
 - Nothing here calls a model provider; point your own runner at the composed prompt and write the result into a build folder.
+- `projects/ca-trio/` holds the authored source content for the Trio client project. It has no manifest and is not shown in the gallery.
 - Provider marks in `public/assets/providers/` come from [whichai.dev](https://www.whichai.dev/).
 - No credentials, run logs or personal projects are included. `projects/*/runs/` and `dist/` are gitignored.
