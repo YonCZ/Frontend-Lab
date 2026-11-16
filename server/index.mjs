@@ -11,6 +11,7 @@ const projectsDir = path.join(root, "projects");
 const distDir = path.join(root, "dist");
 const iteratorsDir = path.join(root, "iterators");
 const noStore = (response) => response.set("Cache-Control", "no-store");
+const pageDir = () => (serveDist ? distDir : root);
 
 const port = Number(process.env.PORT || 4173);
 const serveDist = process.argv.includes("--serve-dist");
@@ -45,6 +46,7 @@ async function loadProject(id) {
         : "No skill",
     variant: build.variant,
     entry: filePath(id, build.entry),
+    build: build.build === "vite" ? "vite" : "static",
     special,
   });
   if (data.builds.some((build) => !normalise(build).entry)) {
@@ -167,21 +169,22 @@ function broadcast() {
 
 app.get(["/iterator/:id/admin", "/iterator/:id/admin/", "/iterator/:id", "/iterator/:id/"], (_request, response) => {
   noStore(response);
-  response.sendFile(path.join(root, "iterator.html"));
+  response.sendFile(path.join(pageDir(), "iterator.html"));
 });
 
 app.get("/iterators", (_request, response) => {
   noStore(response);
-  response.sendFile(path.join(root, "iterators.html"));
+  response.sendFile(path.join(pageDir(), "iterators.html"));
 });
 
 app.get("/iterators/new", (_request, response) => {
-  response.sendFile(path.join(root, "iterators-new.html"));
+  noStore(response);
+  response.sendFile(path.join(pageDir(), "iterators-new.html"));
 });
 
 app.get("/previews", (_request, response) => {
   noStore(response);
-  response.sendFile(path.join(root, "previews.html"));
+  response.sendFile(path.join(pageDir(), "previews.html"));
 });
 
 app.use(express.json({ limit: "2mb" }));

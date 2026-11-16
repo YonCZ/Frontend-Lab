@@ -14,11 +14,10 @@ creation half, because only the MCP layer can create threads.
 """
 import json
 import os
-import re
 import sys
 from pathlib import Path
 
-from playwright.sync_api import sync_playwright
+from publish import publish_build
 
 root = Path(__file__).resolve().parent.parent
 def catalog_default():
@@ -84,40 +83,6 @@ def folder_for(key):
     preset, variant = split_key(key)
     folder = experiment.get('folder') or str(experiment.get('model', 'model')).split('/')[-1]
     return project / 'builds' / folder / preset['id'] / str(variant)
-
-
-def verify(entry):
-    if not entry.is_file() or not entry.stat().st_size:
-        return 'missing index.html'
-    relative = entry.relative_to(root).as_posix()
-    with sync_playwright() as p:
-        browser = p.chromium.launch()
-        page = browser.new_page(viewport={'width': 1280, 'height': 800})
-        local_errors = []
-        page.on('response', lambda response: local_errors.append(response.url)
-                if response.status >= 400 and response.url.startswith(server + '/')
-                and not response.url.endswith('/favicon.ico') else None)
-        page.on('pageerror', lambda error: local_errors.append(str(error)))
-        response = page.goto(f'{server}/{relative}', wait_until='load', timeout=25000)
-        if response is None or not response.ok:
-            return 'preview HTTP error'
-        page.locator('body').wait_for(state='visible', timeout=8000)
-        if not page.locator('body').inner_text().strip():
-            return 'preview has no visible text'
-        image = page.locator('img[src*="acrylic-lecterns"]')
-        if experiment.get('requirePhoto', True):
-            if image.count():
-                image.first.evaluate('img => img.decode()')
-            elif 'acrylic-lecterns.png' not in ' '.join(
-                    page.locator('body, body *').evaluate_all(
-                        "nodes => nodes.map(n => getComputedStyle(n).backgroundImage)"
-                        ".filter(s => s !== 'none')")):
-                return 'preview does not use the supplied product photo'
-        if local_errors:
-            return 'missing local asset or script error: ' + local_errors[0]
-        page.screenshot(path=entry.parent / 'preview.jpg', type='jpeg',
-                        quality=78, timeout=12000)
-    return None
 
 
 def cmd_sync():
@@ -191,42 +156,43 @@ def cmd_register():
     folder = folder_for(key)
     status = read_json(status_path, {})
     entry = dict(status.get(key, {}))
-    if any(item['skill'] == preset['name'] and item['variant'] == variant
-           for item in data['builds']):
-        entry['status'] = 'ready'
-        status[key] = entry
-        save_status(status)
-        print(json.dumps({key: 'already registered'}))
-        return
-    target = folder / 'index.html'
+    model = (preset.get('model') or experiment.get('modelLabel')
+             or experiment.get('model') or 'Unknown')
+    if (folder / 'dist' / 'index.html').is_file():
+        build, entry_file = 'vite', 'dist/index.html'
+    else:
+        build, entry_file = 'static', 'index.html'
     try:
-        failure = verify(target)
+        result = publish_build(
+            project_id=project.name,
+            folder=folder.relative_to(project).as_posix(),
+            model=model,
+            skill=preset['name'],
+            variant=variant,
+            build=build,
+            entry=entry_file,
+            base_url=server,
+            preview=True,
+        )
     except Exception as error:
-        failure = f'preview check failed: {str(error).splitlines()[0]}'
-    if failure:
+        result = {'status': 'failed', 'reason': str(error).splitlines()[0]}
+    if result['status'] != 'ready':
         entry['status'] = 'failed'
-        entry['reason'] = failure
+        entry['reason'] = result.get('reason') or 'verification failed'
         status[key] = entry
         save_status(status)
-        print(json.dumps({key: 'failed', 'reason': failure}))
+        print(json.dumps({key: 'failed', 'reason': entry['reason']}))
         return
-    data['builds'].append({
-        'model': 'Kimi K3',
-        'skill': preset['name'],
-        'variant': variant,
-        'entry': target.relative_to(project).as_posix(),
-    })
-    order = {item['name']: index for index, item in enumerate(experiment['presets'])}
-    data['builds'].sort(key=lambda item: (order[item['skill']], item['variant']))
-    data['cover'] = str(Path(data['builds'][0]['entry']).with_name('preview.jpg'))
-    experiment['status'] = ('complete' if len(data['builds']) == len(ordered_keys())
-                            else 'running')
-    atomic_json(manifest, data)
+    fresh = json.loads(manifest.read_text())
+    fresh_experiment = fresh['experiment']
+    fresh_experiment['status'] = ('complete' if len(fresh['builds']) >= len(ordered_keys())
+                                  else 'running')
+    atomic_json(manifest, fresh)
     entry['status'] = 'ready'
     entry.pop('reason', None)
     status[key] = entry
     save_status(status)
-    print(json.dumps({key: 'ready', 'entry': target.relative_to(project).as_posix()}))
+    print(json.dumps({key: 'ready', 'entry': result.get('publishedEntry', entry_file)}))
 
 
 commands = {'sync': cmd_sync, 'plan': cmd_plan, 'mark': cmd_mark,

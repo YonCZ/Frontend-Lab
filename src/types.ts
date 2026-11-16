@@ -3,6 +3,7 @@ export type Build = {
   skill: string;
   variant: number;
   entry: string;
+  build: "static" | "vite";
   special: boolean;
 };
 

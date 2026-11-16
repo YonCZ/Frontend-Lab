@@ -7,97 +7,113 @@
       "model": "DeepSeek V4.1 Flash",
       "skill": "No skill",
       "variant": 1,
-      "entry": "1/index.html"
+      "entry": "1/index.html",
+      "build": "static"
     },
     {
       "model": "DeepSeek V4.1 Flash",
       "skill": "No skill",
       "variant": 2,
-      "entry": "2/index.html"
+      "entry": "2/index.html",
+      "build": "static"
     },
     {
       "model": "DeepSeek V4.1 Flash",
       "skill": "No skill",
       "variant": 3,
-      "entry": "3/index.html"
+      "entry": "3/index.html",
+      "build": "static"
     },
     {
       "model": "DeepSeek V4.1 Flash",
       "skill": "Design",
       "variant": 1,
-      "entry": "design/1/index.html"
+      "entry": "design/1/index.html",
+      "build": "static"
     },
     {
       "model": "DeepSeek V4.1 Flash",
       "skill": "Design",
       "variant": 2,
-      "entry": "design/2/index.html"
+      "entry": "design/2/index.html",
+      "build": "static"
     },
     {
       "model": "DeepSeek V4.1 Flash",
       "skill": "Apple Design",
       "variant": 1,
-      "entry": "apple-design/1/index.html"
+      "entry": "apple-design/1/index.html",
+      "build": "static"
     },
     {
       "model": "DeepSeek V4.1 Flash",
       "skill": "Apple Design",
       "variant": 3,
-      "entry": "apple-design/3/index.html"
+      "entry": "apple-design/3/index.html",
+      "build": "static"
     },
     {
       "model": "DeepSeek V4.1 Flash",
       "skill": "Apple Design +",
       "variant": 1,
-      "entry": "apple-design-plus/1/index.html"
+      "entry": "apple-design-plus/1/index.html",
+      "build": "static"
     },
     {
       "model": "DeepSeek V4.1 Flash",
       "skill": "Apple Design +",
       "variant": 2,
-      "entry": "apple-design-plus/2/index.html"
+      "entry": "apple-design-plus/2/index.html",
+      "build": "static"
     },
     {
       "model": "DeepSeek V4.1 Flash",
       "skill": "Apple Design +",
       "variant": 3,
-      "entry": "apple-design-plus/3/index.html"
+      "entry": "apple-design-plus/3/index.html",
+      "build": "static"
     },
     {
       "model": "DeepSeek V4.1 Flash",
       "skill": "Design + Taste + Motion",
       "variant": 1,
-      "entry": "design-taste-motion/1/index.html"
+      "entry": "design-taste-motion/1/index.html",
+      "build": "static"
     },
     {
       "model": "DeepSeek V4.1 Flash",
       "skill": "Design + Taste + Motion",
       "variant": 2,
-      "entry": "design-taste-motion/2/index.html"
+      "entry": "design-taste-motion/2/index.html",
+      "build": "static"
     },
     {
       "model": "DeepSeek V4.1 Flash",
       "skill": "Design + Taste + Motion",
       "variant": 3,
-      "entry": "design-taste-motion/3/index.html"
+      "entry": "design-taste-motion/3/index.html",
+      "build": "static"
     },
     {
       "model": "DeepSeek V4.1 Flash",
       "skill": "Design + Taste + Apple + Motion",
       "variant": 1,
-      "entry": "design-taste-apple-motion/1/index.html"
+      "entry": "design-taste-apple-motion/1/index.html",
+      "build": "static"
     },
     {
       "model": "DeepSeek V4.1 Flash",
       "skill": "Design + Taste + Apple + Motion",
       "variant": 2,
-      "entry": "design-taste-apple-motion/2/index.html"
+      "entry": "design-taste-apple-motion/2/index.html",
+      "build": "static"
     },
     {
       "model": "DeepSeek V4.1 Flash",
       "skill": "Design + Taste + Apple + Motion",
       "variant": 3,
-      "entry": "design-taste-apple-motion/3/index.html"
+      "entry": "design-taste-apple-motion/3/index.html",
+      "build": "static"
     }
   ],
   "experiment": {

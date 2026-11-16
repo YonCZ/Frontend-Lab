@@ -11,8 +11,9 @@ Check the page before you look at it. A screenshot costs seconds. A failed reque
 
 1. Build the page.
 2. Run the structural check and fix every failure.
-3. Look at images
-4. Fix what you found, repeat until you are satisfied
+3. Run the project's own checks from `projects/<id>/verify.json` if it has them.
+4. Look at images
+5. Fix what you found, repeat until you are satisfied
 
 ## Cheap checks before screenshots
 
@@ -20,7 +21,7 @@ Check the page before you look at it. A screenshot costs seconds. A failed reque
 - The page loads with HTTP 200.
 - No page errors in the console.
 - No horizontal overflow at 1440.
-- Assert the flow: finish selection updates the price, quantity changes, adding to cart updates the count and subtotal, the cart survives a reload, checkout reaches a confirmation, and the cart clears.
+- Assert the project's main flow. Project-specific checks belong in `projects/<id>/verify.json`, not in this shared skill.
 
 ## Screenshot budget
 
@@ -34,3 +35,4 @@ Name the cause with an assertion first: computed style, bounding box, class list
 
 - Install Playwright, Chromium, or any browser. It is already available.
 - Replace assertions with "it looks fine".
+- Start, restart or kill the lab server. It is already running on port 5173. If it fails, stop and report.
