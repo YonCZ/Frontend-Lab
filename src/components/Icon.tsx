@@ -14,6 +14,10 @@ const icons: Record<string, string> = {
   close: '<path d="m6 6 12 12M18 6 6 18"/>',
   plus: '<path d="M12 5v14M5 12h14"/>',
   copy: '<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>',
+  chevron: '<path d="m6 9 6 6 6-6"/>',
+  expand: '<path d="M9 4H4v5M15 4h5v5M20 15v5h-5M4 15v5h5"/>',
+  shrink: '<path d="M4 9h5V4M20 9h-5V4M15 20v-5h5M9 20v-5H4"/>',
+  pin: '<path d="M9 4h6l-.8 4.8L17 11v2H7v-2l2.8-2.2L9 4Z"/><path d="M12 13v7"/>',
 };
 
 export function Icon({ name, className = "icon" }: { name: keyof typeof icons | string; className?: string }) {
